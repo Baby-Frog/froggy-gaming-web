@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import Aos from "aos";
 import HomepageContainer from "./HomepageLayout/homepageContainer/components/HomepageContainer";
-import ContactBar from "./FixedContactBar/ContactBar";
-import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import Nav from "./global/navigationBar/components/Nav";
-import CategoryContainer from "./CategoryLayout/CategoryContainer";
+import CategoryContainer from "./CategoryLayout/CategoryContainer/CategoryContainer";
 import Footer from "./global/footer/Footer";
+import ScrollToTopButton from "./global/ScrollToTop/ScrollToTop";
+import ContactBar from "./global/FixedContactBar/ContactBar";
 
 function App() {
   useEffect(() => {
@@ -24,7 +24,7 @@ function App() {
         <Route path="/category" element={<CategoryContainer />}></Route>
       </Routes>
       <ContactBar></ContactBar>
-      <ScrollToTop></ScrollToTop>
+      <ScrollToTopButton></ScrollToTopButton>
       <Footer></Footer>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import "./CategoryQuote.css";
+import "./styles/CategoryQuote.css";
 
 const CategoryQuote = () => {
   return (

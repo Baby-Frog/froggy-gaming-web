@@ -7,6 +7,11 @@
           animation: 0.5s shine linear infinite;
 }
 
+.wrapper {
+  max-width: 1500px;
+  margin: 7rem auto;
+}
+
 @-webkit-keyframes shine {
   to {
     background-position-x: -200%;

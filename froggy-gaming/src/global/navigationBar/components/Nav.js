@@ -4,9 +4,9 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import "../styles/Nav.css";
 import Logo from "../assets/froggy-gaming-logo.png";
-import LoadingSkeleton from "../../../SkeletonLoading/LoadingSkeleton";
 import NavCategory from "./NavCategory";
 import useScrolled from "../../../hooks/useScrolled";
+import LoadingSkeleton from "../../SkeletonLoading/LoadingSkeleton";
 
 const initialState = {
   data: [],

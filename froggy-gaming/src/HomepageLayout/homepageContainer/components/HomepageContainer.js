@@ -1,12 +1,12 @@
 import React from "react";
 import { Fragment } from "react";
-import ShowMore from "../../../ShowMore/ShowMore";
+import ShowMore from "../../../global/ShowMore/ShowMore";
 import BrandSlider from "../../brandSlider/BrandSlider";
 import HomepageCategory from "../../homepageCategory/components/HomepageCategory";
 import HomepageEvent from "../../homepageEvent/components/HomepageEvent";
 import MostBuyProducts from "../../homepageMostBuy/components/MostBuyProducts";
 import SlickSlider from "../../homepageSlider/components/SlickSlider";
-import SectionDivider from "../../sectionDivider/components/SectionDivider";
+import SectionDivider from "../../../global/sectionDivider/components/SectionDivider";
 import "../assets/homepagecontainer.css";
 
 const HomepageContainer = () => {
@@ -14,12 +14,12 @@ const HomepageContainer = () => {
     <Fragment>
       {/* Slider Showcase */}
       <SlickSlider></SlickSlider>
-      <div className="homepage">
+      <div className="wrapper">
         <SectionDivider
           sectionContent={"Chương trình và sự kiện"}
           marginBlock={"1.5rem"}
         ></SectionDivider>
-        <HomepageEvent></HomepageEvent>
+        \<HomepageEvent></HomepageEvent>
         {/* Danh mục sản phẩm */}
         <SectionDivider
           sectionContent={"Danh mục sản phẩm"}
