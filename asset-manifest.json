@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/froggy-gaming-web/static/css/main.073c9b0a.css",
+    "main.js": "/froggy-gaming-web/static/js/main.bb53e0dc.js",
+    "static/js/787.400f6605.chunk.js": "/froggy-gaming-web/static/js/787.400f6605.chunk.js",
+    "index.html": "/froggy-gaming-web/index.html",
+    "main.073c9b0a.css.map": "/froggy-gaming-web/static/css/main.073c9b0a.css.map",
+    "main.bb53e0dc.js.map": "/froggy-gaming-web/static/js/main.bb53e0dc.js.map",
+    "787.400f6605.chunk.js.map": "/froggy-gaming-web/static/js/787.400f6605.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.bb53e0dc.js"
+  ]
+}
