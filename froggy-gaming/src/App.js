@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import Aos from "aos";
+import HomepageContainer from "./HomepageLayout/homepageContainer/components/HomepageContainer";
+import ContactBar from "./FixedContactBar/ContactBar";
+import ScrollToTop from "./ScrollToTop/ScrollToTop";
+import Nav from "./global/navigationBar/components/Nav";
+import CategoryContainer from "./CategoryLayout/CategoryContainer";
+import Footer from "./global/footer/Footer";
 
 function App() {
+  useEffect(() => {
+    Aos.init({ disable: window.innerWidth < 1366 });
+  }, []);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Nav></Nav>
+      <Routes>
+        <Route
+          path="/froggy-gaming-web"
+          element={<HomepageContainer />}
+        ></Route>
+        <Route path="/category" element={<CategoryContainer />}></Route>
+      </Routes>
+      <ContactBar></ContactBar>
+      <ScrollToTop></ScrollToTop>
+      <Footer></Footer>
     </div>
   );
 }
