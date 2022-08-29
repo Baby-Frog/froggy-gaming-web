@@ -8,6 +8,7 @@ import CategoryContainer from "./CategoryLayout/CategoryContainer/CategoryContai
 import Footer from "./global/footer/Footer";
 import ScrollToTopButton from "./global/ScrollToTop/ScrollToTop";
 import ContactBar from "./global/FixedContactBar/ContactBar";
+import NotFound from "./404NotFound/NotFound";
 
 function App() {
   useEffect(() => {
@@ -22,7 +23,7 @@ function App() {
           element={<HomepageContainer />}
         ></Route>
         <Route path="/danh-muc" element={<CategoryContainer />}></Route>
-        <Route path="*" element={<div>404</div>}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <ContactBar></ContactBar>
       <ScrollToTopButton></ScrollToTopButton>

@@ -3,7 +3,7 @@ import lodash from "lodash";
 import axios from "axios";
 import { Link, NavLink, Outlet } from "react-router-dom";
 import "../styles/Nav.css";
-import Logo from "../assets/froggy-gaming-logo.png";
+import Logo from "../../../assets/froggy-gaming-icon-2.png";
 import NavCategory from "./NavCategory";
 import useScrolled from "../../../hooks/useScrolled";
 import LoadingSkeleton from "../../SkeletonLoading/LoadingSkeleton";

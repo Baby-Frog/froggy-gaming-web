@@ -1,0 +1,82 @@
+@import "../../variable";
+
+.notfound {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $secondary2;
+
+    &-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin-block: 2.55rem;
+    }
+
+    &-text {
+        font-size: 4rem;
+        font-weight: 500;
+
+        &--smaller {
+            font-size: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+
+            img {
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    &-back {
+        color: rgba($color: $secondary2, $alpha: 0.5);
+        font-size: 2rem;
+        margin-block: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+
+        i {
+            transform: rotate(0deg);
+            transition: all 150ms ease-in-out;
+        }
+
+        &:hover {
+            color: rgba($color: $secondary2, $alpha: 1.0);
+
+            i {
+                transform: rotate(-180deg);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .notfound {
+        &-text {
+            font-size: 4vw;
+
+            &--smaller {
+                font-size: 3vw;
+
+                img {
+                    width: 3vw;
+                    height: 3vw;
+                }
+            }
+        }
+
+        &-back {
+            font-size: 2vw;
+
+            i {
+                font-size: 2vw;
+            }
+        }
+    }
+}
