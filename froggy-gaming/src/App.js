@@ -6,9 +6,10 @@ import HomepageContainer from "./HomepageLayout/homepageContainer/components/Hom
 import Nav from "./global/navigationBar/components/Nav";
 import CategoryContainer from "./CategoryLayout/CategoryContainer/CategoryContainer";
 import Footer from "./global/footer/Footer";
-import ScrollToTopButton from "./global/ScrollToTop/ScrollToTop";
 import ContactBar from "./global/FixedContactBar/ContactBar";
 import NotFound from "./404NotFound/NotFound";
+import ScrollToTop from "./ScrollToTop/ScrollToTop";
+import ScrollToTopButton from "./global/ScrollToTopButton/ScrollToTopButton";
 
 function App() {
   useEffect(() => {
@@ -17,6 +18,7 @@ function App() {
   return (
     <div>
       <Nav></Nav>
+      <ScrollToTop />
       <Routes>
         <Route
           path="/froggy-gaming-web"
