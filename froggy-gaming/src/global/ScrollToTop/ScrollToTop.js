@@ -40,8 +40,8 @@ const ScrollToTopButton = () => {
           <path
             d="M4 16L11.2929 8.70711C11.6834 8.31658 12.3166 8.31658 12.7071 8.70711L20 16"
             stroke="#121219"
-            stroke-width="2"
-            stroke-linecap="round"
+            strokeWidth="2"
+            strokeLinecap="round"
           />
         </svg>
       </div>

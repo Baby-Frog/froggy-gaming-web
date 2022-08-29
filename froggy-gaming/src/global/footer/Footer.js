@@ -30,10 +30,10 @@ const Footer = () => {
           ></FooterContent>
           <FooterContent
             header={"Follow us! <3"}
-            row1={<i class="fa-brands fa-facebook"></i>}
-            row2={<i class="fa-brands fa-youtube"></i>}
-            row3={<i class="fa-brands fa-tiktok"></i>}
-            row4={<i class="fa-brands fa-instagram"></i>}
+            row1={<i className="fa-brands fa-facebook"></i>}
+            row2={<i className="fa-brands fa-youtube"></i>}
+            row3={<i className="fa-brands fa-tiktok"></i>}
+            row4={<i className="fa-brands fa-instagram"></i>}
           ></FooterContent>
         </div>
         <div className="footer-storeinfo">

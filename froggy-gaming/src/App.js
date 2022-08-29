@@ -21,7 +21,8 @@ function App() {
           path="/froggy-gaming-web"
           element={<HomepageContainer />}
         ></Route>
-        <Route path="/category" element={<CategoryContainer />}></Route>
+        <Route path="/danh-muc" element={<CategoryContainer />}></Route>
+        <Route path="*" element={<div>404</div>}></Route>
       </Routes>
       <ContactBar></ContactBar>
       <ScrollToTopButton></ScrollToTopButton>
