@@ -1,8 +1,8 @@
 import React from "react";
-import { MostBuyData } from "./MostBuyData";
-import "../assets/relevance.css";
+import { MostBuyData } from "./OutstandingData";
+import "../assets/outstanding.css";
 
-const MostBuyProducts = () => {
+const OutstandingProducts = () => {
   return (
     <div
       className="relevance"
@@ -336,4 +336,4 @@ const MostBuyProducts = () => {
   );
 };
 
-export default MostBuyProducts;
+export default OutstandingProducts;

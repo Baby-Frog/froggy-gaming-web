@@ -1,13 +1,14 @@
 import React from "react";
 import { Fragment } from "react";
 import ShowMore from "../../../global/ShowMore/ShowMore";
-import BrandSlider from "../../brandSlider/BrandSlider";
+import BrandSlider from "../../../global/brandSlider/BrandSlider";
 import HomepageCategory from "../../homepageCategory/components/HomepageCategory";
 import HomepageEvent from "../../homepageEvent/components/HomepageEvent";
-import MostBuyProducts from "../../homepageMostBuy/components/MostBuyProducts";
 import SlickSlider from "../../homepageSlider/components/SlickSlider";
 import SectionDivider from "../../../global/sectionDivider/components/SectionDivider";
 import "../assets/homepagecontainer.css";
+import OutstandingProducts from "../../homepageOutstanding/components/OutstandingProducts";
+import HomepageMostSold from "../../homepageMostSold/HomepageMostSold";
 
 const HomepageContainer = () => {
   return (
@@ -31,17 +32,19 @@ const HomepageContainer = () => {
           sectionContent={"Sản phẩm nổi bật"}
           marginBlock={"5rem"}
         ></SectionDivider>
-        <MostBuyProducts></MostBuyProducts>
+        <OutstandingProducts></OutstandingProducts>
         <ShowMore></ShowMore>
         {/* Sản phẩm bán chạy */}
         <SectionDivider
           sectionContent={"Sản phẩm bán chạy"}
           marginBlock="1rem"
         ></SectionDivider>
+        <HomepageMostSold></HomepageMostSold>
+        <ShowMore></ShowMore>
         {/* Tin tức Froggy Gaming */}
         <SectionDivider
           sectionContent={"Froggy Gaming"}
-          marginBlock="1rem"
+          marginBlock="2rem"
         ></SectionDivider>
         {/* brandSlider */}
         <SectionDivider

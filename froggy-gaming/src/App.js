@@ -18,7 +18,7 @@ function App() {
   return (
     <div>
       <Nav></Nav>
-      <ScrollToTop />
+      <ScrollToTop></ScrollToTop>
       <Routes>
         <Route
           path="/froggy-gaming-web"
