@@ -15,7 +15,7 @@ const CategoryContainer = () => {
         </p>
         <p>{">"}</p>
         <p>
-          <Link to={"/category"}> Danh mục</Link>
+          <Link to={"/danh-mục"}> Danh mục</Link>
         </p>
       </div>
       <CategoryQuote></CategoryQuote>

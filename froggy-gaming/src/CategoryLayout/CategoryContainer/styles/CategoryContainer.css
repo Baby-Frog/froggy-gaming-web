@@ -57,17 +57,6 @@
 
 }
 
-.cat-title h2::after,
-.cat-title h2::before {
-    background-color: #b9b9b9;
-    content: "";
-    display: inline-block;
-    height: 10px;
-    position: relative;
-    vertical-align: middle;
-    width: 20%;
-    margin: 1rem;
-}
 
 .cat-content {
     display: flex;

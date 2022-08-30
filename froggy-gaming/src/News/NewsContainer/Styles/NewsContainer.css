@@ -1,0 +1,14 @@
+.news-list {
+    display: flex;
+    font-size: 20px;
+}
+
+.news-list>p>a {
+    padding: 1.5rem;
+    text-decoration: none;
+    color: black;
+}
+
+.news-list {
+    padding-left: 0.5rem;
+}

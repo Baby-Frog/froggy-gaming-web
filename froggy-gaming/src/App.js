@@ -10,6 +10,8 @@ import ContactBar from "./global/FixedContactBar/ContactBar";
 import NotFound from "./404NotFound/NotFound";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import ScrollToTopButton from "./global/ScrollToTopButton/ScrollToTopButton";
+import News from "./News/NewsContainer/NewsContainer";
+
 
 function App() {
   useEffect(() => {
@@ -19,12 +21,14 @@ function App() {
     <div>
       <Nav></Nav>
       <ScrollToTop></ScrollToTop>
+     
       <Routes>
         <Route
           path="/froggy-gaming-web"
           element={<HomepageContainer />}
         ></Route>
         <Route path="/danh-muc" element={<CategoryContainer />}></Route>
+        <Route path="/tin-tuc" element={<News/>} ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <ContactBar></ContactBar>
