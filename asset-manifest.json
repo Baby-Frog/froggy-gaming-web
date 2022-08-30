@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/froggy-gaming-web/static/css/main.ccf9dc4e.css",
-    "main.js": "/froggy-gaming-web/static/js/main.bc397f60.js",
+    "main.css": "/froggy-gaming-web/static/css/main.052743ac.css",
+    "main.js": "/froggy-gaming-web/static/js/main.310d3f5d.js",
     "static/js/787.400f6605.chunk.js": "/froggy-gaming-web/static/js/787.400f6605.chunk.js",
     "static/media/artisanshop.png": "/froggy-gaming-web/static/media/artisanshop.79b84d40445a41938622.png",
     "static/media/404_2.gif": "/froggy-gaming-web/static/media/404_2.4391ddd9e0896d9040d5.gif",
@@ -17,10 +17,12 @@
     "static/media/laptop-gigibyte.png": "/froggy-gaming-web/static/media/laptop-gigibyte.3a569f7aceb78fa56dc7.png",
     "static/media/keychron2.png": "/froggy-gaming-web/static/media/keychron2.1faeac0a05d238d95e5e.png",
     "static/media/homepagecat-microphone.png": "/froggy-gaming-web/static/media/homepagecat-microphone.5d7f75d119bf6e9fe3c6.png",
+    "static/media/akko3084v2rgb.png": "/froggy-gaming-web/static/media/akko3084v2rgb.da5581d2edfc052488f1.png",
     "static/media/froggy-gaming-icon-2.png": "/froggy-gaming-web/static/media/froggy-gaming-icon-2.89791335d79aea27d3d3.png",
     "static/media/laptop-ms.png": "/froggy-gaming-web/static/media/laptop-ms.78e7bb599a7c4e89a79c.png",
     "static/media/laptop-acer.png": "/froggy-gaming-web/static/media/laptop-acer.d142ac8520ca4e7a3329.png",
     "static/media/laptop-dell-alien.png": "/froggy-gaming-web/static/media/laptop-dell-alien.becd6b1b912b08ba8170.png",
+    "static/media/steelseriesblackrgb.png": "/froggy-gaming-web/static/media/steelseriesblackrgb.aa2d04341bbd8719c8a7.png",
     "static/media/ChakraPetch-Regular.ttf": "/froggy-gaming-web/static/media/ChakraPetch-Regular.ac206d34e4f8f89e7955.ttf",
     "static/media/ChakraPetch-Bold.ttf": "/froggy-gaming-web/static/media/ChakraPetch-Bold.51496553feb644442686.ttf",
     "static/media/laptop-dell.png": "/froggy-gaming-web/static/media/laptop-dell.a49fb1e5baff65af6f23.png",
@@ -31,9 +33,11 @@
     "static/media/blueswitch2.png": "/froggy-gaming-web/static/media/blueswitch2.8c1771af9a86a7755884.png",
     "static/media/purpleswitch.png": "/froggy-gaming-web/static/media/purpleswitch.64c9fb658658eec6ecb7.png",
     "static/media/brownswitch.png": "/froggy-gaming-web/static/media/brownswitch.e1c4020a69610b17acff.png",
+    "static/media/corsairchair2.png": "/froggy-gaming-web/static/media/corsairchair2.95b2e47f5dedd2020e0c.png",
     "static/media/coolermasterlogo.png": "/froggy-gaming-web/static/media/coolermasterlogo.37e5cc7000a24b8f942d.png",
     "static/media/cougarlogo.png": "/froggy-gaming-web/static/media/cougarlogo.5df21d6c2d6d2ea546bc.png",
     "static/media/corsairlogo.png": "/froggy-gaming-web/static/media/corsairlogo.bfc5ddc71a00780fbe58.png",
+    "static/media/corsairchair.png": "/froggy-gaming-web/static/media/corsairchair.4ca042f21088d7eb87bf.png",
     "static/media/keychronlogo.png": "/froggy-gaming-web/static/media/keychronlogo.5ba3cec64f65ff69316b.png",
     "static/media/SpaceMission-rgyw9.otf": "/froggy-gaming-web/static/media/SpaceMission-rgyw9.9f7052cf58f04a6694f8.otf",
     "static/media/acerlogo.png": "/froggy-gaming-web/static/media/acerlogo.3bd667b0d56c593bc285.png",
@@ -41,12 +45,12 @@
     "static/media/rapoologo.png": "/froggy-gaming-web/static/media/rapoologo.f38a548eca0680996286.png",
     "static/media/badge.png": "/froggy-gaming-web/static/media/badge.d8d4954f14afd200145b.png",
     "index.html": "/froggy-gaming-web/index.html",
-    "main.ccf9dc4e.css.map": "/froggy-gaming-web/static/css/main.ccf9dc4e.css.map",
-    "main.bc397f60.js.map": "/froggy-gaming-web/static/js/main.bc397f60.js.map",
+    "main.052743ac.css.map": "/froggy-gaming-web/static/css/main.052743ac.css.map",
+    "main.310d3f5d.js.map": "/froggy-gaming-web/static/js/main.310d3f5d.js.map",
     "787.400f6605.chunk.js.map": "/froggy-gaming-web/static/js/787.400f6605.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ccf9dc4e.css",
-    "static/js/main.bc397f60.js"
+    "static/css/main.052743ac.css",
+    "static/js/main.310d3f5d.js"
   ]
 }
