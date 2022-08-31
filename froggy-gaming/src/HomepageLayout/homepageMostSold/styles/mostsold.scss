@@ -113,13 +113,15 @@ $label-color: #F9495F;
 
     &-buy {
         background: $label-color;
-        padding: 1.22rem;
+        padding: 1.02rem;
         color: white;
         font-family: "CharkaPetchBold";
-        text-decoration: none;
         display: flex;
         justify-content: center;
         align-items: center;
         font-size: 1.7rem;
+        border: none;
+        outline: none;
+        cursor: pointer;
     }
 }

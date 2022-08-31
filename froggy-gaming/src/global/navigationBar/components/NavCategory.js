@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { span } from "react-router-dom";
 import "../styles/dropdown.css";
 
 const NavCategory = () => {
@@ -9,13 +9,13 @@ const NavCategory = () => {
       <div className="category">
         <ul className="category-list">
           <li className="category-item">
-            <Link
+            <span
               to={"/froggy-gaming-web"}
               className={`category-link ${selected && "selected"}`}
             >
               <span>Bàn phím cơ</span>
               <i className="category-icon fa-solid fa-angle-right"></i>
-            </Link>
+            </span>
             <ul
               className="category-menu"
               onMouseOver={() => setSelected(true)}
@@ -74,13 +74,13 @@ const NavCategory = () => {
             </ul>
           </li>
           <li className="category-item">
-            <Link
+            <span
               to={"/froggy-gaming-web"}
               className={`category-link ${selected && "selected"}`}
             >
               <span>Chuột</span>
               <i className="category-icon fa-solid fa-angle-right"></i>
-            </Link>
+            </span>
             <ul
               className="category-menu"
               onMouseOver={() => setSelected(true)}
@@ -139,13 +139,13 @@ const NavCategory = () => {
             </ul>
           </li>
           <li className="category-item">
-            <Link
+            <span
               to={"/froggy-gaming-web"}
               className={`category-link ${selected && "selected"}`}
             >
               <span>Tai nghe</span>
               <i className="category-icon fa-solid fa-angle-right"></i>
-            </Link>
+            </span>
             <ul
               className="category-menu"
               onMouseOver={() => setSelected(true)}
@@ -204,13 +204,13 @@ const NavCategory = () => {
             </ul>
           </li>
           <li className="category-item">
-            <Link
+            <span
               to={"/froggy-gaming-web"}
               className={`category-link ${selected && "selected"}`}
             >
               <span>Microphone</span>
               <i className="category-icon fa-solid fa-angle-right"></i>
-            </Link>
+            </span>
             <ul
               className="category-menu"
               onMouseOver={() => setSelected(true)}
@@ -269,13 +269,13 @@ const NavCategory = () => {
             </ul>
           </li>
           <li className="category-item">
-            <Link
+            <span
               to={"/froggy-gaming-web"}
               className={`category-link ${selected && "selected"}`}
             >
               <span>Bàn ghế</span>
               <i className="category-icon fa-solid fa-angle-right"></i>
-            </Link>
+            </span>
             <ul
               className="category-menu"
               onMouseOver={() => setSelected(true)}
@@ -334,13 +334,13 @@ const NavCategory = () => {
             </ul>
           </li>
           <li className="category-item">
-            <Link
+            <span
               to={"/froggy-gaming-web"}
               className={`category-link ${selected && "selected"}`}
             >
               <span>Keycaps</span>
               <i className="category-icon fa-solid fa-angle-right"></i>
-            </Link>
+            </span>
             <ul
               className="category-menu"
               onMouseOver={() => setSelected(true)}

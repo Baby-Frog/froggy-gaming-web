@@ -26,7 +26,7 @@ export const MostBuyData = [
     weight: "1.09Kg",
   },
   {
-    id: 3,
+    id: 2,
     img_url: Product2,
     product_name: "Keychron K3 RGB Hot Swap",
     product_compatible: [Wireless, Bluetooth, BrownSw],
@@ -41,7 +41,7 @@ export const MostBuyData = [
     weight: "	395 Gram",
   },
   {
-    id: 4,
+    id: 3,
     img_url: Product3,
     product_name: "Logitech POP Keys Blast Yellow",
     product_compatible: [Wireless, Bluetooth, BrownSw],
@@ -56,7 +56,7 @@ export const MostBuyData = [
     weight: "779 Gram",
   },
   {
-    id: 2,
+    id: 4,
     img_url: Product4,
     keyboard: true,
     product_name: "Logitech G913 TKL Lightspeed",

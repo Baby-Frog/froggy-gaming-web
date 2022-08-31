@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import useHover from "../../hooks/useHover";
 import { HomepageMostSoldData } from "./HomepageMostSoldData";
 import "./styles/mostsold.css";
@@ -13,10 +14,12 @@ const HomepageMostSold = () => {
   );
 };
 
-const HomepageMostSoldItem = ({
-  info: { name, img_url, latest_price, old_price, sale },
-}) => {
+const iconId = [1, 2, 3, 4, 5];
+
+const HomepageMostSoldItem = ({ info }) => {
   const { hovered, nodeRef } = useHover();
+  const { id, name, img_url, latest_price, old_price, sale } = info;
+  const navigate = useNavigate();
   return (
     <div className="mostsold-item" ref={nodeRef}>
       <div className="mostsold-percent">
@@ -28,14 +31,23 @@ const HomepageMostSoldItem = ({
         <div className="mostsold-name">{name}</div>
         {/* flex justify-between */}
         {hovered ? (
-          <a href="https://www.google.com" className="mostsold-buy">
+          <button
+            onClick={() => navigate(`/san-pham/${id}`)}
+            className="mostsold-buy"
+          >
             Mua ngay
-          </a>
+          </button>
         ) : (
           <div className="mostsold-detail">
             <div className="mostsold-rate">
               <div className="mostsold-star">
-                {Array(5).fill(<i class="fa-solid fa-star"></i>)}
+                {/* {Array(5).fill(
+                  <i key={} className="fa-solid fa-star"></i>
+                )} */}
+                {/* cái trên bị lỗi each children in a list should have a key props nên sử dụng cái dưới kiếm được ở stackoverflow */}
+                {Array.from(Array(5), (_, i) => (
+                  <i className="fa-solid fa-star" key={i}></i>
+                ))}
               </div>
               <div className="mostsold-ratecount">0 đánh giá</div>
             </div>
