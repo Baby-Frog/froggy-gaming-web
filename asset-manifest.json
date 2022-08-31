@@ -1,11 +1,13 @@
 {
   "files": {
-    "main.css": "/froggy-gaming-web/static/css/main.052743ac.css",
-    "main.js": "/froggy-gaming-web/static/js/main.310d3f5d.js",
+    "main.css": "/froggy-gaming-web/static/css/main.a2b75ef3.css",
+    "main.js": "/froggy-gaming-web/static/js/main.8cfbb70f.js",
     "static/js/787.400f6605.chunk.js": "/froggy-gaming-web/static/js/787.400f6605.chunk.js",
     "static/media/artisanshop.png": "/froggy-gaming-web/static/media/artisanshop.79b84d40445a41938622.png",
     "static/media/404_2.gif": "/froggy-gaming-web/static/media/404_2.4391ddd9e0896d9040d5.gif",
+    "static/media/review.png": "/froggy-gaming-web/static/media/review.549e60dcc2d5ba0ae594.png",
     "static/media/akkotiger.png": "/froggy-gaming-web/static/media/akkotiger.dfa99baf4374de49d45c.png",
+    "static/media/ava.png": "/froggy-gaming-web/static/media/ava.d7697246c009f5aaec87.png",
     "static/media/homepagecat-keyboard.png": "/froggy-gaming-web/static/media/homepagecat-keyboard.47ba8e50e4dd7372c09b.png",
     "static/media/jabraheadphone.png": "/froggy-gaming-web/static/media/jabraheadphone.5e28da86c8cc61ab3a90.png",
     "static/media/homepagecat-keycaps.png": "/froggy-gaming-web/static/media/homepagecat-keycaps.a486f8cc5b3cf29557b9.png",
@@ -45,12 +47,12 @@
     "static/media/rapoologo.png": "/froggy-gaming-web/static/media/rapoologo.f38a548eca0680996286.png",
     "static/media/badge.png": "/froggy-gaming-web/static/media/badge.d8d4954f14afd200145b.png",
     "index.html": "/froggy-gaming-web/index.html",
-    "main.052743ac.css.map": "/froggy-gaming-web/static/css/main.052743ac.css.map",
-    "main.310d3f5d.js.map": "/froggy-gaming-web/static/js/main.310d3f5d.js.map",
+    "main.a2b75ef3.css.map": "/froggy-gaming-web/static/css/main.a2b75ef3.css.map",
+    "main.8cfbb70f.js.map": "/froggy-gaming-web/static/js/main.8cfbb70f.js.map",
     "787.400f6605.chunk.js.map": "/froggy-gaming-web/static/js/787.400f6605.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.052743ac.css",
-    "static/js/main.310d3f5d.js"
+    "static/css/main.a2b75ef3.css",
+    "static/js/main.8cfbb70f.js"
   ]
 }
