@@ -125,6 +125,20 @@ body.nav-open {
 .header-navigation-item:not(:first-child) {
   margin-left: 1.6rem;
 }
+.header-navigation-item--selected {
+  position: relative;
+  color: #29324E;
+}
+.header-navigation-item--selected::before {
+  content: "";
+  position: absolute;
+  background: #29324E;
+  width: 100%;
+  height: 4px;
+  bottom: 0.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
 .header-navigation-item--divider {
   border-left: 2px solid rgba(0, 0, 0, 0.1);
   height: 30px;

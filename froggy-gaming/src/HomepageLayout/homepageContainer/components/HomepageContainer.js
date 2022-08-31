@@ -42,10 +42,6 @@ const HomepageContainer = () => {
         <HomepageMostSold></HomepageMostSold>
         <ShowMore></ShowMore>
         {/* Tin tức Froggy Gaming */}
-        <SectionDivider
-          sectionContent={"Froggy Gaming"}
-          marginBlock="2rem"
-        ></SectionDivider>
         {/* brandSlider */}
         <SectionDivider
           sectionContent={"Các thương hiệu"}

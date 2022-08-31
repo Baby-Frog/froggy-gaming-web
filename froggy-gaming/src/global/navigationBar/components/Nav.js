@@ -73,7 +73,7 @@ const Nav = () => {
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
-        // `http://localhost:8386/api/v1/produ/search/query=${state.query}`
+        // `http://localhost:8386/api/v1/product/search/query=${state.query}`
       );
       console.log(response);
       if (isMounted) {
@@ -192,7 +192,7 @@ const Nav = () => {
               <NavLink
                 className={({ isActive }) =>
                   "header-navigation-item header-navigation-item--flex" +
-                  (isActive ? " text-green-400" : "")
+                  (isActive ? " header-navigation-item--selected" : "")
                 }
                 to={item.to}
                 key={item.id}

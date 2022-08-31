@@ -152,6 +152,7 @@ body.nav-open {
             }
 
 
+
             &:hover {
                 color: $primary2;
             }
@@ -159,6 +160,22 @@ body.nav-open {
 
             &:not(:first-child) {
                 margin-left: 1.6rem;
+            }
+
+            &--selected {
+                position: relative;
+                color: $secondary2;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    background: $secondary2;
+                    width: 100%;
+                    height: 4px;
+                    bottom: 0.8rem;
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
             }
 
             &--divider {

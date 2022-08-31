@@ -42,6 +42,7 @@ export default class BrandSlider extends Component {
             speed: 100,
             slidesToShow: 3,
             swipeToSlide: true,
+            ease: false,
           },
         },
       ],

@@ -22,7 +22,6 @@ const ScrollToTopButton = () => {
       },
       400
     );
-    return false;
   };
   return (
     <Fragment>
