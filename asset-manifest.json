@@ -1,19 +1,24 @@
 {
   "files": {
     "main.css": "/froggy-gaming-web/static/css/main.a2b75ef3.css",
-    "main.js": "/froggy-gaming-web/static/js/main.8cfbb70f.js",
+    "main.js": "/froggy-gaming-web/static/js/main.b5824a7d.js",
     "static/js/787.400f6605.chunk.js": "/froggy-gaming-web/static/js/787.400f6605.chunk.js",
     "static/media/artisanshop.png": "/froggy-gaming-web/static/media/artisanshop.79b84d40445a41938622.png",
     "static/media/404_2.gif": "/froggy-gaming-web/static/media/404_2.4391ddd9e0896d9040d5.gif",
+    "static/media/News3.png": "/froggy-gaming-web/static/media/News3.3747a223eb56dc093027.png",
     "static/media/review.png": "/froggy-gaming-web/static/media/review.549e60dcc2d5ba0ae594.png",
     "static/media/akkotiger.png": "/froggy-gaming-web/static/media/akkotiger.dfa99baf4374de49d45c.png",
-    "static/media/ava.png": "/froggy-gaming-web/static/media/ava.d7697246c009f5aaec87.png",
+    "static/media/News.png": "/froggy-gaming-web/static/media/News.d7697246c009f5aaec87.png",
     "static/media/homepagecat-keyboard.png": "/froggy-gaming-web/static/media/homepagecat-keyboard.47ba8e50e4dd7372c09b.png",
+    "static/media/review1.jpg": "/froggy-gaming-web/static/media/review1.63b30550d373f0e2e137.jpg",
+    "static/media/News2.png": "/froggy-gaming-web/static/media/News2.a6c7504daae1969d59d0.png",
     "static/media/jabraheadphone.png": "/froggy-gaming-web/static/media/jabraheadphone.5e28da86c8cc61ab3a90.png",
+    "static/media/News1.png": "/froggy-gaming-web/static/media/News1.cfe27cb61c280dd33092.png",
     "static/media/homepagecat-keycaps.png": "/froggy-gaming-web/static/media/homepagecat-keycaps.a486f8cc5b3cf29557b9.png",
     "static/media/homepagecat-headphone.png": "/froggy-gaming-web/static/media/homepagecat-headphone.af33e656ce87529c1a91.png",
     "static/media/logitechrgb2.png": "/froggy-gaming-web/static/media/logitechrgb2.33d2a3560979462f35fa.png",
     "static/media/homepagecat-chair.png": "/froggy-gaming-web/static/media/homepagecat-chair.ab70828c851098dc026c.png",
+    "static/media/review2.png": "/froggy-gaming-web/static/media/review2.b0ebe4537ade56a24f6f.png",
     "static/media/wireless.png": "/froggy-gaming-web/static/media/wireless.0ef5c76147eff6479ecd.png",
     "static/media/popkey3.png": "/froggy-gaming-web/static/media/popkey3.5237a82fb81f635ded2e.png",
     "static/media/laptop-gigibyte.png": "/froggy-gaming-web/static/media/laptop-gigibyte.3a569f7aceb78fa56dc7.png",
@@ -48,11 +53,11 @@
     "static/media/badge.png": "/froggy-gaming-web/static/media/badge.d8d4954f14afd200145b.png",
     "index.html": "/froggy-gaming-web/index.html",
     "main.a2b75ef3.css.map": "/froggy-gaming-web/static/css/main.a2b75ef3.css.map",
-    "main.8cfbb70f.js.map": "/froggy-gaming-web/static/js/main.8cfbb70f.js.map",
+    "main.b5824a7d.js.map": "/froggy-gaming-web/static/js/main.b5824a7d.js.map",
     "787.400f6605.chunk.js.map": "/froggy-gaming-web/static/js/787.400f6605.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a2b75ef3.css",
-    "static/js/main.8cfbb70f.js"
+    "static/js/main.b5824a7d.js"
   ]
 }
