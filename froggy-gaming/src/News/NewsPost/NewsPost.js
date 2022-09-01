@@ -1,7 +1,12 @@
 import React from 'react';
 import SectionDivider from '../../global/sectionDivider/components/SectionDivider';
-import Img1 from "../assets/images/ava.png"
-import Img2 from "../assets/images/review.png"
+import News from "../assets/images/News.png"
+import News1 from "../assets/images/News1.png"
+import News2 from "../assets/images/News2.png"
+import News3 from "../assets/images/News3.png"
+import Review from "../assets/images/review.png"
+import Review1 from "../assets/images/review1.jpg"
+import Review2 from "../assets/images/review2.png"
 import "./styles/NewsPost.css"
 const NewsPost = () => {
     return (
@@ -12,7 +17,7 @@ const NewsPost = () => {
                     <div className="news-post">
                         <div className="news-thumb">
                             <a href="http://google.com">
-                                <img  className src={Img1} alt="" />
+                                <img  className src={News} alt="" />
                             </a>
                         </div>
                         <div className="news-title">
@@ -27,7 +32,7 @@ const NewsPost = () => {
                     <div className="news-post">
                         <div className="news-thumb">
                             <a href="http://google.com">
-                                <img  className src={Img1} alt="" />
+                                <img  className src={News1} alt="" />
                             </a>
                         </div>
                         <div className="news-title">
@@ -42,7 +47,7 @@ const NewsPost = () => {
                     <div className="news-post">
                         <div className="news-thumb">
                             <a href="http://google.com">
-                                <img  className src={Img1} alt="" />
+                                <img  className src={News2} alt="" />
                             </a>
                         </div>
                         <div className="news-title">
@@ -57,7 +62,7 @@ const NewsPost = () => {
                     <div className="news-post">
                         <div className="news-thumb">
                             <a href="http://google.com">
-                                <img  className src={Img1} alt="" />
+                                <img  className src={News3} alt="" />
                             </a>
                         </div>
                         <div className="news-title">
@@ -102,7 +107,7 @@ const NewsPost = () => {
                     <div className="review-post">
                         <div className="review-thumb">
                             <a href="http://google.com">
-                                <img src={Img2} alt="Màn hình đỉnh cao" />
+                                <img src={Review} alt="Màn hình đỉnh cao" />
                             </a>
                         </div>
                         <div className="review-title">
@@ -114,7 +119,7 @@ const NewsPost = () => {
                     <div className="review-post">
                         <div className="review-thumb">
                             <a href="http://google.com">
-                                <img src={Img2} alt="Màn hình đỉnh cao" />
+                                <img src={Review1} alt="Màn hình đỉnh cao" />
                             </a>
                         </div>
                         <div className="review-title">
@@ -126,7 +131,7 @@ const NewsPost = () => {
                         <div className="review-post">
                             <div className="review-thumb">
                                 <a href="http://google.com">
-                                    <img src={Img2} alt="Màn hình đỉnh cao" />
+                                <img src={Review2} alt="Màn hình đỉnh cao" />
                                 </a>
                             </div>
                             <div className="review-title">
