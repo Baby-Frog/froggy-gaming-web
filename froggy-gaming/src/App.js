@@ -23,10 +23,7 @@ function App() {
       <ScrollToTop></ScrollToTop>
 
       <Routes>
-        <Route
-          path="/froggy-gaming-web"
-          element={<HomepageContainer />}
-        ></Route>
+        <Route path="/" element={<HomepageContainer />}></Route>
         <Route path="/danh-muc" element={<CategoryContainer />}></Route>
         <Route path="/tin-tuc" element={<News />}></Route>
         <Route

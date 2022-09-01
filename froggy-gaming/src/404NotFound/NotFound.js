@@ -13,7 +13,7 @@ const NotFound = () => {
           Có vẻ như trang của bạn đang tìm kiếm không tồn tại
           <img src={Logo} alt="" />
         </div>
-        <Link to={"/froggy-gaming-web"} className="notfound-back">
+        <Link to={"/"} className="notfound-back">
           <i class="fa-solid fa-arrow-rotate-left"></i>
           <span>Quay về trang chủ</span>
         </Link>

@@ -115,7 +115,7 @@ const Nav = () => {
         <div className="header-hamburger-toggle">
           <i className="fa-solid fa-bars" onClick={handleMobileNav}></i>
         </div>
-        <Link to={"/froggy-gaming-web"} className="header-logo">
+        <Link to={"/"} className="header-logo">
           <img src={Logo} alt="Logo" className="header-icon" />
           <span className="header-brand">
             <span>Froggy</span>

@@ -11,7 +11,7 @@ const CategoryContainer = () => {
     <div className="wrapper">
       <div className="cat-list">
         <p>
-          <Link to={"/froggy-gaming-web"}>Trang chủ</Link>
+          <Link to={"/"}>Trang chủ</Link>
         </p>
         <p>{">"}</p>
         <p>
