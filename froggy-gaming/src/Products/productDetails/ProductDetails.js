@@ -7,7 +7,6 @@ import { HomepageMostSoldData } from "../../HomepageLayout/homepageMostSold/Home
 const ProductDetails = () => {
   const { proId } = useParams();
   const { data, error } = useSWR(HomepageMostSoldData, fetcher);
-  console.log("log ~ ProductDetails ~ proId", proId);
   console.log(data);
 
   return <div></div>;

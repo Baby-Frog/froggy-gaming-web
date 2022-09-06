@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { span } from "react-router-dom";
 import "../styles/dropdown.css";
 
 const NavCategory = () => {
