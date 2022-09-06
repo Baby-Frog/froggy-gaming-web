@@ -8,8 +8,14 @@ const ProductDetails = () => {
   const { proId } = useParams();
   const { data, error } = useSWR(HomepageMostSoldData, fetcher);
   console.log(data);
+  // const ProductDetails = () => {
+  //   const { proId } = useParams();
+  //   const { data, error } = useSWR(HomepageMostSoldData, fetcher);
+  //   console.log("log ~ ProductDetails ~ proId", proId);
+  //   console.log(data);
 
-  return <div></div>;
+  //   return <div></div>;
+  // };
+
+  // export default ProductDetails;
 };
-
-export default ProductDetails;
