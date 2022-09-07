@@ -1,45 +1,52 @@
 import React, { useEffect, useRef, useReducer } from "react";
 import lodash from "lodash";
 import axios from "axios";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import "../styles/Nav.css";
 import Logo from "../../../assets/froggy-gaming-icon-2.png";
 import NavCategory from "./NavCategory";
 import useScrolled from "../../../hooks/useScrolled";
 import LoadingSkeleton from "../../SkeletonLoading/LoadingSkeleton";
 import { NavigationLinkList } from "./NavigationLinkList";
+import { useState } from "react";
+import { useSearch } from "../../../contexts/search-context";
 
-const initialState = {
-  data: [],
-  query: "",
-  loading: true,
-  mobileNav: false,
-};
+// const initialState = {
+//   data: [],
+//   query: "",
+//   loading: true,
+//   mobileNav: false,
+// };
 
-const gamingProductsReducer = (state, action) => {
-  switch (action.type) {
-    case "SET_DATA": {
-      return { ...state, data: action.payload };
-    }
-    case "SET_LOADING": {
-      return { ...state, loading: action.payload };
-    }
+// const gamingProductsReducer = (state, action) => {
+//   switch (action.type) {
+//     case "SET_DATA": {
+//       return { ...state, data: action.payload };
+//     }
+//     case "SET_LOADING": {
+//       return { ...state, loading: action.payload };
+//     }
 
-    case "SET_QUERY": {
-      return { ...state, query: action.payload };
-    }
+//     case "SET_QUERY": {
+//       return { ...state, query: action.payload };
+//     }
 
-    case "SET_MOBILENAV": {
-      return { ...state, mobileNav: action.payload };
-    }
+//     case "SET_MOBILENAV": {
+//       return { ...state, mobileNav: action.payload };
+//     }
 
-    default:
-      break;
-  }
-};
+//     default:
+//       break;
+//   }
+// };
 
 const Nav = () => {
-  const [state, dispatch] = useReducer(gamingProductsReducer, initialState);
+  // const [state, dispatch] = useReducer(gamingProductsReducer, initialState);
+  const [data, setData] = useState([]);
+  const { query, setQuery } = useSearch();
+  const [mobileNav, setMobileNav] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
   const { height, isScrolled, setIsScrolled } = useScrolled(300);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -60,32 +67,36 @@ const Nav = () => {
   }, []);
 
   handleFetchData.current = async () => {
-    dispatch({
-      type: "SET_LOADING",
-      payload: true,
-    });
-    if (state.query.trim().length === 0) {
-      dispatch({
-        type: "SET_LOADING",
-        payload: false,
-      });
+    // dispatch({
+    //   type: "SET_LOADING",
+    //   payload: true,
+    // });
+    setLoading(true);
+    if (query.trim().length === 0) {
+      //   dispatch({
+      //     type: "SET_LOADING",
+      //     payload: false,
+      //   });
+      setLoading(false);
     }
     try {
       const response = await axios.get(
         // `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
-        `http://localhost:8386/api/v1/product/search/query=${state.query}`
+        `http://localhost:8386/api/v1/product/search/query=${query}`
       );
       console.log(response.data.data);
       if (isMounted) {
-        dispatch({
-          type: "SET_DATA",
-          payload: response?.data?.data || [],
-        });
+        // dispatch({
+        //   type: "SET_DATA",
+        //   payload: response?.data?.data || [],
+        // });
+        setData(response?.data?.data || []);
         setTimeout(() => {
-          dispatch({
-            type: "SET_LOADING",
-            payload: false,
-          });
+          //   dispatch({
+          //     type: "SET_LOADING",
+          //     payload: false,
+          //   });
+          setLoading(false);
         }, 1500);
       }
     } catch (error) {
@@ -94,21 +105,22 @@ const Nav = () => {
   };
 
   const handleMobileNav = () => {
-    dispatch({
-      type: "SET_MOBILENAV",
-      payload: !state.mobileNav,
-    });
+    // dispatch({
+    //   type: "SET_MOBILENAV",
+    //   payload: !state.mobileNav,
+    // });
+    setMobileNav(!mobileNav);
     document.body.classList.toggle("nav-open");
   };
 
   useEffect(() => {
-    handleFetchData.current(state.query);
-  }, [state.query]);
+    handleFetchData.current(query);
+  }, [query]);
 
   return (
     <>
       <div
-        className={`header ${state.mobileNav && "active"} ${
+        className={`header ${mobileNav && "active"} ${
           isScrolled && "header--fixed"
         }`}
       >
@@ -127,7 +139,7 @@ const Nav = () => {
             <i className="fa-solid fa-bars" onClick={handleMobileNav}></i>
           </div>
         </div>
-        <div className={`header-navigation ${state.mobileNav ? "active" : ""}`}>
+        <div className={`header-navigation ${mobileNav ? "active" : ""}`}>
           <ul className="header-navigation-list">
             <li className="header-navigation-item mobile">
               <form className="header-navigation-form" autoComplete="off">
@@ -138,20 +150,16 @@ const Nav = () => {
                     className="header-navigation-form-input"
                     placeholder="Nhập vào sản phẩm muốn tìm"
                     onChange={lodash.debounce(
-                      (e) =>
-                        dispatch({
-                          type: "SET_QUERY",
-                          payload: e.target.value,
-                        }),
+                      (e) => setQuery(e.target.value),
                       1000
                     )}
                   />
                 </div>
-                {state.loading && (
+                {loading && (
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height: state.query.trim().length === 0 ? "0px" : "260px",
+                      height: query.trim().length === 0 ? "0px" : "260px",
                     }}
                   >
                     <ProductItemsSkeleton></ProductItemsSkeleton>
@@ -162,23 +170,22 @@ const Nav = () => {
                     <ProductItemsSkeleton></ProductItemsSkeleton>
                   </div>
                 )}
-                {!state.loading && (
+                {!loading && (
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height: state.query.trim().length === 0 ? "0px" : "260px",
-                      marginBlock:
-                        state.query.trim().length === 0 ? "0px" : "1rem",
+                      height: query.trim().length === 0 ? "0px" : "260px",
+                      marginBlock: query.trim().length === 0 ? "0px" : "1rem",
                     }}
                   >
-                    {state.data.length > 0 &&
-                      state.data.map((item, index) => (
+                    {data.length > 0 &&
+                      data.map((item) => (
                         <ProductItems
                           key={item.proId}
                           data={item}
                         ></ProductItems>
                       ))}
-                    {state.data.length <= 0 && (
+                    {data.length <= 0 && (
                       <div className="header-navigation-form-notfound">
                         Không có sản phẩm nào
                       </div>
@@ -217,25 +224,23 @@ const Nav = () => {
                     className="header-navigation-form-input"
                     placeholder="Nhập vào sản phẩm muốn tìm"
                     onChange={lodash.debounce(
-                      (e) =>
-                        dispatch({
-                          type: "SET_QUERY",
-                          payload: e.target.value,
-                        }),
+                      (e) => setQuery(e.target.value),
                       1000
                     )}
                   />
-                  {!state.loading ? (
-                    <ion-icon name="search-outline"></ion-icon>
+                  {!loading ? (
+                    <span onClick={() => navigate("/chi-tiet")}>
+                      <ion-icon name="search-outline"></ion-icon>
+                    </span>
                   ) : (
                     <div className="loading-circle"></div>
                   )}
                 </div>
-                {state.loading && (
+                {loading && (
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height: state.query.trim().length === 0 ? "0px" : "260px",
+                      height: query.trim().length === 0 ? "0px" : "260px",
                     }}
                   >
                     <ProductItemsSkeleton></ProductItemsSkeleton>
@@ -246,23 +251,22 @@ const Nav = () => {
                     <ProductItemsSkeleton></ProductItemsSkeleton>
                   </div>
                 )}
-                {!state.loading && (
+                {!loading && (
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height: state.query.trim().length === 0 ? "0px" : "260px",
-                      marginBlock:
-                        state.query.trim().length === 0 ? "0px" : "1rem",
+                      height: query.trim().length === 0 ? "0px" : "260px",
+                      marginBlock: query.trim().length === 0 ? "0px" : "1rem",
                     }}
                   >
-                    {state.data.length > 0 &&
-                      state.data.map((item) => (
+                    {data.length > 0 &&
+                      data.map((item) => (
                         <ProductItems
                           key={item.proId}
                           data={item}
                         ></ProductItems>
                       ))}
-                    {state.data.length <= 0 && (
+                    {data.length <= 0 && (
                       <div className="header-navigation-form-notfound">
                         Không có sản phẩm nào
                       </div>
@@ -278,7 +282,10 @@ const Nav = () => {
                 <span>Đăng nhập/Đăng ký</span>
               </div>
             </li>
-            <li className="header-navigation-item">
+            <li
+              className="header-navigation-item"
+              onClick={() => navigate("/gio-hang")}
+            >
               <div className="header-navigation-cart">
                 <ion-icon name="cart-outline"></ion-icon>
                 <span>Giỏ hàng</span>
