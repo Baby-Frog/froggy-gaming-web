@@ -17,7 +17,10 @@ const HomepageMostSold = () => {
   return (
     <div className="mostsold">
       {mostSoldProducts.map((item) => (
-        <HomepageMostSoldItem key={item.id} info={item}></HomepageMostSoldItem>
+        <HomepageMostSoldItem
+          key={item.proId}
+          info={item}
+        ></HomepageMostSoldItem>
       ))}
     </div>
   );
