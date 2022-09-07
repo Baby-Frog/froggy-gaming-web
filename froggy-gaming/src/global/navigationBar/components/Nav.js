@@ -11,37 +11,7 @@ import { NavigationLinkList } from "./NavigationLinkList";
 import { useState } from "react";
 import { useSearch } from "../../../contexts/search-context";
 
-// const initialState = {
-//   data: [],
-//   query: "",
-//   loading: true,
-//   mobileNav: false,
-// };
-
-// const gamingProductsReducer = (state, action) => {
-//   switch (action.type) {
-//     case "SET_DATA": {
-//       return { ...state, data: action.payload };
-//     }
-//     case "SET_LOADING": {
-//       return { ...state, loading: action.payload };
-//     }
-
-//     case "SET_QUERY": {
-//       return { ...state, query: action.payload };
-//     }
-
-//     case "SET_MOBILENAV": {
-//       return { ...state, mobileNav: action.payload };
-//     }
-
-//     default:
-//       break;
-//   }
-// };
-
 const Nav = () => {
-  // const [state, dispatch] = useReducer(gamingProductsReducer, initialState);
   const [data, setData] = useState([]);
   const { query, setQuery } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
@@ -67,16 +37,8 @@ const Nav = () => {
   }, []);
 
   handleFetchData.current = async () => {
-    // dispatch({
-    //   type: "SET_LOADING",
-    //   payload: true,
-    // });
     setLoading(true);
     if (query.trim().length === 0) {
-      //   dispatch({
-      //     type: "SET_LOADING",
-      //     payload: false,
-      //   });
       setLoading(false);
     }
     try {
@@ -86,16 +48,8 @@ const Nav = () => {
       );
       console.log(response.data.data);
       if (isMounted) {
-        // dispatch({
-        //   type: "SET_DATA",
-        //   payload: response?.data?.data || [],
-        // });
         setData(response?.data?.data || []);
         setTimeout(() => {
-          //   dispatch({
-          //     type: "SET_LOADING",
-          //     payload: false,
-          //   });
           setLoading(false);
         }, 1500);
       }
@@ -105,10 +59,6 @@ const Nav = () => {
   };
 
   const handleMobileNav = () => {
-    // dispatch({
-    //   type: "SET_MOBILENAV",
-    //   payload: !state.mobileNav,
-    // });
     setMobileNav(!mobileNav);
     document.body.classList.toggle("nav-open");
   };
@@ -194,10 +144,7 @@ const Nav = () => {
                 )}
               </form>
             </li>
-            {/* <li className="header-navigation-item">Tin tức</li>
-          <li className="header-navigation-item">Sự kiện</li>
-          <li className="header-navigation-item">Chính sách</li>
-          <li className="header-navigation-item">Giới thiệu</li> */}
+
             {NavigationLinkList.map((item) => (
               <NavLink
                 className={({ isActive }) =>
