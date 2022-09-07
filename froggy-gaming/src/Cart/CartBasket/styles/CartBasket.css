@@ -2,11 +2,7 @@
     display: flex;
     justify-content: space-between;
 }
-.cart-product{
-    display: flex;
-    flex-direction: column;
-    width: 75%;
-}
+
 .cart-process{
     display: flex;
     justify-content: space-around;
@@ -41,7 +37,7 @@
     padding: 7px 0;
     transform: skewX(20deg);
 }
-.active {
+.process_active {
     background-color: #005ec4;
 }
 .active  > span { 
@@ -109,29 +105,29 @@
 .prices-vat{
     color: rgb(78, 78, 84);
 }
-.button-checkout{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 0.5rem;
-    
+.cart-prices > a    {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        color: white ;
+        margin-bottom: 16px;
+        height: 44px;
+        cursor: pointer;
+        text-transform: uppercase;
+
 }
-.go-checkout > button{
-    background: #979797;
-    border:#979797 ;
-    color: white;
-    padding: 1rem 9.8rem;
-    cursor: pointer;
-    margin-bottom: 1.5rem;
-   
+.go-checkout{
+    background-color: #979797;
+    border: 1px solid #979797;
 }
-.delete-cart > button { 
-    background: red;
-    border: red;
-    color: white;
-    padding: 1rem 11.6rem;
-    cursor: pointer;
+.delete-cart{
+    background-color: red;
+    border: 1px solid red 
 }
+
 .info > div {
     display: flex;
     align-items: center;
@@ -152,4 +148,12 @@
     padding-right: 2.5rem;
     width: 30%;
     vertical-align:middle;
+}
+
+.cart{
+    display: flex;
+  
+}
+.cart-left{
+    width: 75%;
 }

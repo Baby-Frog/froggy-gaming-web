@@ -11,7 +11,7 @@ import NotFound from "./404NotFound/NotFound";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import ScrollToTopButton from "./global/ScrollToTopButton/ScrollToTopButton";
 import News from "./News/NewsContainer/NewsContainer";
-import CartContainer from "./Cart/CartContainer/components/CartContainer";
+import CartContainer from "./Cart/CartContainer/CartContainer";
 // import ProductDetails from "./Products/productDetails/ProductDetails";
 
 function App() {
@@ -23,8 +23,8 @@ function App() {
       <Nav></Nav>
       <ScrollToTop></ScrollToTop>
       
-      {/* <CartContainer></CartContainer> */}
-      <Routes>
+      <CartContainer></CartContainer>
+      {/* <Routes>
         <Route path="/" element={<HomepageContainer />}></Route>
         <Route path="/danh-muc" element={<CategoryContainer />}></Route>
         <Route path="/tin-tuc" element={<News />}></Route>
@@ -33,7 +33,7 @@ function App() {
           // element={<ProductDetails></ProductDetails>}
         ></Route>
         <Route path="*" element={<NotFound></NotFound>}></Route>  
-      </Routes>
+      </Routes> */}
       <ContactBar></ContactBar>
       <ScrollToTopButton></ScrollToTopButton>
       <Footer></Footer>
