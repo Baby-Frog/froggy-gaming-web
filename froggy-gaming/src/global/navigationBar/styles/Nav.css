@@ -356,6 +356,7 @@ body.nav-open {
   font-size: 1.2rem;
   font-family: "roboto", "Poppins";
   font-weight: 500;
+  text-transform: none;
 }
 .header-navigation-form-query-cost {
   display: flex;

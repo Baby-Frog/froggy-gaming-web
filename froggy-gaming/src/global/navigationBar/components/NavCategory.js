@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "../styles/dropdown.css";
+import { NavCategoryContentData, NavCategoryData } from "./NavCategoryData";
 
 const NavCategory = () => {
   const [selected, setSelected] = useState(false);
@@ -7,396 +8,49 @@ const NavCategory = () => {
     <>
       <div className="category">
         <ul className="category-list">
-          <li className="category-item">
-            <span
-              to={"/froggy-gaming-web"}
-              className={`category-link ${selected && "selected"}`}
-            >
-              <span>Bàn phím cơ</span>
-              <i className="category-icon fa-solid fa-angle-right"></i>
-            </span>
-            <ul
-              className="category-menu"
-              onMouseOver={() => setSelected(true)}
-              onMouseLeave={() => setSelected(false)}
-            >
-              <div className="category-grid">
-                <h4 className="category-name">Thương hiệu</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Giá tiền</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Logitech Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Razer Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Corsair Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-            </ul>
-          </li>
-          <li className="category-item">
-            <span
-              to={"/froggy-gaming-web"}
-              className={`category-link ${selected && "selected"}`}
-            >
-              <span>Chuột</span>
-              <i className="category-icon fa-solid fa-angle-right"></i>
-            </span>
-            <ul
-              className="category-menu"
-              onMouseOver={() => setSelected(true)}
-              onMouseLeave={() => setSelected(false)}
-            >
-              <div className="category-grid">
-                <h4 className="category-name">Thương hiệu</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Giá tiền</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Logitech Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Razer Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Corsair Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-            </ul>
-          </li>
-          <li className="category-item">
-            <span
-              to={"/froggy-gaming-web"}
-              className={`category-link ${selected && "selected"}`}
-            >
-              <span>Tai nghe</span>
-              <i className="category-icon fa-solid fa-angle-right"></i>
-            </span>
-            <ul
-              className="category-menu"
-              onMouseOver={() => setSelected(true)}
-              onMouseLeave={() => setSelected(false)}
-            >
-              <div className="category-grid">
-                <h4 className="category-name">Thương hiệu</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Giá tiền</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Logitech Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Razer Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Corsair Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-            </ul>
-          </li>
-          <li className="category-item">
-            <span
-              to={"/froggy-gaming-web"}
-              className={`category-link ${selected && "selected"}`}
-            >
-              <span>Microphone</span>
-              <i className="category-icon fa-solid fa-angle-right"></i>
-            </span>
-            <ul
-              className="category-menu"
-              onMouseOver={() => setSelected(true)}
-              onMouseLeave={() => setSelected(false)}
-            >
-              <div className="category-grid">
-                <h4 className="category-name">Thương hiệu</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Giá tiền</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Logitech Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Razer Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Corsair Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-            </ul>
-          </li>
-          <li className="category-item">
-            <span
-              to={"/froggy-gaming-web"}
-              className={`category-link ${selected && "selected"}`}
-            >
-              <span>Bàn ghế</span>
-              <i className="category-icon fa-solid fa-angle-right"></i>
-            </span>
-            <ul
-              className="category-menu"
-              onMouseOver={() => setSelected(true)}
-              onMouseLeave={() => setSelected(false)}
-            >
-              <div className="category-grid">
-                <h4 className="category-name">Thương hiệu</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Giá tiền</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Logitech Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Razer Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Corsair Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-            </ul>
-          </li>
-          <li className="category-item">
-            <span
-              to={"/froggy-gaming-web"}
-              className={`category-link ${selected && "selected"}`}
-            >
-              <span>Keycaps</span>
-              <i className="category-icon fa-solid fa-angle-right"></i>
-            </span>
-            <ul
-              className="category-menu"
-              onMouseOver={() => setSelected(true)}
-              onMouseLeave={() => setSelected(false)}
-            >
-              <div className="category-grid">
-                <h4 className="category-name">Thương hiệu</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Giá tiền</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Logitech Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Razer Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-              <div className="category-grid">
-                <h4 className="category-name">Corsair Series</h4>
-                <li className="category-choice">Akko</li>
-                <li className="category-choice">Logitech</li>
-                <li className="category-choice">Ducky</li>
-                <li className="category-choice">Corsair</li>
-                <li className="category-choice">Asus</li>
-                <li className="category-choice">Dare-U</li>
-                <li className="category-choice">Steelseries</li>
-              </div>
-            </ul>
-          </li>
+          {NavCategoryData.length > 0 &&
+            NavCategoryData.map((item) => (
+              <li key={item.id} className="category-item">
+                <span className={`category-link ${selected && "selected"}`}>
+                  <span>{item.section}</span>
+                  <i className="category-icon fa-solid fa-angle-right"></i>
+                </span>
+                <ul
+                  className="category-menu"
+                  onMouseOver={() => setSelected(true)}
+                  onMouseLeave={() => setSelected(false)}
+                >
+                  <>
+                    {item.title.map((item) => (
+                      <div className="category-grid" key={item.id}>
+                        <h4 className="category-name">{item.header}</h4>
+                        {item.content.map((item) => (
+                          <li key={item.id} className="category-choice">
+                            {item.row_content}
+                          </li>
+                        ))}
+                      </div>
+                    ))}
+                  </>
+                  {/* {NavCategoryContentData.map((item) => (
+                    <>
+                      {item.title.map((item) => (
+                        <div key={item.id} className="category-grid">
+                          <h4 className="category-name">{item.header}</h4>
+                          {item.content.map((item) => (
+                            <li className="category-choice">
+                              {item.row_content}
+                            </li>
+                          ))}
+                        </div>
+                      ))}
+
+                      
+                    </>
+                  ))} */}
+                </ul>
+              </li>
+            ))}
         </ul>
       </div>
     </>

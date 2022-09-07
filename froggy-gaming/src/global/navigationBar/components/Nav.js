@@ -255,14 +255,14 @@ const Nav = () => {
                         state.query.trim().length === 0 ? "0px" : "1rem",
                     }}
                   >
-                    {state.data.length > 0 ? (
+                    {state.data.length > 0 &&
                       state.data.map((item) => (
                         <ProductItems
                           key={item.proId}
                           data={item}
                         ></ProductItems>
-                      ))
-                    ) : (
+                      ))}
+                    {state.data.length <= 0 && (
                       <div className="header-navigation-form-notfound">
                         Không có sản phẩm nào
                       </div>
@@ -302,7 +302,7 @@ const ProductItems = ({ data }) => {
     <div>
       <div className="header-navigation-form-query-flex">
         <img
-          src={`${data.images[6].imgPath.replaceAll("-", "")}`}
+          src={`${data.images[0].imgPath.replaceAll("-", "")}`}
           alt=""
           className="header-navigation-form-query-img"
         />
