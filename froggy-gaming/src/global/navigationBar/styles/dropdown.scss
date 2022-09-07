@@ -30,7 +30,7 @@
         width: 20rem;
         display: flex;
         justify-content: space-between;
-        padding: 1.6rem;
+        padding: 2rem 1rem 2rem 1rem;
         font-weight: 400;
         position: relative;
         z-index: 0;
@@ -73,7 +73,7 @@
 
     &-menu {
         position: absolute;
-        width: 694px;
+        width: 794px;
         list-style-type: none;
         color: black;
         opacity: 0;
@@ -81,7 +81,7 @@
         left: 200px;
         top: 0;
         height: 100%;
-        padding: 1rem;
+        padding: 1rem 5rem 5rem 5rem;
         display: flex;
         flex-wrap: wrap;
         column-gap: 4.5rem;
@@ -95,7 +95,7 @@
             width: 100%;
             height: 100%;
             top: 0;
-            left: 80%;
+            left: 700px;
             background: $secondary2;
             transform: skew(-18deg);
             z-index: 0;
@@ -114,8 +114,6 @@
             background-size: cover;
             background-repeat: no-repeat;
         }
-
-
 
         &:hover {
             opacity: 1;

@@ -72,14 +72,14 @@ const Nav = () => {
     }
     try {
       const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
-        // `http://localhost:8386/api/v1/product/search/query=${state.query}`
+        // `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
+        `http://localhost:8386/api/v1/product/search/query=${state.query}`
       );
-      console.log(response);
+      console.log(response.data.data);
       if (isMounted) {
         dispatch({
           type: "SET_DATA",
-          payload: response.data?.results || [],
+          payload: response?.data?.data || [],
         });
         setTimeout(() => {
           dispatch({
@@ -173,7 +173,10 @@ const Nav = () => {
                   >
                     {state.data.length > 0 &&
                       state.data.map((item, index) => (
-                        <ProductItems key={item.id} data={item}></ProductItems>
+                        <ProductItems
+                          key={item.proId}
+                          data={item}
+                        ></ProductItems>
                       ))}
                     {state.data.length <= 0 && (
                       <div className="header-navigation-form-notfound">
@@ -254,7 +257,10 @@ const Nav = () => {
                   >
                     {state.data.length > 0 &&
                       state.data.map((item) => (
-                        <ProductItems key={item.id} data={item}></ProductItems>
+                        <ProductItems
+                          key={item.proId}
+                          data={item}
+                        ></ProductItems>
                       ))}
                     {state.data.length <= 0 && (
                       <div className="header-navigation-form-notfound">
@@ -290,40 +296,48 @@ const Nav = () => {
     </>
   );
 };
-
+// localhost:8386/api/v1/fileupload/file/banphimakkov2rgbwhite1.png
 const ProductItems = ({ data }) => {
-  const imagePath = "https://image.tmdb.org/t/p/w500";
   return (
     <div>
       <div className="header-navigation-form-query-flex">
         <img
-          src={`${imagePath}${data.poster_path}`}
+          src={`${data.images[0].imgPath.replaceAll("-", "")}`}
           alt=""
           className="header-navigation-form-query-img"
         />
         <div className="header-navigation-form-query-description">
           <span className="header-navigation-form-query-title">
-            {data.title}
+            {data.proName}
           </span>
           <div className="header-navigation-form-query-overview">
-            {data.overview}
+            {data.proDesc}
           </div>
-          <div className="header-navigation-form-query-vote">
+          <div className="header-navigation-form-query-cost">
             <svg
-              width="16"
-              height="15"
-              viewBox="0 0 16 15"
-              fill="none"
               xmlns="http://www.w3.org/2000/svg"
+              width="20"
+              height="20"
+              version="1.1"
+              viewBox="0 0 700 700"
             >
-              <path
-                d="M7.66713 1.02447C7.7719 0.702008 8.2281 0.702009 8.33287 1.02447L9.71753 5.28602C9.76439 5.43023 9.89877 5.52786 10.0504 5.52786H14.5313C14.8703 5.52786 15.0113 5.96173 14.737 6.16102L11.1119 8.7948C10.9892 8.88393 10.9379 9.04191 10.9847 9.18612L12.3694 13.4477C12.4742 13.7701 12.1051 14.0383 11.8308 13.839L8.20572 11.2052C8.08305 11.1161 7.91695 11.1161 7.79428 11.2052L4.16918 13.839C3.89488 14.0383 3.52581 13.7701 3.63059 13.4477L5.01525 9.18612C5.06211 9.04191 5.01078 8.88393 4.88811 8.7948L1.26301 6.16102C0.988711 5.96173 1.12968 5.52786 1.46874 5.52786H5.9496C6.10123 5.52786 6.23561 5.43023 6.28247 5.28602L7.66713 1.02447Z"
-                stroke="#FFB86C"
-                strokeWidth="1.5"
-              />
+              <g>
+                <path
+                  d="m350 155.61c-68.578 0-124.41 55.812-124.41 124.39s55.836 124.41 124.41 124.41 124.39-55.836 124.39-124.41-55.789-124.39-124.39-124.39zm0 230.11c-58.309 0-105.72-47.414-105.72-105.72 0-58.285 47.414-105.7 105.72-105.7 58.285 0 105.7 47.414 105.7 105.7 0.023437 58.309-47.391 105.72-105.7 105.72z"
+                  fill="green"
+                />
+                <path
+                  fill="green"
+                  d="m608.14 117.51h-516.27c-11.809 0-21.422 9.6133-21.422 21.422v282.15c0 11.809 9.6133 21.422 21.422 21.422h516.27c11.809 0 21.422-9.6133 21.422-21.422v-282.15c0-11.805-9.6172-21.418-21.422-21.418zm-36.098 306.3h-444.08c-3.7812-19.133-19.039-33.809-38.852-37.379v-212.82c19.809-3.5703 35.047-18.246 38.852-37.402h444.06c3.7812 19.156 19.039 33.832 38.852 37.402v212.85c-19.793 3.543-35.051 18.223-38.832 37.355zm38.828-284.88v15.168c-9.2852-2.707-16.215-9.1484-19.227-17.898h16.473c1.5156 0 2.7539 1.2383 2.7539 2.7305zm-519-2.7305h16.473c-2.9844 8.75-9.9375 15.168-19.203 17.898v-15.168c0-1.4922 1.2383-2.7305 2.7305-2.7305zm-2.7305 284.88v-15.145c9.2852 2.707 16.215 9.125 19.227 17.875h-16.496c-1.4922 0-2.7305-1.2383-2.7305-2.7305zm519 2.7305h-16.473c2.9883-8.75 9.9414-15.168 19.227-17.875v15.145c-0.023437 1.4922-1.2617 2.7305-2.7539 2.7305z"
+                />
+                <path
+                  fill="green"
+                  d="m367.83 244.11v-25.223h-29.516l-0.003906-15.379h29.516l0.003906-11.477h28.91v11.48h12.715v15.375h-12.715v120.59h-27.695v-15.191c-4.1055 6.5586-8.75 11.316-13.93 14.258-5.2031 2.9414-11.691 4.4102-19.484 4.4102-12.715 0-23.402-5.1562-32.082-15.492-8.6797-10.312-13.02-23.543-13.02-39.668 0-18.738 4.2695-33.438 12.809-44.102 8.5391-10.664 19.996-16.008 34.348-16.008 6.6953 0 12.602 1.4688 17.734 4.4102 5.1523 2.9648 9.2812 6.9805 12.41 12.02zm-53.504 108.69h71.352v15.191h-71.352zm54.344-66.242c0-13.395-3.3594-22.961-10.078-28.699-4.1055-3.4062-9.0078-5.1328-14.629-5.1328-8.375 0-14.512 3.1484-18.434 9.4258-3.9219 6.3008-5.8789 14.094-5.8789 23.379 0 10.125 1.9844 18.176 5.9727 24.195 3.9883 6.0195 10.078 9.0312 18.316 9.0312 8.0977 0 14.234-2.9883 18.434-8.9141 4.1953-5.9492 6.2969-13.695 6.2969-23.285z"
+                />
+              </g>
             </svg>
-            <span className="header-navigation-form-query-voteavg">
-              {data.vote_average}
+            <span className="header-navigation-form-query-price">
+              {data.proPrice}₫
             </span>
           </div>
         </div>
