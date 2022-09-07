@@ -1,38 +1,49 @@
 import React from "react";
+import useSWR from "swr";
+import { fetcher } from "../../config";
 import { useNavigate } from "react-router-dom";
 import useHover from "../../hooks/useHover";
 import { HomepageMostSoldData } from "./HomepageMostSoldData";
 import "./styles/mostsold.css";
 
 const HomepageMostSold = () => {
+  const { data } = useSWR(
+    `http://localhost:8386/api/v1/product/page=1`,
+    fetcher
+  );
+  if (!data) return;
+  const mostSoldProducts = data?.content || [];
+
   return (
     <div className="mostsold">
-      {HomepageMostSoldData.map((item) => (
+      {mostSoldProducts.map((item) => (
         <HomepageMostSoldItem key={item.id} info={item}></HomepageMostSoldItem>
       ))}
     </div>
   );
 };
 
-const iconId = [1, 2, 3, 4, 5];
-
 const HomepageMostSoldItem = ({ info }) => {
   const { hovered, nodeRef } = useHover();
-  const { id, name, img_url, latest_price, old_price, sale } = info;
+  const { proId, proName, proPrice, images } = info;
   const navigate = useNavigate();
   return (
     <div className="mostsold-item" ref={nodeRef}>
       <div className="mostsold-percent">
-        <div className="mostsold-sale">{sale}</div>
+        <div className="mostsold-sale">12%</div>
       </div>
-      <img src={img_url} alt="" className="mostsold-image" />
+      <img
+        src={`${images[0].imgPath.replaceAll("-", "")}`}
+        alt=""
+        className="mostsold-image"
+      />
       {/* content below */}
       <div className="mostsold-content">
-        <div className="mostsold-name">{name}</div>
+        <div className="mostsold-name">{proName}</div>
         {/* flex justify-between */}
         {hovered ? (
           <button
-            onClick={() => navigate(`/san-pham/${id}`)}
+            onClick={() => navigate(`/san-pham/${proId}`)}
             className="mostsold-buy"
           >
             Mua ngay
@@ -52,8 +63,8 @@ const HomepageMostSoldItem = ({ info }) => {
               <div className="mostsold-ratecount">0 đánh giá</div>
             </div>
             <div className="mostsold-price">
-              <span className="mostsold-price-latest">{latest_price}</span>
-              <span className="mostsold-price-old">{old_price}</span>
+              <span className="mostsold-price-latest">{proPrice}₫</span>
+              <span className="mostsold-price-old">{proPrice}₫</span>
             </div>
           </div>
         )}

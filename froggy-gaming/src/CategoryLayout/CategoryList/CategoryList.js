@@ -26,7 +26,11 @@ const CategoryList = () => {
   return (
     <div className="cat-content">
       {categories.map((item) => (
-        <a href="https://www.google.com" className="cat-items">
+        <a
+          href="https://www.google.com"
+          key={item.cateId}
+          className="cat-items"
+        >
           <span className="cat-text">{item.cateName}</span>
           <img src={Acer} alt="" className="cat-image" />
         </a>

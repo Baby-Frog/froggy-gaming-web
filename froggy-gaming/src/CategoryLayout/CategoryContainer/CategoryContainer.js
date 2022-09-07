@@ -19,9 +19,15 @@ const CategoryContainer = () => {
         </p>
       </div>
       <CategoryQuote></CategoryQuote>
-      <SectionDivider sectionContent={"Gaming Gear"}></SectionDivider>
+      <SectionDivider
+        sectionContent={"Gaming Gear"}
+        marginBlock={"2rem"}
+      ></SectionDivider>
       <CategoryList></CategoryList>
-      <SectionDivider sectionContent={"Các thương hiệu"}></SectionDivider>
+      <SectionDivider
+        sectionContent={"Các thương hiệu"}
+        marginBlock={"2rem"}
+      ></SectionDivider>
       <BrandSlider></BrandSlider>
     </div>
   );

@@ -12,6 +12,7 @@ import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import ScrollToTopButton from "./global/ScrollToTopButton/ScrollToTopButton";
 import News from "./News/NewsContainer/NewsContainer";
 import CartContainer from "./Cart/CartContainer/components/CartContainer";
+import ProductDetails from "./Products/productDetails/ProductDetails";
 // import ProductDetails from "./Products/productDetails/ProductDetails";
 
 function App() {
@@ -22,17 +23,15 @@ function App() {
     <div>
       <Nav></Nav>
       <ScrollToTop></ScrollToTop>
-      
+
       {/* <CartContainer></CartContainer> */}
       <Routes>
         <Route path="/" element={<HomepageContainer />}></Route>
         <Route path="/danh-muc" element={<CategoryContainer />}></Route>
         <Route path="/tin-tuc" element={<News />}></Route>
-        <Route
-          path="/san-pham/:proId"
-          // element={<ProductDetails></ProductDetails>}
-        ></Route>
-        <Route path="*" element={<NotFound></NotFound>}></Route>  
+        <Route path="/gio-hang" element={<CartContainer />}></Route>
+        <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
+        <Route path="*" element={<NotFound></NotFound>}></Route>
       </Routes>
       <ContactBar></ContactBar>
       <ScrollToTopButton></ScrollToTopButton>
