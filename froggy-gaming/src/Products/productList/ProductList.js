@@ -8,7 +8,7 @@ import useScrolled from "../../hooks/useScrolled";
 import "./styles/productlist.css";
 
 const ProductList = () => {
-  const { url } = useSearch();
+  const { query, url, setQuery } = useSearch();
   const [nextPage, setNextPage] = useState(1);
   const { height, setIsScrolled } = useScrolled(300);
   const { data } = useSWR(url, fetcher);
@@ -30,16 +30,20 @@ const ProductList = () => {
     };
   }, []);
   if (!data || !data.data) return;
+  console.log(data.data);
   const products = data?.data || [];
   return (
     <div className="wrapper">
       <div className="product">
         <ProductFilter></ProductFilter>
-        <div className="product-list">
-          {products.length > 0 &&
-            products.map((item) => (
-              <ProductCard key={item.proId} item={item}></ProductCard>
-            ))}
+        <div className="product-section">
+          <h3 className="product-found">Tìm kiếm - {url.split("=").pop()}</h3>
+          <div className="product-list">
+            {products.length > 0 &&
+              products.map((item) => (
+                <ProductCard key={item.proId} item={item}></ProductCard>
+              ))}
+          </div>
         </div>
       </div>
     </div>

@@ -1,3 +1,5 @@
+@import "../../../variable";
+
 .product {
     display: flex;
     justify-content: space-between;
@@ -6,5 +8,11 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(4, auto);
+    }
+
+    &-found {
+        color: $secondary2;
+        font-size: 2rem;
+        margin-bottom: 1rem;
     }
 }
