@@ -11,10 +11,11 @@ import NotFound from "./404NotFound/NotFound";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import ScrollToTopButton from "./global/ScrollToTopButton/ScrollToTopButton";
 import News from "./News/NewsContainer/NewsContainer";
-import CartContainer from "./Cart/CartContainer/components/CartContainer";
+// import CartContainer from "./Cart/CartContainer/components/CartContainer";
 import ProductDetails from "./Products/productDetails/ProductDetails";
 import { SearchProvider } from "./contexts/search-context";
 import ProductList from "./Products/productList/ProductList";
+import CartContainer from "./Cart/CartContainer/CartContainer";
 // import ProductDetails from "./Products/productDetails/ProductDetails";
 
 function App() {

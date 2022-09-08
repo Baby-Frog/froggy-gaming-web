@@ -13,7 +13,7 @@ import { useSearch } from "../../../contexts/search-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const { query, setQuery } = useSearch();
+  const { query, setQuery, setUrl } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -46,7 +46,6 @@ const Nav = () => {
         // `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
         `http://localhost:8386/api/v1/product/search/query=${query}`
       );
-      console.log(response.data.data);
       if (isMounted) {
         setData(response?.data?.data || []);
         setTimeout(() => {
@@ -61,6 +60,11 @@ const Nav = () => {
   const handleMobileNav = () => {
     setMobileNav(!mobileNav);
     document.body.classList.toggle("nav-open");
+  };
+
+  const handleSearch = () => {
+    setUrl(`http://localhost:8386/api/v1/product/search/query=${query}`);
+    navigate("/chi-tiet");
   };
 
   useEffect(() => {
@@ -176,7 +180,7 @@ const Nav = () => {
                     )}
                   />
                   {!loading ? (
-                    <span onClick={() => navigate("/chi-tiet")}>
+                    <span className="cursor-pointer" onClick={handleSearch}>
                       <ion-icon name="search-outline"></ion-icon>
                     </span>
                   ) : (
@@ -252,9 +256,14 @@ const Nav = () => {
 };
 // localhost:8386/api/v1/fileupload/file/banphimakkov2rgbwhite1.png
 const ProductItems = ({ data }) => {
+  const navigate = useNavigate();
+  const { proId } = data;
   return (
     <div>
-      <div className="header-navigation-form-query-flex">
+      <div
+        onClick={() => navigate(`/san-pham/${proId}`)}
+        className="header-navigation-form-query-flex"
+      >
         <img
           src={`${data.images[0].imgPath.replaceAll("-", "")}`}
           alt=""

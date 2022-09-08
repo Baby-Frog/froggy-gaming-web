@@ -3,7 +3,10 @@ import { createContext, useContext, useState } from "react";
 const SearchContext = createContext();
 function SearchProvider(props) {
   const [query, setQuery] = useState("");
-  const value = { query, setQuery };
+  const [url, setUrl] = useState(
+    `http://localhost:8386/api/v1/product/search/query=${query}`
+  );
+  const value = { query, url, setQuery, setUrl };
   return (
     <SearchContext.Provider value={value} {...props}></SearchContext.Provider>
   );

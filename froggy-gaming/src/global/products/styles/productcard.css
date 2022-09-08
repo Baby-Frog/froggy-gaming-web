@@ -1,0 +1,98 @@
+.product-item {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #dddfe6;
+  background: white;
+  cursor: pointer;
+  transition: all 150ms ease-in-out;
+}
+.product-item:hover {
+  border: 2px solid #29324E;
+  background: #29324E;
+}
+.product-item:hover .product-name {
+  color: white;
+}
+.product-item:not(:first-child) {
+  border-left: none;
+}
+.product-percent {
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: #F9495F;
+  padding: 1.5rem;
+  transform: translateX(-0.5rem) skew(-12deg);
+}
+.product-image {
+  width: 100%;
+  height: 338px;
+  border-bottom: 1px solid #eeedee;
+}
+.product-content {
+  padding: 1rem 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+}
+.product-sale {
+  color: white;
+  transform: skew(12deg);
+  font-size: 1.6rem;
+  font-family: "CharkaPetchBold";
+}
+.product-name {
+  font-size: 1.8rem;
+  font-family: "CharkaPetchBold";
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.product-star i {
+  opacity: 0.1;
+  font-size: 1.6rem;
+}
+.product-rate {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
+.product-ratecount {
+  font-size: 1.4rem;
+  color: #99a0ad;
+  font-family: "CharkaPetchBold";
+}
+.product-price {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  font-size: 1.3rem;
+  gap: 0.8rem;
+  font-family: "CharkaPetchBold";
+}
+.product-price-latest {
+  font-size: 1.9rem;
+  color: #F9495F;
+}
+.product-price-old {
+  text-decoration: line-through;
+  color: #99a0ad;
+}
+.product-buy {
+  background: #F9495F;
+  padding: 1.22rem;
+  color: white;
+  font-family: "CharkaPetchBold";
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.7rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}/*# sourceMappingURL=productcard.css.map */

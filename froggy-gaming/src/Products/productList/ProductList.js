@@ -3,16 +3,15 @@ import { useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "../../config";
 import { useSearch } from "../../contexts/search-context";
+import ProductCard from "../../global/products/ProductCard";
 import useScrolled from "../../hooks/useScrolled";
+import "./styles/productlist.css";
 
 const ProductList = () => {
-  const { query, setQuery } = useSearch();
+  const { url } = useSearch();
   const [nextPage, setNextPage] = useState(1);
   const { height, setIsScrolled } = useScrolled(300);
-  const { data } = useSWR(
-    `http://localhost:8386/api/v1/product/search/query=${query}`,
-    fetcher
-  );
+  const { data } = useSWR(url, fetcher);
 
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -33,23 +32,26 @@ const ProductList = () => {
   if (!data || !data.data) return;
   const products = data?.data || [];
   return (
-    <>
-      {products.length > 0 &&
-        products.map((item) => (
-          <ProductCard key={item.proId} item={item}></ProductCard>
-        ))}
-    </>
+    <div className="wrapper">
+      <div className="product">
+        <ProductFilter></ProductFilter>
+        <div className="product-list">
+          {products.length > 0 &&
+            products.map((item) => (
+              <ProductCard key={item.proId} item={item}></ProductCard>
+            ))}
+        </div>
+      </div>
+    </div>
   );
 };
 
-const ProductFilter = () => {};
-
-const ProductCard = ({ item }) => {
+function ProductFilter() {
   return (
-    <>
-      <span>{item.proName}</span>
-    </>
+    <div className="product-filter">
+      <h1>Lọc sản phẩm</h1>
+    </div>
   );
-};
+}
 
 export default ProductList;

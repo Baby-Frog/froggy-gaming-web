@@ -12,6 +12,10 @@
   margin: 7rem auto;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 @-webkit-keyframes shine {
   to {
     background-position-x: -200%;
