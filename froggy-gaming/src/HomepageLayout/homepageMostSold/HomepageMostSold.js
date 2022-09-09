@@ -13,7 +13,6 @@ const HomepageMostSold = () => {
     fetcher
   );
   if (!data) return;
-  console.log("log ~ HomepageMostSold ~ data", data);
   const mostSoldProducts = data?.content || [];
 
   return (

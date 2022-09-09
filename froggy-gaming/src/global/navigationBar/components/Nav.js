@@ -13,7 +13,7 @@ import { useSearch } from "../../../contexts/search-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const { query, setQuery, setUrl } = useSearch();
+  const { query, setQuery, setUrl, setSearchResult } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -44,10 +44,10 @@ const Nav = () => {
     try {
       const response = await axios.get(
         // `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
-        `http://localhost:8386/api/v1/product/search/query=${query}`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=1`
       );
       if (isMounted) {
-        setData(response?.data?.data || []);
+        setData(response?.data?.data?.content || []);
         setTimeout(() => {
           setLoading(false);
         }, 1500);
@@ -63,7 +63,8 @@ const Nav = () => {
   };
 
   const handleSearch = () => {
-    setUrl(`http://localhost:8386/api/v1/product/search/query=${query}`);
+    setUrl(`http://localhost:8386/api/v1/product/search/query=${query}&page=1`);
+    setSearchResult(query);
     navigate("/chi-tiet");
   };
 
@@ -300,7 +301,10 @@ const ProductItems = ({ data }) => {
               </g>
             </svg>
             <span className="header-navigation-form-query-price">
-              {data.proPrice}₫
+              {data.proPrice.toLocaleString("it-IT", {
+                style: "currency",
+                currency: "VND",
+              })}
             </span>
           </div>
         </div>

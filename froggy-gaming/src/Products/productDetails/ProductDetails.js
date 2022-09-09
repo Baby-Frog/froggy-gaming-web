@@ -9,7 +9,6 @@ const ProductDetails = () => {
     `http://localhost:8386/api/v1/product/${proId}`,
     fetcher
   );
-  console.log("log ~ ProductDetails ~ data", data);
   if (!data || !data.data) return null;
   const { proPrice, proName } = data.data;
 

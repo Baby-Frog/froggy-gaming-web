@@ -1,6 +1,28 @@
 .product {
   display: flex;
+  -moz-column-gap: 15rem;
+       column-gap: 15rem;
+}
+.product-section {
+  width: calc(70% - 15rem);
+}
+.product-top {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
+}
+.product-top .product-amount {
+  font-size: 1.7rem;
+  font-family: "CharkaPetchRegular";
+  color: #29324E;
+  margin-top: 0.3rem;
+}
+.product-count {
+  display: flex;
+  -moz-column-gap: 2rem;
+       column-gap: 2rem;
 }
 .product-list {
   display: grid;
@@ -11,4 +33,143 @@
   color: #29324E;
   font-size: 2rem;
   margin-bottom: 1rem;
+}
+.product-sort {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.product-sort > span {
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-right: 1.5rem;
+}
+.product-sort-selected {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #F0F3FC;
+  width: 200px;
+  height: 50px;
+  padding: 1rem;
+  font-size: 1.7rem;
+  cursor: default;
+}
+.product-sort-selection {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  left: 0;
+  z-index: 4;
+  border: 1px solid black;
+  font-size: 1.7rem;
+  background: #F0F3FC;
+  cursor: default;
+}
+.product-sort-current {
+  font-size: 1.7rem;
+}
+.product-sort-option:hover {
+  background: #5173C3;
+  color: white;
+}
+.product-filter {
+  display: flex;
+  flex-direction: column;
+  width: calc(30% - 15rem);
+}
+.product-filter-header {
+  margin-bottom: 2rem;
+}
+.product-filter-block {
+  background: #F0F3FC;
+  margin-bottom: 1rem;
+}
+.product-filter-accordion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #dddfe6;
+  padding-inline: 1rem;
+  padding-block: 0.5rem;
+  cursor: pointer;
+}
+.product-filter-accordion-group {
+  position: relative;
+}
+.product-filter-accordion-content {
+  padding: 1.5rem;
+  display: none;
+}
+.product-filter-accordion-content.active {
+  display: block;
+}
+.product-filter-accordion-caret {
+  font-size: 1.4rem;
+}
+.product-filter-accordion-title {
+  color: black;
+  font-size: 1.7rem;
+  font-family: "CharkaPetchBold";
+}
+.product-filter-accordion-list {
+  list-style-type: none;
+}
+.product-filter-accordion-icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  opacity: 0.5;
+}
+.product-filter-accordion-input {
+  width: 100%;
+  outline: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  font-size: 1.6rem;
+}
+.product-filter-accordion-item {
+  margin-block: 1rem;
+}
+.product-filter-accordion-checkbox {
+  display: none;
+}
+.product-filter-accordion-checkbox:checked + .product-filter-accordion-label::after {
+  background-color: #00448d;
+}
+.product-filter-accordion-label {
+  cursor: pointer;
+  font-size: 1.6rem;
+  padding-left: 3rem;
+  font-weight: 400;
+  color: #29324E;
+  position: relative;
+}
+.product-filter-accordion-label::after {
+  content: "";
+  position: absolute;
+  width: 2.2rem;
+  height: 2.2rem;
+  background: white;
+  border: 1px solid #29324E;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.product-filter-accordion-label::before {
+  content: "";
+  position: absolute;
+  width: 0.7rem;
+  height: 1.2rem;
+  background: transparent;
+  border-right: 2px solid white;
+  border-bottom: 2px solid white;
+  top: 45%;
+  left: 0;
+  z-index: 2;
+  transform: translate(0.75rem, -50%) rotate(45deg);
 }/*# sourceMappingURL=productlist.css.map */

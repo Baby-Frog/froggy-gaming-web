@@ -4,7 +4,6 @@ $label-color: #F9495F;
 .product {
 
     &-item {
-
         display: flex;
         flex-direction: column;
         position: relative;
@@ -23,9 +22,14 @@ $label-color: #F9495F;
             }
         }
 
-        &:not(:first-child) {
+        &:not(:first-of-type) {
             border-left: none;
         }
+
+        &:last-of-type {
+            border-left: 1px solid #dddfe6;
+        }
+
     }
 
     &-percent {

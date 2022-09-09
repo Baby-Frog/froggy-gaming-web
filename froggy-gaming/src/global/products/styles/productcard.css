@@ -15,8 +15,11 @@
 .product-item:hover .product-name {
   color: white;
 }
-.product-item:not(:first-child) {
+.product-item:not(:first-of-type) {
   border-left: none;
+}
+.product-item:last-of-type {
+  border-left: 1px solid #dddfe6;
 }
 .product-percent {
   top: 0;
