@@ -15,7 +15,11 @@ $label-color: #F9495F;
 
         &:hover {
             border: 2px solid $secondary2;
-            background: $secondary2;
+
+            .product-content {
+                background: $secondary2;
+
+            }
 
             .product-name {
                 color: white;
@@ -45,6 +49,7 @@ $label-color: #F9495F;
         width: 100%;
         height: 338px;
         border-bottom: 1px solid #eeedee;
+        transform: scale(0.7);
 
     }
 
@@ -53,6 +58,8 @@ $label-color: #F9495F;
         display: flex;
         flex-direction: column;
         row-gap: 0.5rem;
+        transition: all 150ms ease-in-out;
+
     }
 
     &-sale {

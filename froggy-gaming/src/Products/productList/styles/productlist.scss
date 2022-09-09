@@ -3,10 +3,10 @@
 .product {
     display: flex;
     // justify-content: space-between;
-    column-gap: 15rem;
+    column-gap: 9rem;
 
     &-section {
-        width: calc(70% - 15rem);
+        width: calc(75% - 9rem);
     }
 
     &-top {
@@ -93,7 +93,7 @@
     &-filter {
         display: flex;
         flex-direction: column;
-        width: calc(30% - 15rem);
+        width: calc(25% - 9rem);
 
         &-header {
             margin-bottom: 2rem;

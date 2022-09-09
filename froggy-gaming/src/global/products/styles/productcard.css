@@ -10,6 +10,8 @@
 }
 .product-item:hover {
   border: 2px solid #29324E;
+}
+.product-item:hover .product-content {
   background: #29324E;
 }
 .product-item:hover .product-name {
@@ -33,12 +35,14 @@
   width: 100%;
   height: 338px;
   border-bottom: 1px solid #eeedee;
+  transform: scale(0.7);
 }
 .product-content {
   padding: 1rem 1rem 1rem 1rem;
   display: flex;
   flex-direction: column;
   row-gap: 0.5rem;
+  transition: all 150ms ease-in-out;
 }
 .product-sale {
   color: white;

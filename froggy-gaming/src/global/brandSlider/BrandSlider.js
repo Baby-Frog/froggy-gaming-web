@@ -22,43 +22,41 @@ const PrevArrow = (props) => {
   );
 };
 
-export default class BrandSlider extends Component {
-  render() {
-    const settings = {
-      infinite: true,
-      speed: 500,
-      draggable: false,
-      autoplay: true,
-      autoplaySpeed: 3000,
-      pauseOnHover: true,
-      slidesToShow: 8,
-      slidesToScroll: 1,
-      nextArrow: <NextArrow />,
-      prevArrow: <PrevArrow />,
-      responsive: [
-        {
-          breakpoint: 1024,
-          settings: {
-            speed: 100,
-            slidesToShow: 3,
-            swipeToSlide: true,
-            ease: false,
-          },
+const BrandSlider = () => {
+  const settings = {
+    infinite: true,
+    speed: 500,
+    draggable: false,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    pauseOnHover: true,
+    slidesToShow: 8,
+    slidesToScroll: 1,
+    nextArrow: <NextArrow />,
+    prevArrow: <PrevArrow />,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          speed: 100,
+          slidesToShow: 3,
+          swipeToSlide: true,
+          ease: false,
         },
-      ],
-    };
-    return (
-      <div className="brand">
-        <Slider {...settings}>
-          {BrandSliderData.length > 0 &&
-            BrandSliderData.map((item) => (
-              <BrandItem key={item.id} image={item.brand_logo}></BrandItem>
-            ))}
-        </Slider>
-      </div>
-    );
-  }
-}
+      },
+    ],
+  };
+  return (
+    <div className="brand">
+      <Slider {...settings}>
+        {BrandSliderData.length > 0 &&
+          BrandSliderData.map((item) => (
+            <BrandItem key={item.id} image={item.brand_logo}></BrandItem>
+          ))}
+      </Slider>
+    </div>
+  );
+};
 
 function BrandItem({ image }) {
   return (
@@ -67,3 +65,5 @@ function BrandItem({ image }) {
     </div>
   );
 }
+
+export default BrandSlider;

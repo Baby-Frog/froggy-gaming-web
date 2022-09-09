@@ -1,10 +1,10 @@
 .product {
   display: flex;
-  -moz-column-gap: 15rem;
-       column-gap: 15rem;
+  -moz-column-gap: 9rem;
+       column-gap: 9rem;
 }
 .product-section {
-  width: calc(70% - 15rem);
+  width: calc(75% - 9rem);
 }
 .product-top {
   display: flex;
@@ -79,7 +79,7 @@
 .product-filter {
   display: flex;
   flex-direction: column;
-  width: calc(30% - 15rem);
+  width: calc(25% - 9rem);
 }
 .product-filter-header {
   margin-bottom: 2rem;

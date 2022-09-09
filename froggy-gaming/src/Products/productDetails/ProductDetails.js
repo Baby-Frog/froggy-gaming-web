@@ -16,7 +16,7 @@ const ProductDetails = () => {
     <div>
       <span
         style={{
-          fontSize: "1.5rem",
+          fontSize: "2.5rem",
         }}
       >
         Giá tiền: {proPrice}
@@ -24,7 +24,7 @@ const ProductDetails = () => {
       <br />
       <span
         style={{
-          fontSize: "1.5rem",
+          fontSize: "2.5rem",
         }}
       >
         Tên sản phẩm: {proName}
