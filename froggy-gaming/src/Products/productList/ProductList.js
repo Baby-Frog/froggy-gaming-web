@@ -174,7 +174,6 @@ function ProductFilterBlock({ title }) {
                 name="brand"
                 id="brand"
                 className="product-filter-accordion-checkbox"
-                defaultChecked="false"
                 checked={checked ? true : false}
                 onChange={() => setChecked(!checked)}
                 onClick={() => setChecked(!checked)}

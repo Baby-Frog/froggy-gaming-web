@@ -49,7 +49,7 @@ export default class BrandSlider extends Component {
     };
     return (
       <div className="brand">
-        <Slider ref={(c) => (this.slider = c)} {...settings}>
+        <Slider {...settings}>
           {BrandSliderData.length > 0 &&
             BrandSliderData.map((item) => (
               <BrandItem key={item.id} image={item.brand_logo}></BrandItem>
