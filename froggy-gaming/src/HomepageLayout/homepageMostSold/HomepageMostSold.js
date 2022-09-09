@@ -13,7 +13,7 @@ const HomepageMostSold = () => {
     fetcher
   );
   if (!data) return;
-  const mostSoldProducts = data?.content || [];
+  const mostSoldProducts = data?.data?.content || [];
 
   return (
     <div className="mostsold">

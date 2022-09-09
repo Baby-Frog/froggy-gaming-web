@@ -7,7 +7,11 @@ const ProductCard = ({ item }) => {
   const { proId, proName, proPrice, images } = item;
   const navigate = useNavigate();
   return (
-    <div className="product-item" ref={nodeRef}>
+    <div
+      className="product-item"
+      ref={nodeRef}
+      onClick={() => navigate(`/san-pham/${proId}`)}
+    >
       <div className="product-percent">
         <div className="product-sale">12%</div>
       </div>
@@ -21,12 +25,7 @@ const ProductCard = ({ item }) => {
         <div className="product-name">{proName}</div>
         {/* flex justify-between */}
         {hovered ? (
-          <button
-            onClick={() => navigate(`/san-pham/${proId}`)}
-            className="product-buy"
-          >
-            Mua ngay
-          </button>
+          <button className="product-buy">Mua ngay</button>
         ) : (
           <div className="product-detail">
             <div className="product-rate">
