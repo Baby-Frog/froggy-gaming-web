@@ -19,10 +19,10 @@ import { useSearch } from "../../../contexts/search-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const { query, setQuery, setUrl, setSearchResult } = useSearch();
+  const { query, setQuery, setUrl, setSearchResult, setSearchParam } =
+    useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { height, isScrolled, setIsScrolled } = useScrolled(300);
   useEffect(() => {
@@ -35,17 +35,10 @@ const Nav = () => {
     });
   }, [height, setIsScrolled]);
   const handleFetchData = useRef({});
-  const isMounted = useRef(true);
-  useEffect(() => {
-    isMounted.current = true;
-    return () => {
-      isMounted.current = false;
-    };
-  }, []);
 
   handleFetchData.current = async () => {
     setLoading(true);
-    if (query.trim().length === 0) {
+    if (String(query).trim().length === 0) {
       setLoading(false);
     }
     try {
@@ -53,13 +46,12 @@ const Nav = () => {
         // `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
         `http://localhost:8386/api/v1/product/search/query=${query}&page=1`
       );
-      if (isMounted) {
-        setData(response?.data?.data?.content || []);
-        setTimeout(() => {
-          setLoading(false);
-        }, 1500);
-      }
+      setData(response?.data?.data?.content || []);
+      setTimeout(() => {
+        setLoading(false);
+      }, 1500);
     } catch (error) {
+      console.log(error);
       return error;
     }
   };
@@ -69,10 +61,12 @@ const Nav = () => {
     document.body.classList.toggle("nav-open");
   };
 
-  const handleSearch = () => {
-    setUrl(`http://localhost:8386/api/v1/product/search/query=${query}&page=1`);
+  const handleSearch = (e) => {
+    setUrl(
+      `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
+    );
     setSearchResult(query);
-    setSearchParams({
+    setSearchParam({
       query: query,
     });
     navigate(`/chi-tiet?query=${query}`);
@@ -118,17 +112,18 @@ const Nav = () => {
                     htmlFor="search"
                     className="header-navigation-form-input"
                     placeholder="Nhập vào sản phẩm muốn tìm"
-                    onChange={lodash.debounce(
-                      (e) => setQuery(e.target.value),
-                      1000
-                    )}
+                    // onChange={lodash.debounce(
+                    //   (e) => setQuery(e.target.value),
+                    //   1000
+                    // )}
                   />
                 </div>
                 {loading && (
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height: query.trim().length === 0 ? "0px" : "260px",
+                      height:
+                        String(query).trim().length === 0 ? "0px" : "260px",
                     }}
                   >
                     <ProductItemsSkeleton></ProductItemsSkeleton>
@@ -143,8 +138,10 @@ const Nav = () => {
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height: query.trim().length === 0 ? "0px" : "260px",
-                      marginBlock: query.trim().length === 0 ? "0px" : "1rem",
+                      height:
+                        String(query).trim().length === 0 ? "0px" : "260px",
+                      marginBlock:
+                        String(query).trim().length === 0 ? "0px" : "1rem",
                     }}
                   >
                     {data.length > 0 &&
@@ -182,7 +179,11 @@ const Nav = () => {
             <li className="header-navigation-item header-navigation-item--divider"></li>
             <li className="header-navigation-item">
               <ion-icon name="search-outline"></ion-icon>
-              <form className="header-navigation-form" autoComplete="off">
+              <form
+                className="header-navigation-form"
+                onSubmit={handleSearch}
+                autoComplete="off"
+              >
                 <div className="header-navigation-form-find">
                   <input
                     type={"search"}
@@ -208,7 +209,8 @@ const Nav = () => {
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height: query.trim().length === 0 ? "0px" : "260px",
+                      height:
+                        String(query).trim().length === 0 ? "0px" : "260px",
                     }}
                   >
                     <ProductItemsSkeleton></ProductItemsSkeleton>
@@ -223,8 +225,10 @@ const Nav = () => {
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height: query.trim().length === 0 ? "0px" : "260px",
-                      marginBlock: query.trim().length === 0 ? "0px" : "1rem",
+                      height:
+                        String(query).trim().length === 0 ? "0px" : "260px",
+                      marginBlock:
+                        String(query).trim().length === 0 ? "0px" : "1rem",
                     }}
                   >
                     {data.length > 0 &&

@@ -12,7 +12,6 @@ import "./styles/productlist.css";
 
 const ProductList = () => {
   const { searchResult, url, setUrl, query } = useSearch();
-
   const { nodeRef, setShow, show } = useClickOutside(false);
   const [nextPage, setNextPage] = useState(1);
   const [selected, setSelected] = useState("Giá (Thấp -> Cao)");

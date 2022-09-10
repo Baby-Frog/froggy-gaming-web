@@ -271,6 +271,36 @@ export const NavCategoryData = [
           },
         ],
       },
+      {
+        id: 2,
+        header: "Giá tiền",
+        content: [
+          {
+            id: 1,
+            row_content: "Dưới 500 nghìn",
+          },
+          {
+            id: 2,
+            row_content: "Từ 500 nghìn tới 1 triệu",
+          },
+          {
+            id: 3,
+            row_content: "Từ 1 triệu tới 2 triệu",
+          },
+          {
+            id: 4,
+            row_content: "Từ 2 triệu tới 3 triệu",
+          },
+          {
+            id: 5,
+            row_content: "Từ 3 triệu tới 4 triệu",
+          },
+          {
+            id: 6,
+            row_content: "Trên 4 triệu",
+          },
+        ],
+      },
     ],
   },
   {
