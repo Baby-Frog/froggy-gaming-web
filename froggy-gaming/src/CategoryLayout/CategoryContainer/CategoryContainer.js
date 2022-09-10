@@ -10,13 +10,13 @@ const CategoryContainer = () => {
   return (
     <div className="wrapper">
       <div className="cat-list">
-        <p>
+        <span>
           <Link to={"/"}>Trang chủ</Link>
-        </p>
-        <p>{">"}</p>
-        <p>
+        </span>
+        <span>{">"}</span>
+        <span>
           <Link to={"/danh-muc"}> Danh mục</Link>
-        </p>
+        </span>
       </div>
       <CategoryQuote></CategoryQuote>
       <SectionDivider

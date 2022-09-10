@@ -212,3 +212,25 @@
     }
 
 }
+
+.breadcrumbs {
+    font-size: 2rem;
+    transform: translateY(-2rem);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    column-gap: 1rem;
+
+    i {
+        padding-right: 1rem;
+    }
+
+    a {
+        text-decoration: none;
+        color: $secondary2;
+
+        &:visited {
+            color: $secondary2;
+        }
+    }
+}

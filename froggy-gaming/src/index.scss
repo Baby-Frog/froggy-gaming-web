@@ -16,6 +16,14 @@
     visibility: hidden;
 }
 
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
 .visible {
     opacity: 1;
     visibility: visible;

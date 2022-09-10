@@ -18,10 +18,13 @@
   color: white;
 }
 .product-item:not(:first-of-type) {
-  border-left: none;
+  border-left: 1px solid transparent;
 }
 .product-item:last-of-type {
   border-left: 1px solid #dddfe6;
+}
+.product-item:last-of-type:hover {
+  border-left: 1px solid #29324E;
 }
 .product-percent {
   top: 0;
@@ -30,6 +33,7 @@
   background: #F9495F;
   padding: 1.5rem;
   transform: translateX(-0.5rem) skew(-12deg);
+  z-index: 2;
 }
 .product-image {
   width: 100%;

@@ -13,7 +13,7 @@ const ProductCard = ({ item }) => {
       onClick={() => navigate(`/san-pham/${proId}`)}
     >
       <div className="product-percent">
-        <div className="product-sale">12%</div>
+        <div className="product-sale">20%</div>
       </div>
       <img
         src={`${images[0].imgPath.replaceAll("-", "")}`}

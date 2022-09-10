@@ -172,4 +172,24 @@
   left: 0;
   z-index: 2;
   transform: translate(0.75rem, -50%) rotate(45deg);
+}
+
+.breadcrumbs {
+  font-size: 2rem;
+  transform: translateY(-2rem);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+}
+.breadcrumbs i {
+  padding-right: 1rem;
+}
+.breadcrumbs a {
+  text-decoration: none;
+  color: #29324E;
+}
+.breadcrumbs a:visited {
+  color: #29324E;
 }/*# sourceMappingURL=productlist.css.map */

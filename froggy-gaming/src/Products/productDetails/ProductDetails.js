@@ -10,26 +10,7 @@ const ProductDetails = () => {
     fetcher
   );
   if (!data || !data.data) return null;
-  const { proPrice, proName } = data.data;
 
-  return (
-    <div>
-      <span
-        style={{
-          fontSize: "2.5rem",
-        }}
-      >
-        Giá tiền: {proPrice}
-      </span>
-      <br />
-      <span
-        style={{
-          fontSize: "2.5rem",
-        }}
-      >
-        Tên sản phẩm: {proName}
-      </span>
-    </div>
-  );
+  return <div></div>;
 };
 export default ProductDetails;

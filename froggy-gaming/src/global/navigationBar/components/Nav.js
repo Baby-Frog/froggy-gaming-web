@@ -1,7 +1,13 @@
 import React, { useEffect, useRef, useReducer } from "react";
 import lodash from "lodash";
 import axios from "axios";
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import {
+  Link,
+  NavLink,
+  Outlet,
+  useNavigate,
+  useSearchParams,
+} from "react-router-dom";
 import "../styles/Nav.css";
 import Logo from "../../../assets/froggy-gaming-icon-2.png";
 import NavCategory from "./NavCategory";
@@ -16,6 +22,7 @@ const Nav = () => {
   const { query, setQuery, setUrl, setSearchResult } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
   const { height, isScrolled, setIsScrolled } = useScrolled(300);
   useEffect(() => {
@@ -65,7 +72,14 @@ const Nav = () => {
   const handleSearch = () => {
     setUrl(`http://localhost:8386/api/v1/product/search/query=${query}&page=1`);
     setSearchResult(query);
-    navigate("/chi-tiet");
+    setSearchParams({
+      query: query,
+    });
+    navigate(`/chi-tiet?query=${query}`);
+  };
+
+  const handleChange = (e) => {
+    setQuery(e.target.value);
   };
 
   useEffect(() => {
@@ -175,10 +189,12 @@ const Nav = () => {
                     htmlFor="search"
                     className="header-navigation-form-input"
                     placeholder="Nhập vào sản phẩm muốn tìm"
-                    onChange={lodash.debounce(
-                      (e) => setQuery(e.target.value),
-                      1000
-                    )}
+                    value={query}
+                    // onChange={lodash.debounce(
+                    //   (e) => setQuery(e.target.value),
+                    //   1000
+                    // )}
+                    onChange={handleChange}
                   />
                   {!loading ? (
                     <span className="cursor-pointer" onClick={handleSearch}>

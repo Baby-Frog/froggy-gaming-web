@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
 import useSWR from "swr";
 import { fetcher } from "../../config";
 import { useSearch } from "../../contexts/search-context";
@@ -11,6 +12,7 @@ import "./styles/productlist.css";
 
 const ProductList = () => {
   const { searchResult, url, setUrl, query } = useSearch();
+
   const { nodeRef, setShow, show } = useClickOutside(false);
   const [nextPage, setNextPage] = useState(1);
   const [selected, setSelected] = useState("Giá (Thấp -> Cao)");
@@ -61,6 +63,18 @@ const ProductList = () => {
   const queryInfo = data?.data || [];
   return (
     <div className="wrapper">
+      <div className="breadcrumbs">
+        <span>
+          <Link to={"/"}>
+            <i class="fa-solid fa-house-chimney"></i>
+            Trang chủ
+          </Link>
+        </span>
+        <span>{">"}</span>
+        <span>
+          <Link to={"/chi-tiet"}>Sản phẩm</Link>
+        </span>
+      </div>
       <div className="product">
         <ProductFilter></ProductFilter>
         <div className="product-section">
@@ -120,18 +134,17 @@ const ProductList = () => {
 function ProductFilter() {
   return (
     <div className="product-filter">
-      <h1 className="product-filter-header">Lọc sản phẩm</h1>
       {/* bọc ngoài có bg xanh nhạt, flex column */}
 
-      <ProductFilterBlock title={"Hãng sản xuất"} />
-      <ProductFilterBlock title={"Mức giá"} />
+      <ProductFilterBlock title={"Hãng sản xuất"} label_content={"Logitech"} />
+      <ProductFilterBlock title={"Loại sản phẩm"} label_content={"Bàn phím"} />
     </div>
   );
 }
 
 export default ProductList;
 
-function ProductFilterBlock({ title }) {
+function ProductFilterBlock({ title, label_content }) {
   const [brand, setBrand] = useState("");
   const [brandQuery, setBrandQuery] = useState("");
   const { show, setShow, nodeRef } = useDropdown(
@@ -140,50 +153,59 @@ function ProductFilterBlock({ title }) {
   );
   const [checked, setChecked] = useState(false);
   return (
-    <div className="product-filter-block" ref={nodeRef}>
-      {/* flex between */}
-      <div className="product-filter-accordion" onClick={() => setShow(!show)}>
-        <span className="product-filter-accordion-title">{title}</span>
-        <i
-          className={`fa-solid ${
-            show ? "fa-angle-down" : "fa-angle-up"
-          } product-filter-accordion-caret`}
-        ></i>
-      </div>
-      <div
-        className={`product-filter-accordion-content ${show ? "active" : ""}`}
-      >
-        {/* width 100% */}
-        <form autoComplete="off" className="product-filter-accordion-form">
-          <div className="product-filter-accordion-group">
-            <input
-              type="text"
-              className="product-filter-accordion-input"
-              placeholder="Tìm hãng sản xuất..."
-              onChange={(e) => setBrand(e.target.value)}
-            />
-            <span className="product-filter-accordion-icon">
-              <ion-icon name="search-outline"></ion-icon>
-            </span>
-          </div>
-          <ul className="product-filter-accordion-list">
-            {/* checkbox and text, flex */}
-            <li className="product-filter-accordion-item">
+    <div className="product-filter-container">
+      <h1 className="product-filter-header">Lọc sản phẩm</h1>
+      <div className="product-filter-block" ref={nodeRef}>
+        {/* flex between */}
+        <div
+          className="product-filter-accordion"
+          onClick={() => setShow(!show)}
+        >
+          <span className="product-filter-accordion-title">{title}</span>
+          <i
+            className={`fa-solid ${
+              show ? "fa-angle-down" : "fa-angle-up"
+            } product-filter-accordion-caret`}
+          ></i>
+        </div>
+        <div
+          className={`product-filter-accordion-content ${show ? "active" : ""}`}
+        >
+          {/* width 100% */}
+          <form autoComplete="off" className="product-filter-accordion-form">
+            <div className="product-filter-accordion-group">
               <input
-                type="radio"
-                name="brand"
-                id="brand"
-                className="product-filter-accordion-checkbox"
-                checked={checked ? true : false}
-                onChange={() => setChecked(!checked)}
-                onClick={() => setChecked(!checked)}
+                type="text"
+                className="product-filter-accordion-input"
+                placeholder="Tìm hãng sản xuất..."
+                onChange={(e) => setBrand(e.target.value)}
               />
-              <label htmlFor="brand" className="product-filter-accordion-label">
-                Newmen
-              </label>
-            </li>
-          </ul>
-        </form>
+              <span className="product-filter-accordion-icon">
+                <ion-icon name="search-outline"></ion-icon>
+              </span>
+            </div>
+            <ul className="product-filter-accordion-list">
+              {/* checkbox and text, flex */}
+              <li className="product-filter-accordion-item">
+                <input
+                  type="radio"
+                  name="brand"
+                  id="brand"
+                  className="product-filter-accordion-checkbox"
+                  checked={checked ? true : false}
+                  onChange={() => setChecked(!checked)}
+                  onClick={() => setChecked(!checked)}
+                />
+                <label
+                  htmlFor="brand"
+                  className="product-filter-accordion-label"
+                >
+                  {label_content}
+                </label>
+              </li>
+            </ul>
+          </form>
+        </div>
       </div>
     </div>
   );

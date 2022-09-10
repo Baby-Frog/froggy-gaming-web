@@ -16,6 +16,7 @@ $label-color: #F9495F;
         &:hover {
             border: 2px solid $secondary2;
 
+
             .product-content {
                 background: $secondary2;
 
@@ -27,11 +28,15 @@ $label-color: #F9495F;
         }
 
         &:not(:first-of-type) {
-            border-left: none;
+            border-left: 1px solid transparent;
         }
 
         &:last-of-type {
             border-left: 1px solid #dddfe6;
+
+            &:hover {
+                border-left: 1px solid $secondary2;
+            }
         }
 
     }
@@ -43,6 +48,7 @@ $label-color: #F9495F;
         background: #F9495F;
         padding: 1.5rem;
         transform: translateX(-0.5rem) skew(-12deg);
+        z-index: 2;
     }
 
     &-image {
