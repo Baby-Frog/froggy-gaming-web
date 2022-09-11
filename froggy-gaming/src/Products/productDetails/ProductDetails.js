@@ -79,11 +79,30 @@ const ProductSummaryInfo = ({ item }) => {
           {item.category.cateName === "Chuột" && (
             <span className="summary-product-title">Kết nối: </span>
           )}
-          <span className="summary-product-text">
-            {item.productDetail.keyboardSwitch}
-          </span>
+          {item.productDetail.keyboardSwitch !== null && (
+            <span className="summary-product-text">
+              {item.productDetail.keyboardSwitch}
+            </span>
+          )}
+          {item.productDetail.mouseSensor !== null && (
+            <span className="summary-product-text">
+              {item.productDetail.connect}
+            </span>
+          )}
         </li>
       </ul>
+      <div className="summary-product-buy">
+        <div className="summary-product-pricedisplay">
+          <span className="summary-product-text">Giá: </span>
+          <span className="summary-product-price">
+            {item.proPrice.toLocaleString("it-IT", {
+              style: "currency",
+              currency: "VND",
+            })}
+          </span>
+        </div>
+        <button className="summary-product-buybutton">Đặt hàng</button>
+      </div>
     </div>
   );
 };

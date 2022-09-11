@@ -28,6 +28,9 @@
         &-second {
             position: relative;
             z-index: 4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         &-main {
@@ -44,7 +47,8 @@
         &-bottom {
             cursor: pointer;
             border: 2px solid transparent;
-
+            width: 60px;
+            height: 60px;
 
             &:hover {
                 border: 2px solid #ccc;
@@ -77,6 +81,7 @@
 
         &-text {
             font-weight: 400;
+            font-size: 2rem;
 
             &--uppercase {
                 text-transform: uppercase;
@@ -106,6 +111,36 @@
                 height: 0.5rem;
                 border-radius: 100rem;
                 background: black;
+            }
+        }
+
+        &-pricedisplay {
+            margin-top: 3rem;
+        }
+
+        &-price {
+            color: red;
+            font-size: 3rem;
+            font-weight: 500;
+            margin-left: 1rem;
+        }
+
+        &-buybutton {
+            background: $side-color;
+            padding: 2rem;
+            width: 100%;
+            font-size: 2.4rem;
+            outline: none;
+            border: none;
+            color: white;
+            font-weight: 500;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            transition: all 50ms ease-in-out;
+
+            &:hover {
+                background: $secondary
             }
         }
     }
