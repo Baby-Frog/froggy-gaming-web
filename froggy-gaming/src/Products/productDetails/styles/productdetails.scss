@@ -1,10 +1,13 @@
 @import "../../../variable";
 
+// Summary 
 .summary {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     column-gap: 2rem;
+
+
 
     &-images {
         width: calc(55% - 2rem);
@@ -22,7 +25,8 @@
 
         &-first {
             position: relative;
-            z-index: -1;
+            z-index: 1;
+
         }
 
         &-second {
@@ -61,12 +65,11 @@
     }
 
     &-product {
-
         &-name {
-
             font-size: 2.6rem;
             font-weight: 400;
             margin-bottom: 1.5rem;
+            font-family: "CharkaPetchBold";
         }
 
         &-general {
@@ -96,6 +99,7 @@
             font-size: 2rem;
             position: relative;
             padding-left: 1.5rem;
+            font-family: "CharkaPetchRegular";
 
             &:not(:last-child) {
                 margin-bottom: 1rem;
@@ -123,6 +127,7 @@
             font-size: 3rem;
             font-weight: 500;
             margin-left: 1rem;
+            font-family: "CharkaPetchBold";
         }
 
         &-buybutton {
@@ -138,6 +143,7 @@
             cursor: pointer;
             margin-top: 1.5rem;
             transition: all 50ms ease-in-out;
+            font-family: "CharkaPetchBold";
 
             &:hover {
                 background: $secondary
@@ -146,7 +152,92 @@
     }
 }
 
-.description {}
+// Product Description
+.description {
+    font-size: 2rem;
+}
+
+// Product Tabs
+.tabs {
+
+    &-list {
+        display: flex;
+        width: 100%;
+        background: $panel-color;
+    }
+
+    &-item {
+        padding: 1.5rem;
+        font-family: "CharkaPetchBold";
+        font-size: 2rem;
+        background: $panel-color;
+        cursor: pointer;
+        transition: all 100ms ease-in-out;
+
+        &.active {
+            color: white;
+            background: $side-color;
+        }
+
+        &:hover {
+            color: white;
+            background: $side-color;
+        }
+    }
+
+    &-content {
+
+        &-inner {
+            opacity: 0;
+            visibility: hidden;
+            height: 0px;
+
+            &.active {
+                height: auto;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+// Specification Styling
+
+.specification {
+    margin: 2rem auto;
+    width: 80%;
+
+    &-header {
+        text-transform: capitalize;
+        font-family: "CharkaPetchSemiBold";
+        text-indent: 1rem;
+    }
+
+    &-table {
+        width: 100%;
+
+        &-row {
+            td {
+                border: 1px solid #dddfe6;
+            }
+        }
+
+        &-title {
+            background: $panel-color;
+            font-size: 1.6rem;
+            width: 255px;
+            height: 46px;
+            padding-left: 1rem;
+            font-family: "CharkaPetchRegular";
+        }
+
+        &-data {
+            font-size: 1.6rem;
+            font-family: "CharkaPetchRegular";
+            padding-left: 1.4rem;
+        }
+    }
+}
 
 // Slick styling
 

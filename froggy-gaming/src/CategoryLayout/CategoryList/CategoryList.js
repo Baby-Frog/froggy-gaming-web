@@ -3,24 +3,9 @@ import useSWR from "swr";
 import { fetcher } from "../../config";
 import "./styles/CategoryList.css";
 import Acer from "../asset/img/laptop-acer.png";
-import Dell from "../asset/img/laptop-dell.png";
-import Gaming from "../asset/img/laptop-dell-alien.png";
-import Macbook from "../asset/img/macbook.png";
-import Gigabyte from "../asset/img/laptop-gigibyte.png";
-import Msi from "../asset/img/laptop-ms.png";
-const CategoryImage = [
-  {
-    id: 1,
-    img_url: Acer,
-  },
-  {
-    id: 2,
-    img_url: Dell,
-  },
-];
+
 const CategoryList = () => {
   const { data } = useSWR(`http://localhost:8386/api/v1/category`, fetcher);
-  console.log("log ~ CategoryList ~ data", data);
   if (!data) return;
   const categories =
     data.data.sort((a, b) => (a.cateId > b.cateId ? 1 : -1)) || [];

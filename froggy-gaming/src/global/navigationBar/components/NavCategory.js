@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/dropdown.css";
-import { NavCategoryContentData, NavCategoryData } from "./NavCategoryData";
+import { NavCategoryData } from "./NavCategoryData";
 
 const NavCategory = () => {
   const [selected, setSelected] = useState(false);
@@ -32,22 +32,6 @@ const NavCategory = () => {
                       </div>
                     ))}
                   </>
-                  {/* {NavCategoryContentData.map((item) => (
-                    <>
-                      {item.title.map((item) => (
-                        <div key={item.id} className="category-grid">
-                          <h4 className="category-name">{item.header}</h4>
-                          {item.content.map((item) => (
-                            <li className="category-choice">
-                              {item.row_content}
-                            </li>
-                          ))}
-                        </div>
-                      ))}
-
-                      
-                    </>
-                  ))} */}
                 </ul>
               </li>
             ))}

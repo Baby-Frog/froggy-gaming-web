@@ -30,6 +30,16 @@
   src: url("./fonts/ChakraPetch-Bold.ttf");
 }
 
+@font-face {
+  font-family: "CharkaPetchSemiBold";
+  src: url("./fonts/CharkaPetchSemiBold.ttf");
+}
+
+@font-face {
+  font-family: "CharkaPetchLight";
+  src: url("./fonts/CharkaPetchLight.ttf");
+}
+
 html {
   font-size: 62.5%;
 }
@@ -89,4 +99,8 @@ h6 {
 
 a * {
   text-decoration: none;
+}
+
+table {
+  border-collapse: collapse;
 }

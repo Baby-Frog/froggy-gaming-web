@@ -16,6 +16,7 @@ import ProductDetails from "./Products/productDetails/ProductDetails";
 import { SearchProvider } from "./contexts/search-context";
 import ProductList from "./Products/productList/ProductList";
 import CartContainer from "./Cart/CartContainer/CartContainer";
+import { CartProvider } from "./contexts/cart-context";
 // import ProductDetails from "./Products/productDetails/ProductDetails";
 
 function App() {
@@ -24,23 +25,25 @@ function App() {
   }, []);
   return (
     <>
-      <SearchProvider>
-        <Nav></Nav>
-        <ScrollToTop></ScrollToTop>
-        {/* <CartContainer></CartContainer> */}
-        <Routes>
-          <Route path="/" element={<HomepageContainer />}></Route>
-          <Route path="/danh-muc" element={<CategoryContainer />}></Route>
-          <Route path="/tin-tuc" element={<News />}></Route>
-          <Route path="/chi-tiet" element={<ProductList />}></Route>
-          <Route path="/gio-hang" element={<CartContainer />}></Route>
-          <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
-          <Route path="*" element={<NotFound></NotFound>}></Route>
-        </Routes>
-        <ContactBar></ContactBar>
-        <ScrollToTopButton></ScrollToTopButton>
-        <Footer></Footer>
-      </SearchProvider>
+      <CartProvider>
+        <SearchProvider>
+          <Nav></Nav>
+          <ScrollToTop></ScrollToTop>
+          {/* <CartContainer></CartContainer> */}
+          <Routes>
+            <Route path="/" element={<HomepageContainer />}></Route>
+            <Route path="/danh-muc" element={<CategoryContainer />}></Route>
+            <Route path="/tin-tuc" element={<News />}></Route>
+            <Route path="/chi-tiet" element={<ProductList />}></Route>
+            <Route path="/gio-hang" element={<CartContainer />}></Route>
+            <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
+            <Route path="*" element={<NotFound></NotFound>}></Route>
+          </Routes>
+          <ContactBar></ContactBar>
+          <ScrollToTopButton></ScrollToTopButton>
+          <Footer></Footer>
+        </SearchProvider>
+      </CartProvider>
     </>
   );
 }

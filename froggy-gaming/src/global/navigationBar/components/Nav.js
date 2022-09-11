@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useReducer } from "react";
+import React, { useEffect, useRef } from "react";
 import lodash from "lodash";
 import axios from "axios";
 import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
@@ -45,7 +45,6 @@ const Nav = () => {
         setLoading(false);
       }, 2000);
     } catch (error) {
-      console.log(error);
       return error;
     }
   };

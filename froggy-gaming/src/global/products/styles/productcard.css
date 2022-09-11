@@ -18,13 +18,16 @@
   color: white;
 }
 .product-item:not(:first-of-type) {
-  border-left: 1px solid transparent;
+  border-left: 2px solid transparent;
+}
+.product-item:not(:first-of-type):hover {
+  border-left: 2px solid #29324E;
 }
 .product-item:last-of-type {
-  border-left: 1px solid #dddfe6;
+  border-left: 2px solid #dddfe6;
 }
 .product-item:last-of-type:hover {
-  border-left: 1px solid #29324E;
+  border-left: 2px solid #29324E;
 }
 .product-percent {
   top: 0;
