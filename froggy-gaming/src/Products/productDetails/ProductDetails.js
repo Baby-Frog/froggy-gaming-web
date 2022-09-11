@@ -65,7 +65,7 @@ const ProductSummaryInfo = ({ item }) => {
         <li className="summary-product-item">
           <span className="summary-product-title">Tình trạng: </span>
           <span className="summary-product-text">
-            {item.prostatus ? "Còn hàng" : "Hết hàng"}
+            {item.prostatus ? "Hết hàng" : "Còn hàng"}
           </span>
         </li>
         <li className="summary-product-item">

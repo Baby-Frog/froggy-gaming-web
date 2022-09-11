@@ -55,7 +55,8 @@ const Nav = () => {
     document.body.classList.toggle("nav-open");
   };
 
-  const handleSearch = () => {
+  const handleSearch = (e) => {
+    e.preventDefault();
     setUrl(
       `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
     );
