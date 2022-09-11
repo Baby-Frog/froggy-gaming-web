@@ -76,6 +76,8 @@ const Nav = () => {
     setQuery(e.target.value);
   };
 
+  const debounceChange = lodash.debounce(handleChange, 1000);
+
   useEffect(() => {
     handleFetchData.current(query);
   }, [query]);
@@ -190,12 +192,11 @@ const Nav = () => {
                     htmlFor="search"
                     className="header-navigation-form-input"
                     placeholder="Nhập vào sản phẩm muốn tìm"
-                    value={query}
                     // onChange={lodash.debounce(
                     //   (e) => setQuery(e.target.value),
                     //   1000
                     // )}
-                    onChange={handleChange}
+                    onChange={debounceChange}
                   />
                   {!loading ? (
                     <span className="cursor-pointer" onClick={handleSearch}>
