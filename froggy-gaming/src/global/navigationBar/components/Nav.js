@@ -1,13 +1,7 @@
 import React, { useEffect, useRef, useReducer } from "react";
 import lodash from "lodash";
 import axios from "axios";
-import {
-  Link,
-  NavLink,
-  Outlet,
-  useNavigate,
-  useSearchParams,
-} from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
 import "../styles/Nav.css";
 import Logo from "../../../assets/froggy-gaming-icon-2.png";
 import NavCategory from "./NavCategory";
@@ -24,10 +18,10 @@ const Nav = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const { height, isScrolled, setIsScrolled } = useScrolled(300);
+  const { height, isScrolled, setIsScrolled } = useScrolled(100);
   useEffect(() => {
     window.addEventListener("scroll", () => {
-      if (window.innerWidth > 1024 && window.scrollY > 300) {
+      if (window.innerWidth > 1024 && window.scrollY > height) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -38,7 +32,7 @@ const Nav = () => {
 
   handleFetchData.current = async () => {
     setLoading(true);
-    if (String(query).trim().length === 0) {
+    if (query.trim().length === 0 || query === null) {
       setLoading(false);
     }
     try {
@@ -49,7 +43,7 @@ const Nav = () => {
       setData(response?.data?.data?.content || []);
       setTimeout(() => {
         setLoading(false);
-      }, 1500);
+      }, 2000);
     } catch (error) {
       console.log(error);
       return error;
@@ -61,7 +55,7 @@ const Nav = () => {
     document.body.classList.toggle("nav-open");
   };
 
-  const handleSearch = (e) => {
+  const handleSearch = () => {
     setUrl(
       `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
     );
@@ -73,7 +67,8 @@ const Nav = () => {
   };
 
   const handleChange = (e) => {
-    setQuery(e.target.value);
+    const newQuery = e.target.value;
+    setQuery(newQuery);
   };
 
   const debounceChange = lodash.debounce(handleChange, 1000);
@@ -125,7 +120,9 @@ const Nav = () => {
                     className="header-navigation-form-query"
                     style={{
                       height:
-                        String(query).trim().length === 0 ? "0px" : "260px",
+                        String(query).trim().length === 0 || query === "null"
+                          ? "0px"
+                          : "260px",
                     }}
                   >
                     <ProductItemsSkeleton></ProductItemsSkeleton>
@@ -141,9 +138,13 @@ const Nav = () => {
                     className="header-navigation-form-query"
                     style={{
                       height:
-                        String(query).trim().length === 0 ? "0px" : "260px",
+                        String(query).trim().length === 0 || query === "null"
+                          ? "0px"
+                          : "260px",
                       marginBlock:
-                        String(query).trim().length === 0 ? "0px" : "1rem",
+                        String(query).trim().length === 0 || query === "null"
+                          ? "0px"
+                          : "1rem",
                     }}
                   >
                     {data.length > 0 &&
@@ -211,7 +212,9 @@ const Nav = () => {
                     className="header-navigation-form-query"
                     style={{
                       height:
-                        String(query).trim().length === 0 ? "0px" : "260px",
+                        query.trim().length === 0 || query === "null"
+                          ? "0px"
+                          : "260px",
                     }}
                   >
                     <ProductItemsSkeleton></ProductItemsSkeleton>
@@ -227,9 +230,13 @@ const Nav = () => {
                     className="header-navigation-form-query"
                     style={{
                       height:
-                        String(query).trim().length === 0 ? "0px" : "260px",
+                        query.trim().length === 0 || query === "null"
+                          ? "0px"
+                          : "260px",
                       marginBlock:
-                        String(query).trim().length === 0 ? "0px" : "1rem",
+                        query.trim().length === 0 || query === "null"
+                          ? "0px"
+                          : "1rem",
                     }}
                   >
                     {data.length > 0 &&

@@ -1,0 +1,121 @@
+@import "../../../variable";
+
+.summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 2rem;
+
+    &-images {
+        width: calc(55% - 2rem);
+    }
+
+    &-info {
+        width: calc(45% - 2rem);
+    }
+
+    &-images {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+
+        &-first {
+            position: relative;
+            z-index: -1;
+        }
+
+        &-second {
+            position: relative;
+            z-index: 4;
+        }
+
+        &-main {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            img {
+                width: 705px;
+                height: 705px;
+            }
+        }
+
+        &-bottom {
+            cursor: pointer;
+            border: 2px solid transparent;
+
+
+            &:hover {
+                border: 2px solid #ccc;
+            }
+        }
+    }
+
+    &-info {
+        margin-top: 5rem;
+    }
+
+    &-product {
+
+        &-name {
+
+            font-size: 2.6rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+        }
+
+        &-general {
+            font-size: 2rem;
+            font-weight: 500;
+        }
+
+        &-title {
+            font-weight: 700;
+            margin-right: 0.6rem;
+        }
+
+        &-text {
+            font-weight: 400;
+
+            &--uppercase {
+                text-transform: uppercase;
+            }
+        }
+
+        &-list {
+            list-style-type: none;
+        }
+
+        &-item {
+            font-size: 2rem;
+            position: relative;
+            padding-left: 1.5rem;
+
+            &:not(:last-child) {
+                margin-bottom: 1rem;
+            }
+
+            &::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                width: 0.5rem;
+                height: 0.5rem;
+                border-radius: 100rem;
+                background: black;
+            }
+        }
+    }
+}
+
+.description {}
+
+// Slick styling
+
+.slick-current .summary-images-bottom {
+    cursor: default;
+    border: 2px solid $secondary2;
+}

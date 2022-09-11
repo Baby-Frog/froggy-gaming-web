@@ -67,7 +67,7 @@ const HomepageMostSold = () => {
         breakpoint: 1024,
         settings: {
           speed: 100,
-          slidesToShow: 3,
+          slidesToShow: 2,
           swipeToSlide: true,
           ease: false,
         },

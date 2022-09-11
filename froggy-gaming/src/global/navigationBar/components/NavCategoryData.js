@@ -272,7 +272,7 @@ export const NavCategoryData = [
         ],
       },
       {
-        id: 2,
+        id: 3,
         header: "Giá tiền",
         content: [
           {

@@ -20,8 +20,10 @@ const CategoryImage = [
 ];
 const CategoryList = () => {
   const { data } = useSWR(`http://localhost:8386/api/v1/category`, fetcher);
+  console.log("log ~ CategoryList ~ data", data);
   if (!data) return;
-  const categories = data.sort((a, b) => (a.cateId > b.cateId ? 1 : -1)) || [];
+  const categories =
+    data.data.sort((a, b) => (a.cateId > b.cateId ? 1 : -1)) || [];
   return (
     <div className="cat-content">
       {categories.map((item) => (

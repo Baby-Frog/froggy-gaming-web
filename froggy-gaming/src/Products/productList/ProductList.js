@@ -64,10 +64,7 @@ const ProductList = () => {
     <div className="wrapper">
       <div className="breadcrumbs">
         <span>
-          <Link to={"/"}>
-            <i class="fa-solid fa-house-chimney"></i>
-            Trang chủ
-          </Link>
+          <Link to={"/"}>Trang chủ</Link>
         </span>
         <span>{">"}</span>
         <span>

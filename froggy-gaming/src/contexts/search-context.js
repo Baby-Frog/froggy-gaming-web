@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 const SearchContext = createContext();
 function SearchProvider(props) {
   const [searchParam, setSearchParam] = useSearchParams();
-  const [query, setQuery] = useState(searchParam.get("query"));
+  const [query, setQuery] = useState(String(searchParam.get("query")));
   const [searchResult, setSearchResult] = useState("");
   const [type, setType] = useState("price");
   const [order, setOrder] = useState("asc");
