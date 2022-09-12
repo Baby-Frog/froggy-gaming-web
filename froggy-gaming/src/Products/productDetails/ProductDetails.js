@@ -30,7 +30,7 @@ const ProductDetails = () => {
         sectionContent={"Sản phẩm liên quan"}
         marginBlock="1rem"
       ></SectionDivider>
-      <RelatedProducts></RelatedProducts>
+      <RelatedProducts item={productSummary}></RelatedProducts>
       <SectionDivider
         sectionContent={"Các thương hiệu"}
         marginBlock="3rem"
@@ -307,7 +307,16 @@ const ProductSummaryInfo = ({ item, item: { proId, proName, proPrice } }) => {
       </ul>
       <div className="summary-product-buy">
         <div className="summary-product-pricedisplay">
-          <span className="summary-product-text">Giá: </span>
+          <span className="summary-product-text">Giá cũ: </span>
+          <span className="summary-product-price summary-product-price--old">
+            {(item.proPrice + 200000).toLocaleString("it-IT", {
+              style: "currency",
+              currency: "VND",
+            })}
+          </span>
+        </div>
+        <div className="summary-product-pricedisplay">
+          <span className="summary-product-text">Giá KM: </span>
           <span className="summary-product-price">
             {item.proPrice.toLocaleString("it-IT", {
               style: "currency",

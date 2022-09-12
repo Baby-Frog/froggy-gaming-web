@@ -93,7 +93,7 @@
   border-radius: 100rem;
   background: black;
 }
-.summary-product-pricedisplay {
+.summary-product-pricedisplay:first-of-type {
   margin-top: 3rem;
 }
 .summary-product-price {
@@ -102,6 +102,10 @@
   font-weight: 500;
   margin-left: 1rem;
   font-family: "CharkaPetchBold";
+}
+.summary-product-price--old {
+  text-decoration: line-through;
+  color: #888;
 }
 .summary-product-buybutton {
   background: #00448d;

@@ -71,7 +71,7 @@ const Nav = () => {
     setQuery(newQuery);
   };
 
-  const debounceChange = lodash.debounce(handleChange, 1000);
+  const debounceChange = lodash.debounce(handleChange, 500);
 
   useEffect(() => {
     handleFetchData.current(query);
@@ -184,7 +184,7 @@ const Nav = () => {
               <ion-icon name="search-outline"></ion-icon>
               <form
                 className="header-navigation-form"
-                onSubmit={handleSearch}
+                onSubmit={data.length > 0 && !loading && handleSearch}
                 autoComplete="off"
               >
                 <div className="header-navigation-form-find">
