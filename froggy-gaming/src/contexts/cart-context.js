@@ -1,4 +1,3 @@
-import { random } from "lodash";
 import { createContext, useContext, useState } from "react";
 import useLocalStorage from "../hooks/useLocalStorage";
 
@@ -9,9 +8,10 @@ function CartProvider(props) {
     []
   );
   const [cartItems, setCartItems] = useState(storedCart);
-  // const { storedValue: storedItemQuantity, setValue: setStoredItemQuantity } =
-  //   useLocalStorage("itemQuantity", 1);
-  const [itemQuantity, setItemQuantity] = useState(1);
+  const { storedValue: storedQuantity, setValue: setStoredQuantity } =
+    useLocalStorage("itemQuantity", 1);
+  const [itemQuantity, setItemQuantity] = useState(storedQuantity);
+
   function addToCart(newItem) {
     setCartItems((prevItems) => {
       const isExisted = prevItems.some((item) => item.proId === newItem.proId);
@@ -19,17 +19,8 @@ function CartProvider(props) {
         setStoredCart([...prevItems]);
         return [...prevItems];
       }
-      // const proQuantity = { quantity: storedItemQuantity };
       setCartItems([...prevItems, newItem]);
       setStoredCart([...prevItems, ...newItem]);
-      //   [...prevItems, newItem].forEach((item) => {
-      //     const randomObj2 = Object.assign(item, proQuantity);
-      //     setStoredCart({ ...randomObj2 });
-      //     return { ...randomObj2 };
-      //   })
-      // );
-
-      // console.log([...prevItems, newItem]);
       return [...prevItems, newItem];
     });
   }
@@ -40,17 +31,52 @@ function CartProvider(props) {
       return result;
     });
   }
+
+  function increaseQuantity(productId) {
+    const updatedCart = cartItems.map((item) => {
+      if (item.proId === productId) {
+        return {
+          ...item,
+          totalPrice: item.proPrice * (item.quantity + 1),
+          quantity: item.quantity + 1,
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCart);
+    setStoredCart(updatedCart);
+  }
+
+  function decreaseQuantity(productId) {
+    const updatedCart = cartItems.map((item) => {
+      if (item.quantity <= 1) {
+        return { ...item };
+      }
+      if (item.proId === productId) {
+        return {
+          ...item,
+          totalPrice: item.proPrice * (item.quantity - 1),
+          quantity: item.quantity - 1,
+        };
+      }
+      return item;
+    });
+    setCartItems(updatedCart);
+    setStoredCart(updatedCart);
+  }
+
   const value = {
     storedCart,
     cartItems,
     itemQuantity,
-    // storedItemQuantity,
+    storedQuantity,
     setStoredCart,
     setItemQuantity,
-    // setStoredItemQuantity,
+    setStoredQuantity,
+    increaseQuantity,
+    decreaseQuantity,
     addToCart,
     removeFromCart,
-    // removeFromCartByZero,
   };
   return <CartContext.Provider value={value} {...props}></CartContext.Provider>;
 }

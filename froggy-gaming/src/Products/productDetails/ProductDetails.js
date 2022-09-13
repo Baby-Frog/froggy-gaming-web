@@ -56,8 +56,9 @@ const ProductSummaryInfo = ({
   item: { proId, proName, proPrice, images },
 }) => {
   const { addToCart } = useCart();
-  const product = { proId, proName, proPrice, images };
-
+  const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(proPrice);
+  const product = { proId, proName, proPrice, images, quantity, totalPrice };
   return (
     <div className="summary-info">
       <div className="summary-product-name">{item.proName}</div>

@@ -47,22 +47,39 @@ function CartProduct() {
 
 function CartPrices() {
   const { cartItems } = useCart();
+  console.log("log ~ CartPrices ~ cartItems", cartItems);
   return (
     <div className="cart-total__prices">
       <div className="cart-prices">
         <div className="cart-prices__title">THÔNG TIN GIỎ HÀNG</div>
         <div>
           Số lượng sản phẩm
-          <span className="count">{cartItems.length}</span>
+          <span className="count">
+            {cartItems.reduce(
+              (partialSum, item) => partialSum + item.quantity,
+              0
+            )}{" "}
+            sản phẩm
+          </span>
         </div>
         <div>
           Tổng chi phí
-          <span className="prices">0 đ</span>
+          <span className="prices">
+            {cartItems
+              .reduce((partialSum, item) => partialSum + item.totalPrice, 0)
+              .toLocaleString("it-IT", {
+                style: "currency",
+                currency: "VND",
+              })}
+          </span>
         </div>
-
-        <a href="https://www.google.com/" className="go-checkout">
+        <a
+          href="https://www.google.com/"
+          className={`go-checkout ${cartItems.length > 0 && "active"}`}
+        >
           Xác nhận đơn hàng
         </a>
+
         <a href="https://www.google.com/" className="delete-cart">
           Xóa giỏ hàng
         </a>
@@ -193,22 +210,19 @@ const CartBasket = () => {
   );
 };
 function CartItems({ navigate, item, removeFromCart }) {
-  const [itemQuantity, setItemQuantity] = useState(1);
-  // const {
-  //   // itemQuantity,
-  //   // setItemQuantity,
-  //   // storedItemQuantity,
-  //   // setStoredItemQuantity,
-  // } = useCart();
-  const handleDecreaseQuantity = () => {
-    if (itemQuantity <= 1) return;
-    // setStoredItemQuantity((storedItemQuantity) => storedItemQuantity - 1);
-    setItemQuantity((itemQuantity) => itemQuantity - 1);
-  };
-  const handleIncreaseQuantity = () => {
-    // setStoredItemQuantity((storedItemQuantity) => storedItemQuantity + 1);
-    setItemQuantity((itemQuantity) => itemQuantity + 1);
-  };
+  const {
+    increaseQuantity,
+    decreaseQuantity,
+    // storedItemQuantity,
+    // increaseQuantity,
+  } = useCart();
+  // const handleDecreaseQuantity = () => {
+  //   if (quantity <= 1) return;
+  //   setQuantity((quantity) => quantity - 1);
+  // };
+  // const handleIncreaseQuantity = () => {
+  //   setQuantity((quantity) => quantity + 1);
+  // };
 
   return (
     <div className="cart-item" key={item.proId}>
@@ -236,11 +250,17 @@ function CartItems({ navigate, item, removeFromCart }) {
         </>
       </div>
       <div className="cart-amount">
-        <span className="cart-decrease" onClick={handleDecreaseQuantity}>
+        <span
+          className="cart-decrease"
+          onClick={() => decreaseQuantity(item.proId)}
+        >
           -
         </span>
-        <span className="cart-count">{itemQuantity}</span>
-        <span className="cart-increase" onClick={handleIncreaseQuantity}>
+        <span className="cart-count">{item.quantity}</span>
+        <span
+          className="cart-increase"
+          onClick={() => increaseQuantity(item.proId)}
+        >
           +
         </span>
       </div>
