@@ -70,14 +70,15 @@
 .cart-header {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     color: #29324e;
+
 }
 
 .cart-title {
     font-weight: bold;
     font-size: 20px;
     color: #29324e;
+
 }
 
 .cart-header span {

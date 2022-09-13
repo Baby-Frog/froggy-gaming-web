@@ -17,6 +17,7 @@ import { SearchProvider } from "./contexts/search-context";
 import ProductList from "./Products/productList/ProductList";
 import CartContainer from "./Cart/CartContainer/CartContainer";
 import { CartProvider } from "./contexts/cart-context";
+import LoginForm from "./Login/LoginForm";
 // import ProductDetails from "./Products/productDetails/ProductDetails";
 
 function App() {
@@ -36,7 +37,9 @@ function App() {
             <Route path="/tin-tuc" element={<News />}></Route>
             <Route path="/chi-tiet" element={<ProductList />}></Route>
             <Route path="/gio-hang" element={<CartContainer />}></Route>
+            <Route path="/dang-nhap" element={<LoginForm />}></Route>
             <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
+
             <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>
           <ContactBar></ContactBar>

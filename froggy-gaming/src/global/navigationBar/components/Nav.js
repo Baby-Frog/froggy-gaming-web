@@ -265,7 +265,10 @@ const Nav = () => {
             </li>
 
             <li className="header-navigation-item">
-              <div className="header-navigation-user">
+              <div
+                className="header-navigation-user"
+                onClick={() => navigate("/dang-nhap")}
+              >
                 <i className="fa-solid fa-user-gear"></i>
                 <span>Đăng nhập/Đăng ký</span>
               </div>

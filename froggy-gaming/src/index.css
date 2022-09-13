@@ -34,6 +34,36 @@
   cursor: pointer;
 }
 
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  font-size: 1.7rem;
+  margin-top: 2rem;
+}
+.pagination li {
+  padding: 1rem 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.pagination li:hover {
+  background: rgba(0, 68, 141, 0.3);
+}
+.pagination .next,
+.pagination .previous {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+.pagination .selected {
+  color: white;
+  background: #00448d;
+}
+.pagination .selected:hover {
+  color: white;
+  background: #00448d;
+}
+
 @-webkit-keyframes shine {
   to {
     background-position-x: -200%;

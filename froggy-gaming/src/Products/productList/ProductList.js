@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ReactPaginate from "react-paginate";
 import useSWR from "swr";
 import { fetcher } from "../../config";
 import { useSearch } from "../../contexts/search-context";
@@ -9,8 +10,11 @@ import useClickOutside from "../../hooks/useClickOutside";
 import useDropdown from "../../hooks/useDropdown";
 import useScrolled from "../../hooks/useScrolled";
 import "./styles/productlist.css";
-
+const itemsPerPage = 12;
 const ProductList = () => {
+  const [pageCount, setPageCount] = useState(0);
+
+  const [itemOffset, setItemOffset] = useState(0);
   const { searchResult, url, setUrl, query } = useSearch();
   const { nodeRef, setShow, show } = useClickOutside(false);
   const [nextPage, setNextPage] = useState(1);
@@ -21,26 +25,32 @@ const ProductList = () => {
     setSelected(e.target.textContent);
     if (e.target.textContent === "Giá (Thấp -> Cao)") {
       setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.price&order=asc`
       );
     }
     if (e.target.textContent === "Giá (Cao -> Thấp)") {
       setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=desc`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.price&order=desc`
       );
     }
     if (e.target.textContent === "Từ (A -> Z)") {
       setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.name&order=asc`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.name&order=asc`
       );
     }
     if (e.target.textContent === "Từ (Z -> A)") {
       setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.name&order=desc`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.name&order=desc`
       );
     }
     setShow(false);
   };
+
+  useEffect(() => {
+    setUrl(
+      `http://localhost:8386/api/v1/product/search/query=${searchResult}&page=${nextPage}/sort=pro.price&order=asc`
+    );
+  }, [nextPage, searchResult, setUrl]);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.innerWidth > 1024 && window.scrollY > 300) {
@@ -57,9 +67,22 @@ const ProductList = () => {
       isMounted.current = false;
     };
   }, []);
-  if (!data || !data.data || !data.data.content) return;
+
   const products = data?.data?.content || [];
   const queryInfo = data?.data || [];
+  useEffect(() => {
+    if (!data || !data.data || !data.data.content) return;
+
+    // Fetch items from another resources.
+    setPageCount(Math.ceil(data.data.totalElements / itemsPerPage));
+  }, [data, itemOffset]);
+
+  // Invoke when user click to request another page.
+  const handlePageClick = (event) => {
+    const newOffset = (event.selected * itemsPerPage) % data.data.totalElements;
+    setItemOffset(newOffset);
+    setNextPage(event.selected + 1);
+  };
   return (
     <div className="wrapper">
       <div className="breadcrumbs">
@@ -121,6 +144,16 @@ const ProductList = () => {
                 <ProductCard key={item.proId} item={item}></ProductCard>
               ))}
           </div>
+          <ReactPaginate
+            breakLabel="..."
+            nextLabel="Trang sau >"
+            onPageChange={handlePageClick}
+            pageRangeDisplayed={5}
+            pageCount={pageCount}
+            previousLabel="< Trang trước"
+            renderOnZeroPageCount={null}
+            className="pagination"
+          />
         </div>
       </div>
     </div>
