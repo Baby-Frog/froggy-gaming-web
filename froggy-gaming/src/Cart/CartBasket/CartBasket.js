@@ -5,6 +5,8 @@ import Card from "../asset/images/mastercard.png";
 import Visa from "../asset/images/visa.png";
 import "./styles/CartBasket.css";
 import { useCart } from "../../contexts/cart-context";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 function CartProcess() {
   return (
@@ -12,7 +14,7 @@ function CartProcess() {
       <div className="process process_active">
         <span>1.Chọn sản phẩm</span>
       </div>
-      <div className="process process_active">
+      <div className="process">
         <span>2.Xác nhận đơn hàng</span>
       </div>
       <div className="process">
@@ -23,16 +25,20 @@ function CartProcess() {
 }
 
 function CartProduct() {
-  const { cartItems } = useCart();
+  const { cartItems, removeFromCart } = useCart();
+  const navigate = useNavigate();
+  console.log(cartItems);
   return (
     <div className="cart-product">
       <div className="cart-header">
         <div className="cart-title">THÔNG TIN SẢN PHẨM</div>
         {cartItems.map((item) => (
-          <div key={item.proId}>
-            <span>{item.proName}</span>
-            <span>{item.proPrice}</span>
-          </div>
+          <CartItems
+            key={item.proId}
+            item={item}
+            navigate={navigate}
+            removeFromCart={removeFromCart}
+          />
         ))}
       </div>
     </div>
@@ -40,13 +46,14 @@ function CartProduct() {
 }
 
 function CartPrices() {
+  const { cartItems } = useCart();
   return (
     <div className="cart-total__prices">
       <div className="cart-prices">
         <div className="cart-prices__title">THÔNG TIN GIỎ HÀNG</div>
         <div>
           Số lượng sản phẩm
-          <span className="count">0</span>
+          <span className="count">{cartItems.length}</span>
         </div>
         <div>
           Tổng chi phí
@@ -69,8 +76,8 @@ function CartPrices() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M9 18C13.9706 18 18 13.9706 18 9C18 4.02944 13.9706 0 9 0C4.02944 0 0 4.02944 0 9C0 13.9706 4.02944 18 9 18Z"
                 fill="#27AE60"
               ></path>
@@ -89,8 +96,8 @@ function CartPrices() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M9 18C13.9706 18 18 13.9706 18 9C18 4.02944 13.9706 0 9 0C4.02944 0 0 4.02944 0 9C0 13.9706 4.02944 18 9 18Z"
                 fill="#27AE60"
               ></path>
@@ -109,8 +116,8 @@ function CartPrices() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M9 18C13.9706 18 18 13.9706 18 9C18 4.02944 13.9706 0 9 0C4.02944 0 0 4.02944 0 9C0 13.9706 4.02944 18 9 18Z"
                 fill="#27AE60"
               ></path>
@@ -129,8 +136,8 @@ function CartPrices() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M9 18C13.9706 18 18 13.9706 18 9C18 4.02944 13.9706 0 9 0C4.02944 0 0 4.02944 0 9C0 13.9706 4.02944 18 9 18Z"
                 fill="#27AE60"
               ></path>
@@ -149,8 +156,8 @@ function CartPrices() {
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                fill-rule="evenodd"
-                clip-rule="evenodd"
+                fillRule="evenodd"
+                clipRule="evenodd"
                 d="M9 18C13.9706 18 18 13.9706 18 9C18 4.02944 13.9706 0 9 0C4.02944 0 0 4.02944 0 9C0 13.9706 4.02944 18 9 18Z"
                 fill="#27AE60"
               ></path>
@@ -185,5 +192,94 @@ const CartBasket = () => {
     </div>
   );
 };
+function CartItems({ navigate, item, removeFromCart }) {
+  const [itemQuantity, setItemQuantity] = useState(1);
+  // const {
+  //   // itemQuantity,
+  //   // setItemQuantity,
+  //   // storedItemQuantity,
+  //   // setStoredItemQuantity,
+  // } = useCart();
+  const handleDecreaseQuantity = () => {
+    if (itemQuantity <= 1) return;
+    // setStoredItemQuantity((storedItemQuantity) => storedItemQuantity - 1);
+    setItemQuantity((itemQuantity) => itemQuantity - 1);
+  };
+  const handleIncreaseQuantity = () => {
+    // setStoredItemQuantity((storedItemQuantity) => storedItemQuantity + 1);
+    setItemQuantity((itemQuantity) => itemQuantity + 1);
+  };
+
+  return (
+    <div className="cart-item" key={item.proId}>
+      <div
+        className="cart-image"
+        onClick={() => navigate(`/san-pham/${item.proId}`)}
+      >
+        <img src={item.images[0].imgPath.replaceAll("-", "")} alt="" />
+      </div>
+      {/* flex flex-col */}
+      <div className="cart-summary">
+        <>
+          <div
+            className="cart-productname"
+            onClick={() => navigate(`/san-pham/${item.proId}`)}
+          >
+            {item.proName}
+          </div>
+          <div className="cart-productprice">
+            {item.proPrice.toLocaleString("it-IT", {
+              style: "currency",
+              currency: "VND",
+            })}
+          </div>
+        </>
+      </div>
+      <div className="cart-amount">
+        <span className="cart-decrease" onClick={handleDecreaseQuantity}>
+          -
+        </span>
+        <span className="cart-count">{itemQuantity}</span>
+        <span className="cart-increase" onClick={handleIncreaseQuantity}>
+          +
+        </span>
+      </div>
+      <div className="cart-delete" onClick={() => removeFromCart(item.proId)}>
+        <svg
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M10 15L10 12"
+            stroke="#33363F"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M14 15L14 12"
+            stroke="#33363F"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M3 7H21V7C20.0681 7 19.6022 7 19.2346 7.15224C18.7446 7.35523 18.3552 7.74458 18.1522 8.23463C18 8.60218 18 9.06812 18 10V16C18 17.8856 18 18.8284 17.4142 19.4142C16.8284 20 15.8856 20 14 20H10C8.11438 20 7.17157 20 6.58579 19.4142C6 18.8284 6 17.8856 6 16V10C6 9.06812 6 8.60218 5.84776 8.23463C5.64477 7.74458 5.25542 7.35523 4.76537 7.15224C4.39782 7 3.93188 7 3 7V7Z"
+            stroke="#33363F"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+          <path
+            d="M10.0681 3.37059C10.1821 3.26427 10.4332 3.17033 10.7825 3.10332C11.1318 3.03632 11.5597 3 12 3C12.4403 3 12.8682 3.03632 13.2175 3.10332C13.5668 3.17033 13.8179 3.26427 13.9319 3.37059"
+            stroke="#33363F"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+        </svg>
+      </div>
+    </div>
+  );
+}
 
 export default CartBasket;

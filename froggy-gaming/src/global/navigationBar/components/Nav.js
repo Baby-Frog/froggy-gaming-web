@@ -10,6 +10,7 @@ import LoadingSkeleton from "../../SkeletonLoading/LoadingSkeleton";
 import { NavigationLinkList } from "./NavigationLinkList";
 import { useState } from "react";
 import { useSearch } from "../../../contexts/search-context";
+import { useCart } from "../../../contexts/cart-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
@@ -18,6 +19,7 @@ const Nav = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const { cartItems } = useCart();
   const { height, isScrolled, setIsScrolled } = useScrolled(100);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -184,7 +186,13 @@ const Nav = () => {
               <ion-icon name="search-outline"></ion-icon>
               <form
                 className="header-navigation-form"
-                onSubmit={data.length > 0 && !loading && handleSearch}
+                onSubmit={
+                  data.length > 0 && !loading
+                    ? handleSearch
+                    : function () {
+                        return;
+                      }
+                }
                 autoComplete="off"
               >
                 <div className="header-navigation-form-find">
@@ -269,7 +277,9 @@ const Nav = () => {
               <div className="header-navigation-cart">
                 <ion-icon name="cart-outline"></ion-icon>
                 <span>Giỏ hàng</span>
-                <div className="header-navigation-cart-number">1</div>
+                <div className="header-navigation-cart-number">
+                  {cartItems.length}
+                </div>
               </div>
             </li>
           </ul>

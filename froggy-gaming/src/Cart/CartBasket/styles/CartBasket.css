@@ -185,3 +185,73 @@
 .cart-left {
     width: 75%;
 }
+
+.cart-item {
+    border: 1px solid #ededed;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 25px;
+    font-family: "CharkaPetchBold";
+}
+
+.cart-image {
+    cursor: pointer;
+
+}
+
+.cart-image img {
+    width: 70px;
+    height: 90px;
+}
+
+.cart-summary {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 400px;
+}
+
+.cart-productname {
+    font-size: 1.8rem;
+    font-family: "CharkaPetchRegular";
+    color: #005ec4;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.cart-productprice {
+    font-size: 1.6rem;
+    color: red;
+}
+
+.cart-amount {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 1rem;
+}
+
+.cart-count {
+    padding: 0.2rem 1rem !important;
+}
+
+.cart-increase,
+.cart-decrease {
+    cursor: pointer;
+    background: #ccc;
+    padding: 0.2rem 1rem !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-delete {
+    cursor: pointer;
+}

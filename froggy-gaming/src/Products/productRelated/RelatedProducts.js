@@ -10,7 +10,14 @@ const RelatedProducts = ({ item }) => {
     fetcher
   );
   if (!data) return;
+  // Giải thích code:
+  // relatedProducts = là 1 mảng, chứa các sản phẩm có cateId giống với sản phẩm mà bạn đang coi trên web (lấy ra từ data ở trên)
   const relatedProducts = data?.data?.content || [];
+  // Theo lẽ hiểu thông thường, thì danh sách chứa các sản phẩm liên quan không được bao gồm sản phẩm hiện tại mà người dùng đang xem
+  // Nếu danh sách các sản phẩm liên quan lại có sản phẩm mà người dùng đang xem thì nghe nó ngáo quá nên tôi filter các sản phẩm có proId khác với sản phẩm hiện tại
+  const existedItems = relatedProducts.filter(
+    (currentItems) => currentItems.proId !== item.proId
+  );
 
   const settings = {
     infinite: true,
@@ -38,8 +45,8 @@ const RelatedProducts = ({ item }) => {
   return (
     <div className="related">
       <Slider {...settings}>
-        {relatedProducts.length > 0 &&
-          relatedProducts.map((item) => (
+        {existedItems.length > 0 &&
+          existedItems.map((item) => (
             <ProductCard key={item.proId} item={item}></ProductCard>
           ))}
       </Slider>

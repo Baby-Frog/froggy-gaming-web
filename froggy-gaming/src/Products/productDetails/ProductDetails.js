@@ -50,6 +50,85 @@ const ProductSummary = ({ item }) => {
     </div>
   );
 };
+
+const ProductSummaryInfo = ({
+  item,
+  item: { proId, proName, proPrice, images },
+}) => {
+  const { addToCart } = useCart();
+  const product = { proId, proName, proPrice, images };
+
+  return (
+    <div className="summary-info">
+      <div className="summary-product-name">{item.proName}</div>
+
+      <div className="summary-product-general">Thông tin chung:</div>
+      <ul className="summary-product-list">
+        <li className="summary-product-item">
+          <span className="summary-product-title">Hãng sản xuất:</span>
+          <span className="summary-product-text summary-product-text--uppercase">
+            {item.brand.brandName}
+          </span>
+        </li>
+        <li className="summary-product-item">
+          <span className="summary-product-title">Tình trạng: </span>
+          <span className="summary-product-text">
+            {item.proStatus ? "Còn hàng" : "Hết hàng"}
+          </span>
+        </li>
+        <li className="summary-product-item">
+          <span className="summary-product-title">Bảo hành: </span>
+          <span className="summary-product-text">12 tháng</span>
+        </li>
+        <li className="summary-product-item">
+          {item.category.cateName === "Bàn phím" && (
+            <span className="summary-product-title">Switch: </span>
+          )}
+          {item.category.cateName === "Chuột" && (
+            <span className="summary-product-title">Kết nối: </span>
+          )}
+          {item.productDetail.keyboardSwitch !== null && (
+            <span className="summary-product-text">
+              {item.productDetail.keyboardSwitch}
+            </span>
+          )}
+          {item.productDetail.mouseSensor !== null && (
+            <span className="summary-product-text">
+              {item.productDetail.connect}
+            </span>
+          )}
+        </li>
+      </ul>
+      <div className="summary-product-buy">
+        <div className="summary-product-pricedisplay">
+          <span className="summary-product-text">Giá cũ: </span>
+          <span className="summary-product-price summary-product-price--old">
+            {(item.proPrice + 200000).toLocaleString("it-IT", {
+              style: "currency",
+              currency: "VND",
+            })}
+          </span>
+        </div>
+        <div className="summary-product-pricedisplay">
+          <span className="summary-product-text">Giá KM: </span>
+          <span className="summary-product-price">
+            {item.proPrice.toLocaleString("it-IT", {
+              style: "currency",
+              currency: "VND",
+            })}
+          </span>
+        </div>
+        <button
+          className="summary-product-buybutton"
+          onClick={() => addToCart(product)}
+        >
+          Đặt hàng
+        </button>
+      </div>
+    </div>
+  );
+};
+
 const ProductTabs = ({ item }) => {
   const [activeTab, setActiveTab] = useState(1);
   const handleSelectTab = (index) => {
@@ -114,9 +193,9 @@ const ProductTabs = ({ item }) => {
             height="720"
             src="https://www.youtube.com/embed/husm2YMk26s"
             title="Trên tay Bàn phím không dây Akko 3068 Silent - Nhỏ mà có Võ"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
       </div>
@@ -258,81 +337,6 @@ const ProductSpecification = ({ item }) => {
 // description của sản phẩm
 const ProductDescription = ({ item }) => {
   return <div className="description">{item.proDesc}</div>;
-};
-
-const ProductSummaryInfo = ({ item, item: { proId, proName, proPrice } }) => {
-  const { addToCart } = useCart();
-  const product = { proId, proName, proPrice };
-
-  return (
-    <div className="summary-info">
-      <div className="summary-product-name">{item.proName}</div>
-
-      <div className="summary-product-general">Thông tin chung:</div>
-      <ul className="summary-product-list">
-        <li className="summary-product-item">
-          <span className="summary-product-title">Hãng sản xuất:</span>
-          <span className="summary-product-text summary-product-text--uppercase">
-            {item.brand.brandName}
-          </span>
-        </li>
-        <li className="summary-product-item">
-          <span className="summary-product-title">Tình trạng: </span>
-          <span className="summary-product-text">
-            {item.proStatus ? "Còn hàng" : "Hết hàng"}
-          </span>
-        </li>
-        <li className="summary-product-item">
-          <span className="summary-product-title">Bảo hành: </span>
-          <span className="summary-product-text">12 tháng</span>
-        </li>
-        <li className="summary-product-item">
-          {item.category.cateName === "Bàn phím" && (
-            <span className="summary-product-title">Switch: </span>
-          )}
-          {item.category.cateName === "Chuột" && (
-            <span className="summary-product-title">Kết nối: </span>
-          )}
-          {item.productDetail.keyboardSwitch !== null && (
-            <span className="summary-product-text">
-              {item.productDetail.keyboardSwitch}
-            </span>
-          )}
-          {item.productDetail.mouseSensor !== null && (
-            <span className="summary-product-text">
-              {item.productDetail.connect}
-            </span>
-          )}
-        </li>
-      </ul>
-      <div className="summary-product-buy">
-        <div className="summary-product-pricedisplay">
-          <span className="summary-product-text">Giá cũ: </span>
-          <span className="summary-product-price summary-product-price--old">
-            {(item.proPrice + 200000).toLocaleString("it-IT", {
-              style: "currency",
-              currency: "VND",
-            })}
-          </span>
-        </div>
-        <div className="summary-product-pricedisplay">
-          <span className="summary-product-text">Giá KM: </span>
-          <span className="summary-product-price">
-            {item.proPrice.toLocaleString("it-IT", {
-              style: "currency",
-              currency: "VND",
-            })}
-          </span>
-        </div>
-        <button
-          className="summary-product-buybutton"
-          onClick={() => addToCart(product)}
-        >
-          Đặt hàng
-        </button>
-      </div>
-    </div>
-  );
 };
 
 const ProductSummarySlider = ({ images }) => {
