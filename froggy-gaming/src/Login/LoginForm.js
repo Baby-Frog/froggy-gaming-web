@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const doSomething = () => {
+  const handleSubmit = () => {
     // code trên này
     // navigate("/");
   };
   return (
     <div>
-      <form onSubmit={doSomething}>
+      <form onSubmit={handleSubmit}>
         <input type="text" id="username" name="username" />
         <label htmlFor="username">Username</label>
         <input type="text" id="password" name="password" />
