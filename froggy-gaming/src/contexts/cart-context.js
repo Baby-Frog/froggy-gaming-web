@@ -11,19 +11,31 @@ function CartProvider(props) {
   const { storedValue: storedQuantity, setValue: setStoredQuantity } =
     useLocalStorage("itemQuantity", 1);
   const [itemQuantity, setItemQuantity] = useState(storedQuantity);
+  const [addedSuccess, setAddedSuccess] = useState(false);
+  const [addedFailed, setAddedFailed] = useState(false);
 
   function addToCart(newItem) {
     setCartItems((prevItems) => {
       const isExisted = prevItems.some((item) => item.proId === newItem.proId);
+      console.log(isExisted);
       if (isExisted) {
+        setAddedFailed(true);
+        setAddedSuccess(false);
         setStoredCart([...prevItems]);
+        setTimeout(() => {
+          setAddedFailed(false);
+        }, 3000);
         return [...prevItems];
       }
-      setCartItems([...prevItems, newItem]);
-      setStoredCart([...prevItems, ...newItem]);
+      setAddedSuccess(true);
+      setStoredCart([...prevItems, newItem]);
+      setTimeout(() => {
+        setAddedSuccess(false);
+      }, 3000);
       return [...prevItems, newItem];
     });
   }
+
   function removeFromCart(removeItemId) {
     setCartItems((prevItems) => {
       const result = prevItems.filter((item) => item.proId !== removeItemId);
@@ -75,6 +87,8 @@ function CartProvider(props) {
     cartItems,
     itemQuantity,
     storedQuantity,
+    addedSuccess,
+    addedFailed,
     setStoredCart,
     setItemQuantity,
     setStoredQuantity,

@@ -17,31 +17,29 @@ const ProductList = () => {
   const { searchResult, url, setUrl, nextPage, setNextPage, query } =
     useSearch();
   const { nodeRef, setShow, show } = useClickOutside(false);
-
   const [selected, setSelected] = useState("Giá (Thấp -> Cao)");
   const { height, setIsScrolled } = useScrolled(300);
   const { data } = useSWR(url, fetcher);
-  console.log("log ~ ProductList ~ data", data);
   const handleSelect = (e) => {
     setSelected(e.target.textContent);
     if (e.target.textContent === "Giá (Thấp -> Cao)") {
       setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.price&order=asc`
       );
     }
     if (e.target.textContent === "Giá (Cao -> Thấp)") {
       setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=desc`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.price&order=desc`
       );
     }
     if (e.target.textContent === "Từ (A -> Z)") {
       setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.name&order=asc`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.name&order=asc`
       );
     }
     if (e.target.textContent === "Từ (Z -> A)") {
       setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.name&order=desc`
+        `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.name&order=desc`
       );
     }
     setShow(false);
@@ -49,9 +47,10 @@ const ProductList = () => {
 
   useEffect(() => {
     setUrl(
-      `http://localhost:8386/api/v1/product/search/query=${searchResult}&page=${nextPage}/sort=pro.price&order=asc`
+      `http://localhost:8386/api/v1/product/search/query=${query}&page=${nextPage}/sort=pro.price&order=asc`
     );
-  }, [nextPage, searchResult, setUrl]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nextPage, setUrl]);
   useEffect(() => {
     window.addEventListener("scroll", () => {
       if (window.innerWidth > 1024 && window.scrollY > 300) {
@@ -72,7 +71,7 @@ const ProductList = () => {
   const products = data?.data?.content || [];
   const queryInfo = data?.data || [];
   useEffect(() => {
-    if (!data || !data.data || !data.data.content) return;
+    if (!data) return;
 
     // Fetch items from another resources.
     setPageCount(Math.ceil(data.data.totalElements / itemsPerPage));

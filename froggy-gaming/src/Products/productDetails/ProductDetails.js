@@ -17,20 +17,42 @@ const ProductDetails = () => {
     fetcher
   );
   const popUpRef = useRef({});
-  const showPopup = () => {
-    popUpRef.current.classList.add("active");
-    setTimeout(() => {
-      popUpRef.current.classList.remove("active");
-    }, 3000);
-  };
+  const { addedSuccess, addedFailed } = useCart();
   if (!data || !data.data) return null;
   const productSummary = data.data;
+  const handleClosePopup = () => {
+    popUpRef.current.classList.remove("active");
+  };
   return (
     <div className="wrapper">
-      <ProductSummary
-        showPopup={showPopup}
-        item={productSummary}
-      ></ProductSummary>
+      <div
+        className={`popup ${addedSuccess ? "active success" : ""} ${
+          addedFailed ? "active failed" : ""
+        }`}
+        ref={popUpRef}
+      >
+        <div className="popup-close" onClick={handleClosePopup}>
+          <i className="fa-solid fa-xmark"></i>
+        </div>
+        <div className="popup-content">
+          <span className="popup-icon">
+            <i
+              className={`fa-regular ${addedSuccess && "fa-circle-check"} ${
+                addedFailed && "fa-circle-xmark"
+              }`}
+            ></i>
+          </span>
+          {addedSuccess && (
+            <span className="popup-text">Thêm vào giỏ hàng thành công</span>
+          )}
+          {addedFailed && (
+            <span className="popup-text">
+              Thêm vào giỏ hàng thất bại ( đã tồn tại trong giỏ hàng )
+            </span>
+          )}
+        </div>
+      </div>
+      <ProductSummary item={productSummary}></ProductSummary>
       <SectionDivider
         sectionContent={"Thông tin sản phẩm"}
         marginBlock={"4rem"}
@@ -67,7 +89,6 @@ const ProductSummary = ({ item, showPopup }) => {
 const ProductSummaryInfo = ({
   item,
   item: { proId, proName, proPrice, images },
-  showPopup,
 }) => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
@@ -423,6 +444,8 @@ const ProductSummaryBottomImages = ({ item }) => {
     </div>
   );
 };
+
+const ProductPopup = () => {};
 
 const NextArrow = (props) => {
   const { onClick } = props;

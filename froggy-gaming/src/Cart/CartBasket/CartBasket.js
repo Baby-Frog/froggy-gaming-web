@@ -7,7 +7,6 @@ import "./styles/CartBasket.css";
 import { useCart } from "../../contexts/cart-context";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { remove } from "lodash";
 
 function CartProcess() {
   return (
@@ -48,9 +47,7 @@ function CartProduct() {
 
 function CartPrices() {
   const { cartItems, removeAllFromCart } = useCart();
-  const handleRemoveCart = () => {
-    removeAllFromCart();
-  };
+
   return (
     <div className="cart-total__prices">
       <div className="cart-prices">
@@ -90,7 +87,7 @@ function CartPrices() {
         <button
           href="https://www.google.com/"
           className="delete-cart"
-          onClick={handleRemoveCart}
+          onClick={removeAllFromCart}
         >
           Xóa giỏ hàng
         </button>
@@ -312,5 +309,9 @@ function CartItems({ navigate, item, removeFromCart }) {
     </div>
   );
 }
+
+const CartNotification = () => {
+  const [show, setShow] = useState(false);
+};
 
 export default CartBasket;

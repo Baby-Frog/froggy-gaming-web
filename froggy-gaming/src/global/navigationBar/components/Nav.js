@@ -14,15 +14,7 @@ import { useCart } from "../../../contexts/cart-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const {
-    query,
-    setQuery,
-    setUrl,
-    searchResult,
-    nextPage,
-    setSearchResult,
-    setSearchParam,
-  } = useSearch();
+  const { query, setQuery, handleSearchResults } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -63,17 +55,17 @@ const Nav = () => {
     document.body.classList.toggle("nav-open");
   };
 
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setUrl(
-      `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
-    );
-    setSearchResult(query);
-    setSearchParam({
-      query: query,
-    });
-    navigate(`/chi-tiet?query=${query}`);
-  };
+  // const handleSearch = (e) => {
+  //   e.preventDefault();
+  //   setUrl(
+  //     `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
+  //   );
+  //   setSearchResult(query);
+  //   setSearchParam({
+  //     query: query,
+  //   });
+  //   navigate(`/chi-tiet?query=${query}`);
+  // };
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -194,7 +186,7 @@ const Nav = () => {
                 className="header-navigation-form"
                 onSubmit={
                   data.length > 0 && !loading
-                    ? handleSearch
+                    ? handleSearchResults
                     : function () {
                         return;
                       }
@@ -214,7 +206,10 @@ const Nav = () => {
                     onChange={debounceChange}
                   />
                   {!loading ? (
-                    <span className="cursor-pointer" onClick={handleSearch}>
+                    <span
+                      className="cursor-pointer"
+                      onClick={handleSearchResults}
+                    >
                       <ion-icon name="search-outline"></ion-icon>
                     </span>
                   ) : (
