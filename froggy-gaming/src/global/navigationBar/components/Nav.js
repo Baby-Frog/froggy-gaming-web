@@ -60,15 +60,15 @@ const Nav = () => {
     setUrl(
       `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
     );
+    setSearchParam({
+      query: query,
+    });
     navigate(`/chi-tiet?query=${query}`);
   };
 
   const handleChange = (e) => {
     const newQuery = e.target.value;
-    setQuery(e.target.value);
-    setSearchParam({
-      query: newQuery,
-    });
+    setQuery(newQuery);
   };
 
   const debounceChange = lodash.debounce(handleChange, 500);

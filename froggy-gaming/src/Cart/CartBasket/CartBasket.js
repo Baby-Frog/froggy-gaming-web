@@ -310,8 +310,4 @@ function CartItems({ navigate, item, removeFromCart }) {
   );
 }
 
-const CartNotification = () => {
-  const [show, setShow] = useState(false);
-};
-
 export default CartBasket;

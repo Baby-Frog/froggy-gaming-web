@@ -25,33 +25,12 @@ const ProductDetails = () => {
   };
   return (
     <div className="wrapper">
-      <div
-        className={`popup ${addedSuccess ? "active success" : ""} ${
-          addedFailed ? "active failed" : ""
-        }`}
-        ref={popUpRef}
-      >
-        <div className="popup-close" onClick={handleClosePopup}>
-          <i className="fa-solid fa-xmark"></i>
-        </div>
-        <div className="popup-content">
-          <span className="popup-icon">
-            <i
-              className={`fa-regular ${addedSuccess && "fa-circle-check"} ${
-                addedFailed && "fa-circle-xmark"
-              }`}
-            ></i>
-          </span>
-          {addedSuccess && (
-            <span className="popup-text">Thêm vào giỏ hàng thành công</span>
-          )}
-          {addedFailed && (
-            <span className="popup-text">
-              Thêm vào giỏ hàng thất bại ( đã tồn tại trong giỏ hàng )
-            </span>
-          )}
-        </div>
-      </div>
+      <CartNotification
+        addedSuccess={addedSuccess}
+        addedFailed={addedFailed}
+        popUpRef={popUpRef}
+        handleClosePopup={handleClosePopup}
+      />
       <ProductSummary item={productSummary}></ProductSummary>
       <SectionDivider
         sectionContent={"Thông tin sản phẩm"}
@@ -465,3 +444,40 @@ const PrevArrow = (props) => {
   );
 };
 export default ProductDetails;
+
+function CartNotification({
+  addedSuccess,
+  addedFailed,
+  popUpRef,
+  handleClosePopup,
+}) {
+  return (
+    <div
+      className={`popup ${addedSuccess ? "active success" : ""} ${
+        addedFailed ? "active failed" : ""
+      }`}
+      ref={popUpRef}
+    >
+      <div className="popup-close" onClick={handleClosePopup}>
+        <i className="fa-solid fa-xmark"></i>
+      </div>
+      <div className="popup-content">
+        <span className="popup-icon">
+          <i
+            className={`fa-regular ${addedSuccess && "fa-circle-check"} ${
+              addedFailed && "fa-circle-xmark"
+            }`}
+          ></i>
+        </span>
+        {addedSuccess && (
+          <span className="popup-text">Thêm vào giỏ hàng thành công</span>
+        )}
+        {addedFailed && (
+          <span className="popup-text">
+            Thêm vào giỏ hàng thất bại ( đã tồn tại trong giỏ hàng )
+          </span>
+        )}
+      </div>
+    </div>
+  );
+}
