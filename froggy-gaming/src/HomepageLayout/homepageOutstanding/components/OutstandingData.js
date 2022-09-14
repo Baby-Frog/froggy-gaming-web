@@ -10,7 +10,7 @@ import PurpleSw from "../../../assets/purpleswitch.png";
 import BrownSw from "../../../assets/brownswitch.png";
 export const MostBuyData = [
   {
-    id: 1,
+    id: 84,
     img_url: Product1,
     keyboard: true,
     sale: "29% OFF",
@@ -71,7 +71,7 @@ export const MostBuyData = [
     weight: "810 Gram",
   },
   {
-    id: 5,
+    id: 170,
     img_url: Product5,
     keyboard: false,
     product_name: "Tai nghe Bluetooth Jabra Elite 85h",

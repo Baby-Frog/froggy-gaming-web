@@ -193,7 +193,7 @@
 
 .popup {
   position: fixed;
-  top: 4rem;
+  top: 6rem;
   right: 3rem;
   width: 400px;
   padding: 3rem;
@@ -219,6 +219,10 @@
   bottom: 0;
   left: 0;
   position: absolute;
+  -webkit-animation-name: barFillUp;
+          animation-name: barFillUp;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
   z-index: 5;
 }
 .popup.failed::before {
@@ -230,6 +234,10 @@
   left: 0;
   position: absolute;
   z-index: 5;
+  -webkit-animation-name: barFillUp;
+          animation-name: barFillUp;
+  -webkit-animation-duration: 3s;
+          animation-duration: 3s;
 }
 .popup.active {
   opacity: 1;
@@ -267,6 +275,23 @@
        column-gap: 2rem;
 }
 
+@-webkit-keyframes barFillUp {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes barFillUp {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
 .slick-current .summary-images-bottom {
   cursor: default;
   border: 2px solid #29324E;

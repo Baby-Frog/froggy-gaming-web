@@ -62,13 +62,13 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
     gap: 2rem;
 }
 
 .cat-items {
     width: calc((100% / 3) - 2rem);
-    height: 250px;
+    height: 200px;
+    cursor: pointer;
     background: #f0f3fc;
     position: relative;
     overflow: hidden;

@@ -14,7 +14,15 @@ import { useCart } from "../../../contexts/cart-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const { query, setQuery, handleSearchResults } = useSearch();
+  const {
+    query,
+    setQuery,
+    handleSearchResults,
+    searchParam,
+    setUrl,
+    setSearchResult,
+    setSearchParam,
+  } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -55,20 +63,21 @@ const Nav = () => {
     document.body.classList.toggle("nav-open");
   };
 
-  // const handleSearch = (e) => {
-  //   e.preventDefault();
-  //   setUrl(
-  //     `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
-  //   );
-  //   setSearchResult(query);
-  //   setSearchParam({
-  //     query: query,
-  //   });
-  //   navigate(`/chi-tiet?query=${query}`);
-  // };
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchResult(query);
+    setUrl(
+      `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
+    );
+    navigate(`/chi-tiet?query=${query}`);
+  };
 
   const handleChange = (e) => {
+    const newQuery = e.target.value;
     setQuery(e.target.value);
+    setSearchParam({
+      query: newQuery,
+    });
   };
 
   const debounceChange = lodash.debounce(handleChange, 500);
@@ -186,7 +195,7 @@ const Nav = () => {
                 className="header-navigation-form"
                 onSubmit={
                   data.length > 0 && !loading
-                    ? handleSearchResults
+                    ? handleSearch
                     : function () {
                         return;
                       }
@@ -206,10 +215,7 @@ const Nav = () => {
                     onChange={debounceChange}
                   />
                   {!loading ? (
-                    <span
-                      className="cursor-pointer"
-                      onClick={handleSearchResults}
-                    >
+                    <span className="cursor-pointer" onClick={handleSearch}>
                       <ion-icon name="search-outline"></ion-icon>
                     </span>
                   ) : (

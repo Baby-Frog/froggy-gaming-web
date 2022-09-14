@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const LoginForm = () => {
+const RegisterForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -34,29 +34,7 @@ const LoginForm = () => {
       console.log(error);
     }
   };
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label htmlFor="password">Password</label>
-        <button type="submit">Đăng nhập</button>
-      </form>
-    </div>
-  );
+  return <div>Đây là form đăng kí</div>;
 };
 
-export default LoginForm;
+export default RegisterForm;

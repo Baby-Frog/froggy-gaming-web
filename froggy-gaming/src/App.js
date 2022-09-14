@@ -11,13 +11,13 @@ import NotFound from "./404NotFound/NotFound";
 import ScrollToTop from "./ScrollToTop/ScrollToTop";
 import ScrollToTopButton from "./global/ScrollToTopButton/ScrollToTopButton";
 import News from "./News/NewsContainer/NewsContainer";
-// import CartContainer from "./Cart/CartContainer/components/CartContainer";
 import ProductDetails from "./Products/productDetails/ProductDetails";
 import { SearchProvider } from "./contexts/search-context";
 import ProductList from "./Products/productList/ProductList";
 import CartContainer from "./Cart/CartContainer/CartContainer";
 import { CartProvider } from "./contexts/cart-context";
-import LoginForm from "./Login/LoginForm";
+import LoginForm from "./Form/LoginForm";
+import RegisterForm from "./Form/RegisterForm";
 
 function App() {
   useEffect(() => {
@@ -29,7 +29,6 @@ function App() {
         <SearchProvider>
           <Nav></Nav>
           <ScrollToTop></ScrollToTop>
-          {/* <CartContainer></CartContainer> */}
           <Routes>
             <Route path="/" element={<HomepageContainer />}></Route>
             <Route path="/danh-muc" element={<CategoryContainer />}></Route>
@@ -37,8 +36,8 @@ function App() {
             <Route path="/chi-tiet" element={<ProductList />}></Route>
             <Route path="/gio-hang" element={<CartContainer />}></Route>
             <Route path="/dang-nhap" element={<LoginForm />}></Route>
+            <Route path="/dang-ky" element={<RegisterForm />}></Route>
             <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
-
             <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>
           <ContactBar></ContactBar>

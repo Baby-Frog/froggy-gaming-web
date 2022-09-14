@@ -1,8 +1,10 @@
 import React from "react";
 import { MostBuyData } from "./OutstandingData";
 import "../assets/outstanding.css";
+import { useNavigate } from "react-router-dom";
 
 const OutstandingProducts = () => {
+  const navigate = useNavigate();
   return (
     <div
       className="relevance"
@@ -13,7 +15,11 @@ const OutstandingProducts = () => {
     >
       {MostBuyData.length > 0 &&
         MostBuyData.map((item) => (
-          <div className="relevance-item" key={item.id}>
+          <div
+            className="relevance-item"
+            onClick={() => navigate(`/san-pham/${item.id}`)}
+            key={item.id}
+          >
             {/* 2 cái bên dưới align dọc với nhau, đều được bọc bởi 1 div và div đó có background skew */}
             <div className="relevance-img">
               <img src={item.img_url} alt="" />

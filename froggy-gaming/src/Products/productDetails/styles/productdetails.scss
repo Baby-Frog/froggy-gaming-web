@@ -248,7 +248,7 @@
 
 .popup {
     position: fixed;
-    top: 4rem;
+    top: 6rem;
     right: 3rem;
     width: 400px;
     padding: 3rem;
@@ -279,6 +279,8 @@
             bottom: 0;
             left: 0;
             position: absolute;
+            animation-name: barFillUp;
+            animation-duration: 3s;
             z-index: 5;
         }
     }
@@ -293,6 +295,8 @@
             left: 0;
             position: absolute;
             z-index: 5;
+            animation-name: barFillUp;
+            animation-duration: 3s;
         }
     }
 
@@ -333,6 +337,17 @@
         display: flex;
         align-items: center;
         column-gap: 2rem;
+    }
+}
+
+@keyframes barFillUp {
+    from {
+        width: 0%;
+    }
+
+
+    to {
+        width: 100%;
     }
 }
 
