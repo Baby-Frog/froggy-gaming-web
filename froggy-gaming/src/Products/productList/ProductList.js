@@ -14,8 +14,7 @@ const itemsPerPage = 12;
 const ProductList = () => {
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
-  const { searchResult, url, setUrl, nextPage, setNextPage, query } =
-    useSearch();
+  const { url, setUrl, nextPage, setNextPage, query } = useSearch();
   const { nodeRef, setShow, show } = useClickOutside(false);
   const [selected, setSelected] = useState("Giá (Thấp -> Cao)");
   const { height, setIsScrolled } = useScrolled(300);
@@ -99,7 +98,7 @@ const ProductList = () => {
         <div className="product-section">
           <div className="product-top">
             <div className="product-count">
-              <h3 className="product-found">Tìm kiếm - {searchResult}</h3>
+              <h3 className="product-found">Tìm kiếm - {query}</h3>
               <span className="product-amount">
                 [{queryInfo.numberOfElements} sản phẩm]
               </span>

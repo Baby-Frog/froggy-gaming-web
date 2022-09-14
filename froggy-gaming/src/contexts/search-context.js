@@ -4,8 +4,8 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 const SearchContext = createContext();
 function SearchProvider(props) {
   const [searchParam, setSearchParam] = useSearchParams();
-  const [query, setQuery] = useState(String(searchParam.get("query")));
-  const [searchResult, setSearchResult] = useState("");
+  const [query, setQuery] = useState(searchParam.get("query"));
+  // const [searchResult, setSearchResult] = useState("");
   const [nextPage, setNextPage] = useState(1);
   const [type, setType] = useState("price");
   const [order, setOrder] = useState("asc");
@@ -16,10 +16,10 @@ function SearchProvider(props) {
   const value = {
     query,
     url,
-    searchResult,
+    // searchResult,
     searchParam,
     nextPage,
-    setSearchResult,
+    // setSearchResult,
     setOrder,
     setType,
     setNextPage,

@@ -14,15 +14,7 @@ import { useCart } from "../../../contexts/cart-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const {
-    query,
-    setQuery,
-    handleSearchResults,
-    searchParam,
-    setUrl,
-    setSearchResult,
-    setSearchParam,
-  } = useSearch();
+  const { query, setQuery, setUrl, setSearchParam } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -41,7 +33,7 @@ const Nav = () => {
 
   handleFetchData.current = async () => {
     setLoading(true);
-    if (query.trim().length === 0 || query === null) {
+    if (!query === 0 || query === null) {
       setLoading(false);
     }
     try {
@@ -65,7 +57,6 @@ const Nav = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    setSearchResult(query);
     setUrl(
       `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
     );
@@ -128,10 +119,7 @@ const Nav = () => {
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height:
-                        String(query).trim().length === 0 || query === "null"
-                          ? "0px"
-                          : "260px",
+                      height: !query || query === null ? "0px" : "260px",
                     }}
                   >
                     <ProductItemsSkeleton></ProductItemsSkeleton>
@@ -146,14 +134,8 @@ const Nav = () => {
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height:
-                        String(query).trim().length === 0 || query === "null"
-                          ? "0px"
-                          : "260px",
-                      marginBlock:
-                        String(query).trim().length === 0 || query === "null"
-                          ? "0px"
-                          : "1rem",
+                      height: !query || query === null ? "0px" : "260px",
+                      marginBlock: !query || query === null ? "0px" : "1rem",
                     }}
                   >
                     {data.length > 0 &&
@@ -226,10 +208,7 @@ const Nav = () => {
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height:
-                        query.trim().length === 0 || query === "null"
-                          ? "0px"
-                          : "260px",
+                      height: !query || query === null ? "0px" : "260px",
                     }}
                   >
                     <ProductItemsSkeleton></ProductItemsSkeleton>
@@ -244,14 +223,8 @@ const Nav = () => {
                   <div
                     className="header-navigation-form-query"
                     style={{
-                      height:
-                        query.trim().length === 0 || query === "null"
-                          ? "0px"
-                          : "260px",
-                      marginBlock:
-                        query.trim().length === 0 || query === "null"
-                          ? "0px"
-                          : "1rem",
+                      height: !query || query === null ? "0px" : "260px",
+                      marginBlock: !query || query === null ? "0px" : "1rem",
                     }}
                   >
                     {data.length > 0 &&
