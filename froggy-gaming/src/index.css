@@ -42,12 +42,13 @@
   font-size: 1.7rem;
   margin-top: 2rem;
 }
-.pagination li {
-  padding: 1rem 1.5rem;
+.pagination li a {
+  display: block;
+  padding: 1.5rem 1.5rem;
   font-weight: 500;
   cursor: pointer;
 }
-.pagination li:hover {
+.pagination li a:hover {
   background: rgba(0, 68, 141, 0.3);
 }
 .pagination .next,

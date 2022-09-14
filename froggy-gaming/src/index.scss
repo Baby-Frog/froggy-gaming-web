@@ -43,8 +43,9 @@
     font-size: 1.7rem;
     margin-top: 2rem;
 
-    li {
-        padding: 1rem 1.5rem;
+    li a {
+        display: block;
+        padding: 1.5rem 1.5rem;
         font-weight: 500;
         cursor: pointer;
 
