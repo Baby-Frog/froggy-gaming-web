@@ -18,6 +18,7 @@ import CartContainer from "./Cart/CartContainer/CartContainer";
 import { CartProvider } from "./contexts/cart-context";
 import LoginForm from "./Form/LoginForm";
 import RegisterForm from "./Form/RegisterForm";
+import UserForm from "./Form/UserForm";
 
 function App() {
   useEffect(() => {
@@ -37,7 +38,7 @@ function App() {
             <Route path="/gio-hang" element={<CartContainer />}></Route>
             <Route path="/dang-nhap" element={<LoginForm />}></Route>
             <Route path="/dang-ky" element={<RegisterForm />}></Route>
-            <Route path="/nguoi-dung/:cusId" element={<RegisterForm />}></Route>
+            <Route path="/nguoi-dung/:cusId" element={<UserForm />}></Route>
 
             <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>
