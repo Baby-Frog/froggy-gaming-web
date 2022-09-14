@@ -3,10 +3,16 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const RegisterForm = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
+  const [error, setError] = useState(false);
 
-  const LOGIN_API = `http://localhost:8386/api/auth/signin`;
+  const REGISTER_API = `http://localhost:8386/api/auth/signup`;
 
   const axiosConfig = {
     headers: {
@@ -15,7 +21,12 @@ const RegisterForm = () => {
     },
   };
 
-  const account = JSON.stringify({
+  const newAccount = JSON.stringify({
+    cusFirstname: firstName,
+    cusLastname: lastName,
+    cusEmail: email,
+    cusPhoneNumber: phoneNumber,
+    cusAddress: address,
     username: username,
     password: password,
   });
@@ -25,16 +36,65 @@ const RegisterForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(LOGIN_API, account, axiosConfig);
-      console.log(response.data);
-      console.log(response.status);
-      console.log(response.headers);
-      navigate("/");
+      const response = await axios.post(REGISTER_API, newAccount, axiosConfig);
+      console.log(response.data.data);
     } catch (error) {
       console.log(error);
+      setError(true);
     }
   };
-  return <div>Đây là form đăng kí</div>;
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="first name"
+          value={firstName}
+          onChange={(e) => setFirstName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="last name"
+          value={lastName}
+          onChange={(e) => setLastName(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="phone number"
+          value={phoneNumber}
+          onChange={(e) => setPhoneNumber(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="address"
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
+        />
+        <input
+          type="text"
+          placeholder="username"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          autoComplete="on"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button type="submit">Dang ki</button>
+        {error && <div>SUCCESSFULLY</div>}
+      </form>
+      {error && <div>BUG</div>}
+    </>
+  );
 };
 
 export default RegisterForm;

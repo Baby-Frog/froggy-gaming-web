@@ -27,10 +27,8 @@ const LoginForm = () => {
     e.preventDefault();
     try {
       const response = await axios.post(LOGIN_API, account, axiosConfig);
-      console.log(response.data);
-      console.log(response.status);
-      console.log(response.headers);
-      navigate("/");
+      localStorage.setItem("accessToken", response.data.data.access_token);
+      localStorage.setItem("roles", response.data.data.roles);
     } catch (error) {
       console.log(error);
     }
@@ -50,6 +48,7 @@ const LoginForm = () => {
           type="text"
           id="password"
           name="password"
+          autoComplete="on"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
