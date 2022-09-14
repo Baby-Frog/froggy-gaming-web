@@ -38,7 +38,7 @@ function App() {
             <Route path="/gio-hang" element={<CartContainer />}></Route>
             <Route path="/dang-nhap" element={<LoginForm />}></Route>
             <Route path="/dang-ky" element={<RegisterForm />}></Route>
-            <Route path="/nguoi-dung/:cusId" element={<UserForm />}></Route>
+            <Route path="/nguoi-dung" element={<UserForm />}></Route>
 
             <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>
