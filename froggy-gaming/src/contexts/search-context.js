@@ -6,6 +6,7 @@ function SearchProvider(props) {
   const [searchParam, setSearchParam] = useSearchParams();
   const [query, setQuery] = useState(String(searchParam.get("query")));
   const [searchResult, setSearchResult] = useState("");
+  const [nextPage, setNextPage] = useState(1);
   const [type, setType] = useState("price");
   const [order, setOrder] = useState("asc");
   const [url, setUrl] = useState(
@@ -16,12 +17,12 @@ function SearchProvider(props) {
     url,
     searchResult,
     searchParam,
-    type,
-    order,
+    nextPage,
     setSearchResult,
-    setSearchParam,
-    setType,
     setOrder,
+    setType,
+    setNextPage,
+    setSearchParam,
     setQuery,
     setUrl,
   };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import Slider from "react-slick";
@@ -16,11 +16,21 @@ const ProductDetails = () => {
     `http://localhost:8386/api/v1/product/${proId}`,
     fetcher
   );
+  const popUpRef = useRef({});
+  const showPopup = () => {
+    popUpRef.current.classList.add("active");
+    setTimeout(() => {
+      popUpRef.current.classList.remove("active");
+    }, 3000);
+  };
   if (!data || !data.data) return null;
   const productSummary = data.data;
   return (
     <div className="wrapper">
-      <ProductSummary item={productSummary}></ProductSummary>
+      <ProductSummary
+        showPopup={showPopup}
+        item={productSummary}
+      ></ProductSummary>
       <SectionDivider
         sectionContent={"Thông tin sản phẩm"}
         marginBlock={"4rem"}
@@ -40,13 +50,16 @@ const ProductDetails = () => {
   );
 };
 
-const ProductSummary = ({ item }) => {
+const ProductSummary = ({ item, showPopup }) => {
   const { images } = item;
   return (
     // border-top padding flex
     <div className="summary">
       <ProductSummarySlider images={images}></ProductSummarySlider>
-      <ProductSummaryInfo item={item}></ProductSummaryInfo>
+      <ProductSummaryInfo
+        showPopup={showPopup}
+        item={item}
+      ></ProductSummaryInfo>
     </div>
   );
 };
@@ -54,11 +67,13 @@ const ProductSummary = ({ item }) => {
 const ProductSummaryInfo = ({
   item,
   item: { proId, proName, proPrice, images },
+  showPopup,
 }) => {
   const { addToCart } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(proPrice);
   const product = { proId, proName, proPrice, images, quantity, totalPrice };
+
   return (
     <div className="summary-info">
       <div className="summary-product-name">{item.proName}</div>

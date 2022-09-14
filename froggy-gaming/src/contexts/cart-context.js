@@ -32,6 +32,11 @@ function CartProvider(props) {
     });
   }
 
+  function removeAllFromCart() {
+    setCartItems([]);
+    setStoredCart([]);
+  }
+
   function increaseQuantity(productId) {
     const updatedCart = cartItems.map((item) => {
       if (item.proId === productId) {
@@ -77,6 +82,7 @@ function CartProvider(props) {
     decreaseQuantity,
     addToCart,
     removeFromCart,
+    removeAllFromCart,
   };
   return <CartContext.Provider value={value} {...props}></CartContext.Provider>;
 }

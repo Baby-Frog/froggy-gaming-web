@@ -18,7 +18,6 @@ import ProductList from "./Products/productList/ProductList";
 import CartContainer from "./Cart/CartContainer/CartContainer";
 import { CartProvider } from "./contexts/cart-context";
 import LoginForm from "./Login/LoginForm";
-// import ProductDetails from "./Products/productDetails/ProductDetails";
 
 function App() {
   useEffect(() => {

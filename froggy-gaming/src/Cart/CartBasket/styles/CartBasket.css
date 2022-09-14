@@ -127,7 +127,7 @@
     color: rgb(78, 78, 84);
 }
 
-.cart-prices>a {
+.cart-prices>button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,6 +146,8 @@
     background-color: #979797;
     border: 1px solid #979797;
     transition: all 150ms ease-in-out;
+    width: 100%;
+    height: 100px;
 }
 
 .go-checkout.active {
@@ -154,7 +156,9 @@
 
 .delete-cart {
     background-color: red;
-    border: 1px solid red
+    border: 1px solid red;
+    width: 100%;
+    height: 100px;
 }
 
 .info>div {

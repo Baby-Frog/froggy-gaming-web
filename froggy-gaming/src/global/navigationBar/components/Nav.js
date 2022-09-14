@@ -14,8 +14,15 @@ import { useCart } from "../../../contexts/cart-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const { query, setQuery, setUrl, setSearchResult, setSearchParam } =
-    useSearch();
+  const {
+    query,
+    setQuery,
+    setUrl,
+    searchResult,
+    nextPage,
+    setSearchResult,
+    setSearchParam,
+  } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -42,7 +49,7 @@ const Nav = () => {
         // `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
         `http://localhost:8386/api/v1/product/search/query=${query}&page=1`
       );
-      setData(response?.data?.data?.content || []);
+      setData(response.data.data.content || []);
       setTimeout(() => {
         setLoading(false);
       }, 2000);
@@ -69,8 +76,7 @@ const Nav = () => {
   };
 
   const handleChange = (e) => {
-    const newQuery = e.target.value;
-    setQuery(newQuery);
+    setQuery(e.target.value);
   };
 
   const debounceChange = lodash.debounce(handleChange, 500);

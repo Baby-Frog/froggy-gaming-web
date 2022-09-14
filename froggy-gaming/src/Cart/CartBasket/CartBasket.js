@@ -7,6 +7,7 @@ import "./styles/CartBasket.css";
 import { useCart } from "../../contexts/cart-context";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { remove } from "lodash";
 
 function CartProcess() {
   return (
@@ -46,14 +47,20 @@ function CartProduct() {
 }
 
 function CartPrices() {
-  const { cartItems } = useCart();
-  console.log("log ~ CartPrices ~ cartItems", cartItems);
+  const { cartItems, removeAllFromCart } = useCart();
+  const handleRemoveCart = () => {
+    removeAllFromCart();
+  };
   return (
     <div className="cart-total__prices">
       <div className="cart-prices">
         <div className="cart-prices__title">THÔNG TIN GIỎ HÀNG</div>
         <div>
-          Số lượng sản phẩm
+          Số lượng sản phẩm mỗi loại
+          <span className="count">{cartItems.length} sản phẩm</span>
+        </div>
+        <div>
+          Tổng số sản phẩm trong giỏ
           <span className="count">
             {cartItems.reduce(
               (partialSum, item) => partialSum + item.quantity,
@@ -73,16 +80,20 @@ function CartPrices() {
               })}
           </span>
         </div>
-        <a
+        <button
           href="https://www.google.com/"
           className={`go-checkout ${cartItems.length > 0 && "active"}`}
         >
           Xác nhận đơn hàng
-        </a>
+        </button>
 
-        <a href="https://www.google.com/" className="delete-cart">
+        <button
+          href="https://www.google.com/"
+          className="delete-cart"
+          onClick={handleRemoveCart}
+        >
           Xóa giỏ hàng
-        </a>
+        </button>
       </div>
       <div className="cart-info">
         <div className="info">
@@ -242,7 +253,7 @@ function CartItems({ navigate, item, removeFromCart }) {
             {item.proName}
           </div>
           <div className="cart-productprice">
-            {item.proPrice.toLocaleString("it-IT", {
+            {item.totalPrice.toLocaleString("it-IT", {
               style: "currency",
               currency: "VND",
             })}
