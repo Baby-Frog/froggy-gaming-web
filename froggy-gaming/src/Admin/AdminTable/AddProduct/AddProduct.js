@@ -7,38 +7,37 @@ const AddProduct = () => {
   const [proPrice, setProPrice] = useState("");
   const [proDesc, setProDesc] = useState("");
   const [proStatus, setProStatus] = useState(true);
-  const [image, setImage] = useState(null);
+  const token = localStorage.getItem("accessToken");
 
-  const UPLOAD_NEW_IMAGE_API = `http://localhost:8386/api/v1/fileupload/`;
-  const axiosConfigUploadImage = {
-    headers: { "Content-Type": "multipart/form-data" },
+  const CREATE_NEW_PRODUCT_API = `http://localhost:8386/api/v1/product/save`;
+
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   };
 
-  const handleUploadImage = async () => {
-    const formData = new FormData();
-    formData.append("file", image);
+  const newProduct = JSON.stringify({
+    proName: proName,
+    proPrice: proPrice,
+    proDesc: proDesc,
+    proStatus: proStatus,
+  });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
       const response = await axios.post(
-        UPLOAD_NEW_IMAGE_API,
-        formData,
-        axiosConfigUploadImage
+        CREATE_NEW_PRODUCT_API,
+        newProduct,
+        axiosConfig
       );
       console.log(response);
     } catch (error) {
       console.log(error);
     }
-  };
-
-  const handleChecked = (e) => {
-    setProStatus(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(proStatus);
-    console.log(proName);
-    console.log(proPrice);
-    console.log(proDesc);
   };
 
   return (
@@ -56,20 +55,18 @@ const AddProduct = () => {
           value={proPrice}
           onChange={(e) => setProPrice(e.target.value)}
         />
-        <input
-          type="text"
+        <textarea
           placeholder="description"
           value={proDesc}
           onChange={(e) => setProDesc(e.target.value)}
+        ></textarea>
+        <span>Het hang</span>
+        <input
+          type="radio"
+          value={false}
+          onChange={(e) => setProStatus(e.target.value)}
         />
-        <div onChange={handleChecked}>
-          <span>Het hang</span>
-          <input type="radio" name="stocking" value={false} />
-          <span>Con hang</span>
-          <input type="radio" name="stocking" value={true} />
-        </div>
-        <input type="file" placeholder="image" />
-        <button type="submit">submit</button>
+        <button type="submit">Tao san pham</button>
       </form>
     </>
   );
