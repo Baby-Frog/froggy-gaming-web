@@ -1,6 +1,5 @@
 import React from "react";
 import useSWR from "swr";
-import { useNavigate } from "react-router-dom";
 import { fetcher } from "../../config";
 import "./styles/CategoryList.css";
 import { useSearch } from "../../contexts/search-context";

@@ -1,56 +1,88 @@
 import axios from "axios";
 import React from "react";
+import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import "./AdminAcc.css";
-
+import "./styles/adminacc.css";
+const token = localStorage.getItem("accessToken");
+const axiosConfig = {
+  headers: { Authorization: `Bearer ${token}` },
+};
+const getProducts = async (page) => {
+  try {
+    const response = await axios.get(
+      `http://localhost:8386/api/v1/product/page=${page}`,
+      axiosConfig
+    );
+    return response.data.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
 const AdminAcc = () => {
+  // const [pageCount, setPageCount] = useState(0);
+  // const [itemOffset, setItemOffset] = useState(0);
   const [data, setData] = useState([]);
-  const CUSTOMER_API = `http://localhost:8386/api/v1/product/page=1`;
-  const token = localStorage.getItem("accessToken");
-
-  const axiosConfig = {
-    headers: { Authorization: `Bearer ${token}` },
+  // const [outsideData, setOutsideData] = useState([]);
+  const [nextPage, setNextPage] = useState(1);
+  const handleLoadMoreProducts = useRef({});
+  handleLoadMoreProducts.current = async () => {
+    try {
+      const products = await getProducts(nextPage);
+      const newProducts = [...data, ...products];
+      setData(newProducts);
+      setNextPage(nextPage + 1);
+    } catch (error) {
+      console.log(error);
+    }
   };
-
   useEffect(() => {
-    const getCustomer = async () => {
-      try {
-        const response = await axios.get(CUSTOMER_API, axiosConfig);
-        setData(response.data.data.content);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getCustomer();
+    handleLoadMoreProducts.current();
   }, []);
 
   return (
-    <div className="admin-acc">
-      <div className="admin-acc__table">
-        <p>Product List</p>
-        <div className="admin-info">
-          <span>Id</span>
-          <span>Name</span>
-          <span>Price</span>
-          <span>Status</span>
-        </div>
-        {data.map((product, key) => (
-          <div className="admin-info" key={product.proId}>
-            <span>{product.proId}</span>
-            <span>{product.proName}</span>
-            <span>{product.proPrice}</span>
-            <span>
-              {product.proStatus === true ? (
-                <span>con hang</span>
-              ) : (
-                <span> het hang</span>
-              )}
-            </span>
-          </div>
-        ))}
-      </div>
+    <div className="admin-product">
+      <h3 className="admin-product-header">Danh sách sản phẩm</h3>
+      <table className="admin-product-table">
+        <thead className="admin-product-table-head">
+          <tr className="admin-product-table-row">
+            <td className="admin-product-table-data">ID</td>
+            <td className="admin-product-table-data">Tên sản phẩm</td>
+            <td className="admin-product-table-data">Giá tiền</td>
+            <td className="admin-product-table-data">Trạng thái</td>
+          </tr>
+        </thead>
+        <tbody className="admin-product-table-body">
+          {data.length > 0 &&
+            data.map((item) => (
+              <tr className="admin-product-table-row" key={item.proId}>
+                <td className="admin-product-table-data">{item.proId}</td>
+                <td className="admin-product-table-data">{item.proName}</td>
+                <td className="admin-product-table-data">
+                  {item.proPrice.toLocaleString("it-IT", {
+                    style: "currency",
+                    currency: "VND",
+                  })}
+                </td>
+                {item.proStatus ? (
+                  <td className="admin-product-table-data">
+                    <span className="admin-product-table-true">Còn hàng</span>
+                  </td>
+                ) : (
+                  <td className="admin-product-table-data">
+                    <span className="admin-product-table-false">Hết hàng</span>
+                  </td>
+                )}
+              </tr>
+            ))}
+        </tbody>
+      </table>
+      <button
+        className="admin-product-loadmore"
+        onClick={handleLoadMoreProducts.current}
+      >
+        Load more
+      </button>
     </div>
   );
 };

@@ -1,0 +1,86 @@
+.admin {
+    &-product {
+        width: 100%;
+        font-size: 1.7rem;
+
+        &-header {
+            text-align: center;
+            font-size: 4.6rem;
+            font-weight: 500;
+            font-family: "CharkaPetchBold";
+        }
+
+        &-table {
+            width: 100%;
+
+            &-head {
+                .admin-product-table-row {
+                    background: #d6e0fe;
+                }
+            }
+
+            &-row {
+                padding: 2rem;
+                text-align: center;
+            }
+
+            &-body {
+                .admin-product-table-row {
+                    background: white;
+                }
+            }
+
+            &-data {
+                padding: 2rem;
+                text-align: center;
+                border: 1px solid #ccc;
+            }
+
+            &-true {
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translate(2rem, -50%);
+                    background: rgb(5, 233, 5);
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 100rem;
+                }
+            }
+
+            &-false {
+                position: relative;
+
+                &::before {
+                    content: "";
+                    position: absolute;
+                    top: 50%;
+                    right: 0;
+                    transform: translate(2rem, -50%);
+                    background: red;
+                    width: 10px;
+                    height: 10px;
+                    border-radius: 100rem;
+                }
+            }
+        }
+
+        &-loadmore {
+            padding: 2rem;
+            color: white;
+            background: black;
+            border: 1px solid transparent;
+            border-radius: 12px;
+            width: 150px;
+            position: relative;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            cursor: pointer;
+        }
+    }
+}

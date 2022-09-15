@@ -12,10 +12,10 @@ const AdminNav = () => {
             <i className="fa-sharp fa-solid fa-plus"></i>
             Add Product
           </Link>
-          <a href="https://www.google.com/">
+          <Link to="/admin/xoa-san-pham">
             <i className="fa-solid fa-minus"></i>
             Delete Product
-          </a>
+          </Link>
         </div>
         <div className="ad-nav__info">
           <div className="ad-nav__title">Account</div>

@@ -200,13 +200,15 @@ function ProductFilterBrand({ title }) {
     handleFetchCategories.current();
   }, [searchParam]);
   const handleFilterBrand = (brandName) => {
-    setSearchParam({
-      query: brandName,
-    });
-    setUrl(
-      `http://localhost:8386/api/v1/product/search/query=${brandName}&page=1/sort=pro.price&order=asc`
-    );
-    setChecked(!checked);
+    if (brandData) {
+      setSearchParam({
+        query: brandName,
+      });
+      setUrl(
+        `http://localhost:8386/api/v1/product/search/query=${brandName}&page=1/sort=pro.price&order=asc`
+      );
+      setChecked(!checked);
+    }
   };
   return (
     <div className="product-filter-container">
