@@ -11,7 +11,6 @@ import useClickOutside from "../../hooks/useClickOutside";
 import useDropdown from "../../hooks/useDropdown";
 import useScrolled from "../../hooks/useScrolled";
 import "./styles/productlist.css";
-import { useCallback } from "react";
 const itemsPerPage = 12;
 const ProductList = () => {
   const [pageCount, setPageCount] = useState(0);
@@ -176,9 +175,9 @@ function ProductFilterBrand({ title }) {
   const [brandQuery, setBrandQuery] = useState("");
   const [brandData, setBrandData] = useState([]);
   const [checked, setChecked] = useState(false);
-  const { query, setUrl, setSearchParam } = useSearch();
+  const { searchParam, query, url, setUrl, setSearchParam } = useSearch();
   const [brandUrl, setBrandUrl] = useState(
-    `http://localhost:8386/api/v1/brand/search/query=${brandQuery}`
+    `http://localhost:8386/api/v1/brand/search/query=${query}`
   );
   const handleFetchCategories = useRef({});
   const { show, setShow, nodeRef } = useDropdown(
@@ -195,25 +194,20 @@ function ProductFilterBrand({ title }) {
     }
   };
   useEffect(() => {
-    handleFetchCategories.current();
-    setBrandQuery(query);
     setBrandUrl(
-      `http://localhost:8386/api/v1/brand/search/query=${brandQuery}`
+      `http://localhost:8386/api/v1/brand/search/query=${searchParam}`
     );
-  }, [brandQuery, query]);
-  const handleChange = useCallback(
-    (brandName) => {
-      setBrandData(brandData.filter((item) => item.brandName === brandName));
-      setSearchParam({
-        query: brandName,
-      });
-      setUrl(
-        `http://localhost:8386/api/v1/product/search/query=${brandName}&page=1/sort=pro.price&order=asc`
-      );
-      setChecked(true);
-    },
-    [brandData, setSearchParam, setUrl]
-  );
+    handleFetchCategories.current();
+  }, [searchParam]);
+  const handleFilterBrand = (brandName) => {
+    setSearchParam({
+      query: brandName,
+    });
+    setUrl(
+      `http://localhost:8386/api/v1/product/search/query=${brandName}&page=1/sort=pro.price&order=asc`
+    );
+    setChecked(!checked);
+  };
   return (
     <div className="product-filter-container">
       <h1 className="product-filter-header">Lọc sản phẩm</h1>
@@ -256,7 +250,7 @@ function ProductFilterBrand({ title }) {
                     value={item.brandName}
                     id={item.id}
                     checked={checked[item.id]}
-                    onChange={() => handleChange(item.brandName)}
+                    onChange={() => handleFilterBrand(item.brandName)}
                     className="product-filter-accordion-checkbox"
                   />
                   <label

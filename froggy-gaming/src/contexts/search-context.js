@@ -16,6 +16,7 @@ function SearchProvider(props) {
   console.log(searchParam.get("query"));
 
   function handleNavigateCategory(cateName) {
+    window.location.reload(false);
     setQuery(cateName);
     setUrl(
       `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
@@ -36,7 +37,9 @@ function SearchProvider(props) {
       query: query,
     });
     navigate(`/chi-tiet?query=${query}`);
+    window.location.reload(false);
   }
+
   const value = {
     query,
     url,
