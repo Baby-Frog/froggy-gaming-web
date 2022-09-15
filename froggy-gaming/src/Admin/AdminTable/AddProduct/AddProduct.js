@@ -8,37 +8,85 @@ const AddProduct = () => {
   const [proDesc, setProDesc] = useState("");
   const [proStatus, setProStatus] = useState(true);
   const [image, setImage] = useState(null);
+  const [imgName, setImgName] = useState("");
+  const token = localStorage.getItem("accessToken");
 
-  const UPLOAD_NEW_IMAGE_API = `http://localhost:8386/api/v1/fileupload/`;
-  const axiosConfigUploadImage = {
-    headers: { "Content-Type": "multipart/form-data" },
+  const CREATE_NEW_PRODUCT_API = `http://localhost:8386/api/v1/product/save`;
+  const CREATE_NEW_IMAGE_API = `http://localhost:8386/api/v1/fileupload/`;
+  const ADD_IMAGE_TO_PRODUCT_API = `http://localhost:8386/api/v1/image/add-to-product`;
+
+  const createNewProductAxiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
   };
 
-  const handleUploadImage = async () => {
-    const formData = new FormData();
-    formData.append("file", image);
-    try {
+  const createNewImageAxiosConfig = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const addImageToProductAxiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const newProductForm = JSON.stringify({
+    proName: proName,
+    proPrice: proPrice,
+    proDesc: proDesc,
+    proStatus: proStatus,
+  });
+
+  const addImageToProductForm = JSON.stringify({
+    proName: proName,
+    imgName: imgName,
+  });
+
+  const handleFileSelect = (event) => {
+    setImage(event.target.files[0]);
+    setImgName(event.target.files[0].name);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const imageFormData = new FormData();
+    imageFormData.append("file", image);
+    const createNewProduct = async () => {
       const response = await axios.post(
-        UPLOAD_NEW_IMAGE_API,
-        formData,
-        axiosConfigUploadImage
+        CREATE_NEW_PRODUCT_API,
+        newProductForm,
+        createNewProductAxiosConfig
       );
       console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    };
+    const createNewImage = async () => {
+      const response = await axios.post(
+        CREATE_NEW_IMAGE_API,
+        imageFormData,
+        createNewImageAxiosConfig
+      );
+      console.log(response);
+    };
+    const addImageToProduct = async () => {
+      const response = await axios.post(
+        ADD_IMAGE_TO_PRODUCT_API,
+        addImageToProductForm,
+        addImageToProductAxiosConfig
+      );
+      console.log(response);
+    };
 
-  const handleChecked = (e) => {
-    setProStatus(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(proStatus);
-    console.log(proName);
-    console.log(proPrice);
-    console.log(proDesc);
+    await createNewProduct();
+    await createNewImage();
+    await addImageToProduct();
   };
 
   return (
@@ -56,20 +104,19 @@ const AddProduct = () => {
           value={proPrice}
           onChange={(e) => setProPrice(e.target.value)}
         />
-        <input
-          type="text"
+        <textarea
           placeholder="description"
           value={proDesc}
           onChange={(e) => setProDesc(e.target.value)}
+        ></textarea>
+        <input type="file" onChange={handleFileSelect} />
+        <span>Het hang</span>
+        <input
+          type="radio"
+          value={false}
+          onChange={(e) => setProStatus(e.target.value)}
         />
-        <div onChange={handleChecked}>
-          <span>Het hang</span>
-          <input type="radio" name="stocking" value={false} />
-          <span>Con hang</span>
-          <input type="radio" name="stocking" value={true} />
-        </div>
-        <input type="file" placeholder="image" />
-        <button type="submit">submit</button>
+        <button type="submit">Tao san pham</button>
       </form>
     </>
   );

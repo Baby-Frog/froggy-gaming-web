@@ -20,10 +20,10 @@ const AdminNav = () => {
         <div className="ad-nav__info">
           <div className="ad-nav__title">Account</div>
           <div className="ad-nav__product">
-            <a href="https://www.google.com/">
+            <Link to="/nguoi-dung">
               <i className="fa-solid fa-user"></i>
               Admin
-            </a>
+            </Link>
           </div>
         </div>
       </div>
