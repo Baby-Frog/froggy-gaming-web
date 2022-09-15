@@ -1,7 +1,7 @@
 export const NavCategoryData = [
   {
     id: 1,
-    section: "Bàn phím cơ",
+    section: "Bàn phím",
     title: [
       {
         id: 1,

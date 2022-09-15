@@ -7,24 +7,17 @@ import { useSearch } from "../../contexts/search-context";
 
 const CategoryList = () => {
   const { data } = useSWR(`http://localhost:8386/api/v1/category`, fetcher);
-  const { query, setSearchParam, setQuery } = useSearch();
-  const navigate = useNavigate();
+  const { handleNavigateCategory } = useSearch();
   if (!data) return;
   const categories =
     data.data.sort((a, b) => (a.cateId > b.cateId ? 1 : -1)) || [];
-  console.log("log ~ CategoryList ~ categories", categories);
-  const handleNavigateKeyboard = () => {
-    setSearchParam({
-      query: "Bàn phím",
-    });
-    navigate(`/chi-tiet?query=Bàn phím`);
-  };
+
   return (
     <div className="cat-content">
       {categories.map((item) => (
         <span
           key={item.cateId}
-          onClick={handleNavigateKeyboard}
+          onClick={() => handleNavigateCategory(item.cateName)}
           className="cat-items"
         >
           <span className="cat-text">{item.cateName}</span>

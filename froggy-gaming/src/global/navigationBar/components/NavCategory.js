@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "../styles/dropdown.css";
+import useSWR from "swr";
 import { NavCategoryData } from "./NavCategoryData";
 
 const NavCategory = () => {
+  const { data } = useSWR(`http://localhost:8386/api/v1/category`);
   const [selected, setSelected] = useState(false);
   return (
     <>
