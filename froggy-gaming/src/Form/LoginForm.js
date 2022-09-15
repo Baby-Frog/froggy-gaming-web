@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
-import RegisterForm from "./RegisterForm";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -29,6 +28,8 @@ const LoginForm = () => {
       const response = await axios.post(LOGIN_API, account, axiosConfig);
       localStorage.setItem("accessToken", response.data.data.access_token);
       localStorage.setItem("roles", response.data.data.roles);
+      navigate("/nguoi-dung");
+      window.location.reload(false);
     } catch (error) {
       console.log(error);
     }

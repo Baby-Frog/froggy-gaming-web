@@ -19,6 +19,8 @@ import { CartProvider } from "./contexts/cart-context";
 import LoginForm from "./Form/LoginForm";
 import RegisterForm from "./Form/RegisterForm";
 import UserForm from "./Form/UserForm";
+import AdminContainer from "./Admin/AdminContainer/AdminContainer";
+import AddProduct from "./Admin/AdminTable/AddProduct/AddProduct";
 // import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 
 function App() {
@@ -40,7 +42,23 @@ function App() {
             <Route path="/gio-hang" element={<CartContainer />}></Route>
             <Route path="/dang-nhap" element={<LoginForm />}></Route>
             <Route path="/dang-ky" element={<RegisterForm />}></Route>
-            <Route path="/nguoi-dung" element={<UserForm />}></Route>
+            <Route
+              path="/nguoi-dung"
+              element={
+                !localStorage.getItem("roles") ? <LoginForm /> : <UserForm />
+              }
+            ></Route>
+            <Route
+              path="/admin"
+              element={
+                localStorage.getItem("roles") === "ROLE_ADMIN" ? (
+                  <AdminContainer />
+                ) : (
+                  <LoginForm />
+                )
+              }
+            ></Route>
+            <Route path="/admin/them-san-pham" element={<AddProduct />}></Route>
 
             <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>
@@ -55,5 +73,3 @@ function App() {
 }
 
 export default App;
-
-

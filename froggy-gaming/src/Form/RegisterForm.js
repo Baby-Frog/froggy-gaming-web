@@ -38,6 +38,7 @@ const RegisterForm = () => {
     try {
       const response = await axios.post(REGISTER_API, newAccount, axiosConfig);
       console.log(response.data.data);
+      navigate("/dang-nhap");
     } catch (error) {
       console.log(error);
       setError(true);
