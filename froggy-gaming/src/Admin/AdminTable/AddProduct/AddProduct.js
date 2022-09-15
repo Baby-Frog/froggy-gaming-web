@@ -7,11 +7,15 @@ const AddProduct = () => {
   const [proPrice, setProPrice] = useState("");
   const [proDesc, setProDesc] = useState("");
   const [proStatus, setProStatus] = useState(true);
+  const [image, setImage] = useState(null);
+  const [imgName, setImgName] = useState("");
   const token = localStorage.getItem("accessToken");
 
   const CREATE_NEW_PRODUCT_API = `http://localhost:8386/api/v1/product/save`;
+  const CREATE_NEW_IMAGE_API = `http://localhost:8386/api/v1/fileupload/`;
+  const ADD_IMAGE_TO_PRODUCT_API = `http://localhost:8386/api/v1/image/add-to-product`;
 
-  const axiosConfig = {
+  const createNewProductAxiosConfig = {
     headers: {
       "Content-Type": "application/json",
       accept: "application/json",
@@ -19,25 +23,70 @@ const AddProduct = () => {
     },
   };
 
-  const newProduct = JSON.stringify({
+  const createNewImageAxiosConfig = {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const addImageToProductAxiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const newProductForm = JSON.stringify({
     proName: proName,
     proPrice: proPrice,
     proDesc: proDesc,
     proStatus: proStatus,
   });
 
+  const addImageToProductForm = JSON.stringify({
+    proName: proName,
+    imgName: imgName,
+  });
+
+  const handleFileSelect = (event) => {
+    setImage(event.target.files[0]);
+    setImgName(event.target.files[0].name);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
+    const imageFormData = new FormData();
+    imageFormData.append("file", image);
+    const createNewProduct = async () => {
       const response = await axios.post(
         CREATE_NEW_PRODUCT_API,
-        newProduct,
-        axiosConfig
+        newProductForm,
+        createNewProductAxiosConfig
       );
       console.log(response);
-    } catch (error) {
-      console.log(error);
-    }
+    };
+    const createNewImage = async () => {
+      const response = await axios.post(
+        CREATE_NEW_IMAGE_API,
+        imageFormData,
+        createNewImageAxiosConfig
+      );
+      console.log(response);
+    };
+    const addImageToProduct = async () => {
+      const response = await axios.post(
+        ADD_IMAGE_TO_PRODUCT_API,
+        addImageToProductForm,
+        addImageToProductAxiosConfig
+      );
+      console.log(response);
+    };
+
+    await createNewProduct();
+    await createNewImage();
+    await addImageToProduct();
   };
 
   return (
@@ -60,6 +109,7 @@ const AddProduct = () => {
           value={proDesc}
           onChange={(e) => setProDesc(e.target.value)}
         ></textarea>
+        <input type="file" onChange={handleFileSelect} />
         <span>Het hang</span>
         <input
           type="radio"

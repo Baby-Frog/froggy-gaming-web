@@ -1,12 +1,11 @@
-import React from 'react';
-import "./DeleteProduct.css"
+import React from "react";
 
 const DeleteProduct = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+  return (
+    <>
+      <div>DeleteProduct</div>
+    </>
+  );
 };
 
 export default DeleteProduct;

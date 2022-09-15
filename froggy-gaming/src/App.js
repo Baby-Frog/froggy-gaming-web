@@ -21,6 +21,7 @@ import RegisterForm from "./Form/RegisterForm";
 import UserForm from "./Form/UserForm";
 import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 import AddProduct from "./Admin/AdminTable/AddProduct/AddProduct";
+import DeleteProduct from "./Admin/AdminTable/DeleteProduct/DeleteProduct";
 // import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 
 function App() {
@@ -58,8 +59,26 @@ function App() {
                 )
               }
             ></Route>
-            <Route path="/admin/them-san-pham" element={<AddProduct />}></Route>
-
+            <Route
+              path="/admin/them-san-pham"
+              element={
+                localStorage.getItem("roles") === "ROLE_ADMIN" ? (
+                  <AddProduct />
+                ) : (
+                  <LoginForm />
+                )
+              }
+            ></Route>
+            <Route
+              path="/admin/xoa-san-pham"
+              element={
+                localStorage.getItem("roles") === "ROLE_ADMIN" ? (
+                  <DeleteProduct />
+                ) : (
+                  <LoginForm />
+                )
+              }
+            ></Route>
             <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>
