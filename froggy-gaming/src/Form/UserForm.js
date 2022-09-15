@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const UserForm = () => {
+  const USER_API = `http://localhost:8386/api/v1/customer/get`;
   const navigate = useNavigate();
   const [data, setData] = useState({});
   const token = localStorage.getItem("accessToken");
@@ -15,10 +16,7 @@ const UserForm = () => {
   useEffect(() => {
     const getUserData = async () => {
       try {
-        const response = await axios.get(
-          `http://localhost:8386/api/v1/customer/get`,
-          axiosConfig
-        );
+        const response = await axios.get(USER_API, axiosConfig);
         setData(response.data.data);
         console.log(response.data);
       } catch (error) {
