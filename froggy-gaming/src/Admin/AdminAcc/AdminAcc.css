@@ -1,0 +1,26 @@
+.admin-acc{
+    width: 75%;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+.admin-acc__table{
+    margin: 3rem;
+}
+.admin-acc__table > p {
+    font-size: 40px;
+    font-weight: bold; 
+}
+.admin-info{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 2rem;
+}
+.admin-info > span {
+    padding: 1rem;
+    font-size: 20px;
+}
+.admin-info >span:nth-child(4){
+    border: 1px solid none;
+    background-color: greenyellow;
+    border-radius: 10px;
+}

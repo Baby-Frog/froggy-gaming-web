@@ -1,0 +1,6 @@
+.admin{
+    display: flex;
+    gap: 5rem;
+    margin: 2rem;
+    padding: 2rem;
+}

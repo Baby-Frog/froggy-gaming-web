@@ -1,0 +1,59 @@
+.AddProduct{
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-left: 2rem;
+    padding: 2rem;
+    
+   
+}
+.addproduct-submit {
+    display: flex;
+    flex-direction: column;
+}
+.AddProduct > p {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    padding-bottom: 0.5rem;
+}
+.addproduct-submit > input{
+   
+   margin: 0px auto;
+    padding: 12px 20px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 20px;
+
+}
+.addproduct-submit > button { 
+   
+    margin: 0px auto;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: white;
+    cursor: pointer;
+}
+.addproduct-submit > button:hover {
+       background-color: black;
+       color: white;
+}
+.addproduct-table {
+    margin-top: 2rem;
+     
+}
+.addproduct-table > th {
+  border: 1px solid black ;
+  padding: 10rem;
+}
+.admin-product > p {
+   font-size: 20px;
+    
+}
+.admin-product > p > button:nth-child(1){   
+    margin-left: 3rem;   
+}
+.admin-product > p > button { 
+    margin:0.5rem;
+}

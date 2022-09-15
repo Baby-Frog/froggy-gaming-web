@@ -19,6 +19,7 @@ import { CartProvider } from "./contexts/cart-context";
 import LoginForm from "./Form/LoginForm";
 import RegisterForm from "./Form/RegisterForm";
 import UserForm from "./Form/UserForm";
+// import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 
 function App() {
   useEffect(() => {
@@ -30,6 +31,7 @@ function App() {
         <SearchProvider>
           <Nav></Nav>
           <ScrollToTop></ScrollToTop>
+          {/* <AdminContainer></AdminContainer> */}
           <Routes>
             <Route path="/" element={<HomepageContainer />}></Route>
             <Route path="/danh-muc" element={<CategoryContainer />}></Route>
@@ -53,3 +55,5 @@ function App() {
 }
 
 export default App;
+
+
