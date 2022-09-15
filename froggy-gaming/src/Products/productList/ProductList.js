@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 import ReactPaginate from "react-paginate";
 import useSWR from "swr";
 import { fetcher } from "../../config";
@@ -163,23 +164,50 @@ function ProductFilter() {
   return (
     <div className="product-filter">
       {/* bọc ngoài có bg xanh nhạt, flex column */}
-
-      <ProductFilterBlock title={"Hãng sản xuất"} label_content={"Logitech"} />
-      <ProductFilterBlock title={"Loại sản phẩm"} label_content={"Bàn phím"} />
+      <ProductFilterBrand title={"Hãng sản xuất"} />
     </div>
   );
 }
 
 export default ProductList;
 
-function ProductFilterBlock({ title, label_content }) {
-  const [brand, setBrand] = useState("");
+function ProductFilterBrand({ title }) {
   const [brandQuery, setBrandQuery] = useState("");
+  const [brandData, setBrandData] = useState([]);
+  const [checked, setChecked] = useState(false);
+  const { searchParam, query, url, setUrl, setSearchParam } = useSearch();
+  const [brandUrl, setBrandUrl] = useState(
+    `http://localhost:8386/api/v1/brand/search/query=${query}`
+  );
+  const handleFetchCategories = useRef({});
   const { show, setShow, nodeRef } = useDropdown(
     ".product-filter-accordion",
     true
   );
-  const [checked, setChecked] = useState(false);
+  handleFetchCategories.current = async () => {
+    try {
+      const response = await axios.get(brandUrl);
+      setBrandData(response.data.data || []);
+      console.log(response.data.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    setBrandUrl(
+      `http://localhost:8386/api/v1/brand/search/query=${searchParam}`
+    );
+    handleFetchCategories.current();
+  }, [searchParam]);
+  const handleFilterBrand = (brandName) => {
+    setSearchParam({
+      query: brandName,
+    });
+    setUrl(
+      `http://localhost:8386/api/v1/product/search/query=${brandName}&page=1/sort=pro.price&order=asc`
+    );
+    setChecked(!checked);
+  };
   return (
     <div className="product-filter-container">
       <h1 className="product-filter-header">Lọc sản phẩm</h1>
@@ -203,10 +231,10 @@ function ProductFilterBlock({ title, label_content }) {
           <form autoComplete="off" className="product-filter-accordion-form">
             <div className="product-filter-accordion-group">
               <input
-                type="text"
+                type={"text"}
                 className="product-filter-accordion-input"
                 placeholder="Tìm hãng sản xuất..."
-                onChange={(e) => setBrand(e.target.value)}
+                onChange={(e) => setBrandQuery(e.target.value)}
               />
               <span className="product-filter-accordion-icon">
                 <ion-icon name="search-outline"></ion-icon>
@@ -214,23 +242,25 @@ function ProductFilterBlock({ title, label_content }) {
             </div>
             <ul className="product-filter-accordion-list">
               {/* checkbox and text, flex */}
-              <li className="product-filter-accordion-item">
-                <input
-                  type="radio"
-                  name="brand"
-                  id="brand"
-                  className="product-filter-accordion-checkbox"
-                  checked={checked ? true : false}
-                  onChange={() => setChecked(!checked)}
-                  onClick={() => setChecked(!checked)}
-                />
-                <label
-                  htmlFor="brand"
-                  className="product-filter-accordion-label"
-                >
-                  {label_content}
-                </label>
-              </li>
+              {brandData.map((item) => (
+                <li className="product-filter-accordion-item" key={item.id}>
+                  <input
+                    type="checkbox"
+                    name={item.brandName}
+                    value={item.brandName}
+                    id={item.id}
+                    checked={checked[item.id]}
+                    onChange={() => handleFilterBrand(item.brandName)}
+                    className="product-filter-accordion-checkbox"
+                  />
+                  <label
+                    htmlFor={item.id}
+                    className="product-filter-accordion-label"
+                  >
+                    {item.brandName}
+                  </label>
+                </li>
+              ))}
             </ul>
           </form>
         </div>

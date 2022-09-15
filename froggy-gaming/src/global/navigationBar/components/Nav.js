@@ -14,7 +14,7 @@ import { useCart } from "../../../contexts/cart-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const { query, setQuery, setUrl, setSearchParam } = useSearch();
+  const { query, setQuery, setUrl, setSearchParam, handleSearch } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -53,17 +53,6 @@ const Nav = () => {
   const handleMobileNav = () => {
     setMobileNav(!mobileNav);
     document.body.classList.toggle("nav-open");
-  };
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    setUrl(
-      `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
-    );
-    setSearchParam({
-      query: query,
-    });
-    navigate(`/chi-tiet?query=${query}`);
   };
 
   const handleChange = (e) => {
@@ -194,6 +183,7 @@ const Nav = () => {
                     //   (e) => setQuery(e.target.value),
                     //   1000
                     // )}
+
                     onChange={debounceChange}
                   />
                   {!loading ? (
