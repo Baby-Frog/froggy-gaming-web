@@ -235,13 +235,20 @@ const Nav = () => {
             </li>
 
             <li className="header-navigation-item">
-              <div
-                className="header-navigation-user"
-                onClick={() => navigate("/dang-nhap")}
-              >
-                <i className="fa-solid fa-user-gear"></i>
-                <span>Đăng nhập/Đăng ký</span>
-              </div>
+              {!localStorage.getItem("roles") && (
+                <div
+                  className="header-navigation-user"
+                  onClick={() => navigate("/dang-nhap")}
+                >
+                  <span className="header-navigation-sign">
+                    <ion-icon name="person-circle-outline"></ion-icon>
+                  </span>
+                  <span className="header-navigation-sign header-navigation-sign--mobile">
+                    Đăng nhập/Đăng ký
+                  </span>
+                </div>
+              )}
+              {localStorage.getItem("roles") && <span>Xin chào, Khoi</span>}
             </li>
             <li
               className="header-navigation-item"

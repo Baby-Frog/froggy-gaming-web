@@ -7,7 +7,7 @@ i {
 }
 
 ion-icon {
-  font-size: 2.2rem;
+  font-size: 3rem;
 }
 
 body.nav-open {
@@ -91,7 +91,10 @@ body.nav-open {
   align-items: center;
   height: 100%;
 }
-.header-navigation-user span {
+.header-navigation-user .header-navigation-sign {
+  display: block;
+}
+.header-navigation-user .header-navigation-sign--mobile {
   display: none;
 }
 .header-navigation-list {
@@ -461,7 +464,7 @@ body.nav-open {
   .header-navigation-user i {
     display: none;
   }
-  .header-navigation-user span {
+  .header-navigation-user .header-navigation-sign--mobile {
     display: block;
   }
   .header-navigation-cart {

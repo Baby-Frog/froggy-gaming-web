@@ -20,7 +20,7 @@ i {
 }
 
 ion-icon {
-    font-size: 2.2rem;
+    font-size: 3rem;
 }
 
 body.nav-open {
@@ -120,8 +120,13 @@ body.nav-open {
         height: 100%;
 
         &-user {
-            span {
-                display: none;
+            .header-navigation-sign {
+                display: block;
+
+                &--mobile {
+
+                    display: none;
+                }
             }
         }
 
@@ -549,8 +554,10 @@ body.nav-open {
                     display: none;
                 }
 
-                span {
-                    display: block;
+                .header-navigation-sign {
+                    &--mobile {
+                        display: block;
+                    }
                 }
             }
 

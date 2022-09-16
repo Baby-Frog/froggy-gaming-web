@@ -16,7 +16,6 @@ function SearchProvider(props) {
   console.log(searchParam.get("query"));
 
   function handleNavigateCategory(cateName) {
-    window.location.reload(false);
     setQuery(cateName);
     setUrl(
       `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
