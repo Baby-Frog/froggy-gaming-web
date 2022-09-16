@@ -12,9 +12,9 @@ const AdminNav = () => {
             <i className="fa-sharp fa-solid fa-plus"></i>
             Add Product
           </Link>
-          <Link to="/admin/xoa-san-pham">
-            <i className="fa-solid fa-minus"></i>
-            Delete Product
+          <Link to="/admin/them-danh-muc">
+            <i className="fa-solid fa-solid fa-plus"></i>
+            Add Category
           </Link>
         </div>
         <div className="ad-nav__info">

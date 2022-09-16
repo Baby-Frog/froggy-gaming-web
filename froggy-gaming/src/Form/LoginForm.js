@@ -46,7 +46,7 @@ const LoginForm = () => {
         />
         <label htmlFor="username">Username</label>
         <input
-          type="text"
+          type="password"
           id="password"
           name="password"
           autoComplete="on"
