@@ -249,7 +249,7 @@ const Nav = () => {
                 </div>
               )}
               {localStorage.getItem("roles") && (
-                <span>Chào, {localStorage.getItem("lastname")}</span>
+                <span>Chào, {localStorage.getItem("username")}</span>
               )}
             </li>
             <li
