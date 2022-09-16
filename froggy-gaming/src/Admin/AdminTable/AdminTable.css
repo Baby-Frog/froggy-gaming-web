@@ -1,0 +1,51 @@
+.first_row{
+   width: 20%;
+   padding: 2rem;
+   margin:2rem 2rem 2rem  0;
+   font-size: 15px;
+   border-radius: 10px;
+   
+}
+.second-row{
+    display: flex;
+    width: 41.5%;
+    height: 40rem;
+    padding:2rem;
+    margin-bottom: 1rem;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.choose-file{
+    display: flex;
+    width: 25%;
+    padding: 2rem 2rem 2rem 0 ; 
+    font-size: 15px;
+    
+}
+.third-row{
+    width: 20%;
+    padding: 2rem;
+    margin: 2rem 2rem 2rem 0;
+    font-size: 15px;
+    border-radius: 10px;
+}
+.admin-info{
+    padding: 2.5rem;
+    margin: 1rem 1rem 1rem 0 ;
+    font-size: 15px;
+    border-radius: 10px;
+ 
+}
+.admin-soldout{
+   padding: 2rem 2rem 2rem 0 ;
+
+   font-size: 20px;
+}
+.admin-add{
+    display: flex;
+    width: 10%;
+    font-size: 15px;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-radius: 10px;
+}

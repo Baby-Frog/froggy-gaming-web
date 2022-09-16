@@ -45,7 +45,11 @@ function App() {
                 !localStorage.getItem("roles") ? <LoginForm /> : <UserForm />
               }
             ></Route>
-            <Route
+            <Route path="/admin" element={<AdminContainer />}></Route>
+            <Route path="/admin/them-san-pham" element={<AddProduct />}></Route>
+            <Route path="/admin/them-danh-muc" element={<AddCategory />}></Route>
+            <Route path="/admin/them-hang-san-xuat" element={<AddBrand />}></Route>
+            {/* <Route
               path="/admin"
               element={
                 localStorage.getItem("roles") === "ROLE_ADMIN" ? (
@@ -94,7 +98,7 @@ function App() {
                   <LoginForm />
                 )
               }
-            ></Route>
+            ></Route> */}
             <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>

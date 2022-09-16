@@ -267,173 +267,175 @@ const AddProduct = () => {
 
   return (
     <>
+    <div className="wrapper">
       <form onSubmit={handleSubmit}>
-        <input
+        <input className="first_row"
           type="text"
-          placeholder="name"
+          placeholder="Name"
           value={proName}
           onChange={(e) => setProName(e.target.value)}
         />
-        <input
+        <input className="first_row"
           type="number"
-          placeholder="price"
+          placeholder="Price"
           value={proPrice}
           onChange={(e) => setProPrice(e.target.value)}
         />
-        <textarea
-          placeholder="description"
+        <textarea className="second-row"
+          placeholder="Description"
           value={proDesc}
           onChange={(e) => setProDesc(e.target.value)}
         ></textarea>
-        <input type="file" onChange={handleFileSelect} />
-        <input
+        <input  className="choose-file"
+        type="file" onChange={handleFileSelect} />
+        <input className="third-row"
           type="text"
-          placeholder="brand"
+          placeholder="Brand"
           value={brand}
           onChange={(e) => setBrand(e.target.value)}
         />
-        <input
+          <input className="third-row"
           type="text"
-          placeholder="category"
+          placeholder="Category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
         />
 
         {/* preDetail */}
-        <div>
-          <input
+        <div> 
+          <input className="admin-info"
             type="text"
             placeholder="model"
             value={model}
             onChange={(e) => setModel(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="connect"
             value={connect}
             onChange={(e) => setConnect(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="age"
             value={age}
             onChange={(e) => setAge(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="weight"
             value={weight}
             onChange={(e) => setWeight(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="compatible"
             value={compatible}
             onChange={(e) => setCompatible(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="size"
             value={size}
             onChange={(e) => setSize(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="cable"
             value={cable}
             onChange={(e) => setCable(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="color"
             value={color}
             onChange={(e) => setColor(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="led"
             value={led}
             onChange={(e) => setLed(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="accessories"
             value={accessories}
             onChange={(e) => setAccessories(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="layout"
             value={layout}
             onChange={(e) => setLayout(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="specialFeature"
             value={specialFeature}
             onChange={(e) => setSpecialFeature(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="keyboardSwitch"
             value={keyboardSwitch}
             onChange={(e) => setKeyboardSwitch(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="keyboardKeycap"
             value={keyboardKeycap}
             onChange={(e) => setKeyboardKeycap(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="mouseDpi"
             value={mouseDpi}
             onChange={(e) => setMouseDpi(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="mouseSensor"
             value={mouseSensor}
             onChange={(e) => setMouseSensor(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="chairLifter"
             value={chairLifter}
             onChange={(e) => setChairLifter(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="chairPillow"
             value={chairPillow}
             onChange={(e) => setChairPillow(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="chairWheel"
             value={chairWheel}
             onChange={(e) => setChairWheel(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="chairMaximum"
             value={chairMaximum}
             onChange={(e) => setChairMaximum(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="microphoneFrequency"
             value={microphoneFrequency}
             onChange={(e) => setMicrophoneFrequency(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="microphoneSens"
             value={microphoneSens}
             onChange={(e) => setMicrophoneSens(e.target.value)}
           />
-          <input
+          <input className="admin-info"
             type="text"
             placeholder="microphoneBitrate"
             value={microphoneBitrate}
@@ -441,14 +443,17 @@ const AddProduct = () => {
           />
         </div>
 
-        <span>Het hang</span>
-        <input
+        <span className="admin-soldout">Het hàng</span>
+          <input className="admin-soldout"
           type="radio"
           value={false}
           onChange={(e) => setProStatus(e.target.value)}
         />
-        <button type="submit">Tao san pham</button>
+        <button 
+            className="admin-add"
+            type="submit">Tạo sản pham</button>
       </form>
+      </div>
     </>
   );
 };
