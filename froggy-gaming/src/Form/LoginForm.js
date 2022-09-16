@@ -96,6 +96,7 @@ const LoginForm = () => {
       const response = await axios.post(LOGIN_API, account, axiosConfig);
       localStorage.setItem("accessToken", response.data.data.access_token);
       localStorage.setItem("roles", response.data.data.roles);
+      localStorage.setItem("lastname", response.data.data.cusLastname);
       navigate("/nguoi-dung");
       window.location.reload(false);
     } catch (error) {

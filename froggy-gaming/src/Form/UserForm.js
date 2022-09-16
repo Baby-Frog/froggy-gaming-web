@@ -30,6 +30,7 @@ const UserForm = () => {
   const signOut = async () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("roles");
+    localStorage.removeItem("lastname");
     navigate("/dang-nhap");
     window.location.reload(false);
   };
