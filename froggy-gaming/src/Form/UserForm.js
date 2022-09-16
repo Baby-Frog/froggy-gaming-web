@@ -31,6 +31,7 @@ const UserForm = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("roles");
     navigate("/dang-nhap");
+    window.location.reload(false);
   };
 
   return (
