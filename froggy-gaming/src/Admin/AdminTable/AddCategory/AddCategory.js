@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import "./AddCategory.css"
 
 const AddCategory = () => {
   const [categoryName, setCategoryName] = useState("");
@@ -35,18 +36,24 @@ const AddCategory = () => {
   };
 
   return (
+    <div className="wrapper">
     <>
-      <form onSubmit={handleSubmit}>
-        <span>Ten danh muc</span>
-        <input
+      <form 
+      className="cat__name"
+      onSubmit={handleSubmit}>
+        <span>Tên danh mục</span>
+        <input  className="add-cat__name"
           type="text"
-          placeholder="Ten danh muc"
+          placeholder="Tên danh mục"
           value={categoryName}
           onChange={(e) => setCategoryName(e.target.value)}
         />
-        <button type="submit">Them danh muc</button>
+        <button 
+            className="add-cat"
+        type="submit">Thêm danh mục</button>
       </form>
     </>
+    </div>
   );
 };
 

@@ -1,0 +1,46 @@
+.cat__name{
+    display: flex;
+    flex-direction: column;
+    margin: 2rem;
+}
+.cat__name > span { 
+position: relative;
+    padding: 0 0 2px;
+    color: black;
+    font-size: 26px;
+    letter-spacing: 1px;
+    text-decoration: none;
+    overflow: hidden;
+}
+.cat__name>span:before {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 2px;
+        width: 7rem;
+        background: currentcolor;
+        transform: translateX(-110%);
+        transition: transform 1s ease;
+    }
+
+.cat__name >span:hover::before {
+        transform: translateX(110%);
+    }
+.add-cat__name,
+.add-cat
+{
+    width: 30%;
+    padding: 2rem;
+    margin:2rem 2rem 2rem 0;
+    border-radius: 10px;
+    font-size: 20px;
+}
+.add-cat{
+    background-color: black;
+    border-radius: 10px;
+    color: white;
+    width: 15%;
+   
+}

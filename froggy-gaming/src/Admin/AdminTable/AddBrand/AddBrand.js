@@ -1,6 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
+import "./AddBrand.css"
 
 const AddBrand = () => {
   const [brandName, setBrandName] = useState("");
@@ -36,7 +37,8 @@ const AddBrand = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form className="N"
+      onSubmit={handleSubmit}>
         <span>Ten hang san xuat</span>
         <input
           type="text"
