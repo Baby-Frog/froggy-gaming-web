@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import "../AddCategory/AddCategory.css"
+import "./AddBrand.css"
 
 const AddBrand = () => {
   const [brandName, setBrandName] = useState("");
