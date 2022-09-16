@@ -3,6 +3,7 @@ import useSWR from "swr";
 import { fetcher } from "../../config";
 import "./styles/CategoryList.css";
 import { useSearch } from "../../contexts/search-context";
+import Logo from "../../assets/froggy-gaming-icon-2.png";
 
 const CategoryList = () => {
   const { data } = useSWR(`http://localhost:8386/api/v1/category`, fetcher);
@@ -20,6 +21,7 @@ const CategoryList = () => {
           className="cat-items"
         >
           <span className="cat-text">{item.cateName}</span>
+          <img src={Logo} alt="" className="cat-image" />
         </span>
       ))}
     </div>

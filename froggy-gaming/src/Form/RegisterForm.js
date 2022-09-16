@@ -69,8 +69,11 @@ const RegisterForm = () => {
     } else if (address.trim().length <= 0) {
       setError("Vui lòng nhập vào địa chỉ của bạn");
       return;
-    } else if (username.trim().length <= 8) {
+    } else if (username.trim().length <= 0) {
       setError("Vui lòng nhập vào tên đăng nhập của bạn");
+      return;
+    } else if (username.trim().length <= 5) {
+      setError("Tên đăng nhập phải dài hơn 5 kí tự");
       return;
     } else if (!passwordRegex.test(password.trim())) {
       setError(

@@ -16,11 +16,12 @@ import CartContainer from "./Cart/CartContainer/CartContainer";
 import { CartProvider } from "./contexts/cart-context";
 import LoginForm from "./Form/LoginForm";
 import RegisterForm from "./Form/RegisterForm";
-import UserForm from "./Form/UserForm";
+// import UserForm from "./Form/UserForm";
 import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 import AddProduct from "./Admin/AdminTable/AddProduct/AddProduct";
 import AddCategory from "./Admin/AdminTable/AddCategory/AddCategory";
 import AddBrand from "./Admin/AdminTable/AddBrand/AddBrand";
+import CartConfirm from "./Cart/CartConfirm/CartConfirm";
 // import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 
 function App() {
@@ -39,17 +40,16 @@ function App() {
             <Route path="/gio-hang" element={<CartContainer />}></Route>
             <Route path="/dang-nhap" element={<LoginForm />}></Route>
             <Route path="/dang-ky" element={<RegisterForm />}></Route>
+            <Route path="/gio-hang/xac-nhan" element={<CartConfirm />}></Route>
             <Route
-              path="/nguoi-dung"
-              element={
-                !localStorage.getItem("roles") ? <LoginForm /> : <UserForm />
-              }
+              path="/admin/them-danh-muc"
+              element={<AddCategory />}
             ></Route>
-            <Route path="/admin" element={<AdminContainer />}></Route>
-            <Route path="/admin/them-san-pham" element={<AddProduct />}></Route>
-            <Route path="/admin/them-danh-muc" element={<AddCategory />}></Route>
-            <Route path="/admin/them-hang-san-xuat" element={<AddBrand />}></Route>
-            {/* <Route
+            <Route
+              path="/admin/them-hang-san-xuat"
+              element={<AddBrand />}
+            ></Route>
+            <Route
               path="/admin"
               element={
                 localStorage.getItem("roles") === "ROLE_ADMIN" ? (
@@ -98,7 +98,7 @@ function App() {
                   <LoginForm />
                 )
               }
-            ></Route> */}
+            ></Route>
             <Route path="/san-pham/:proId" element={<ProductDetails />}></Route>
             <Route path="*" element={<NotFound></NotFound>}></Route>
           </Routes>

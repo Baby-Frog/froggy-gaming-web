@@ -97,7 +97,7 @@ const LoginForm = () => {
       localStorage.setItem("accessToken", response.data.data.access_token);
       localStorage.setItem("roles", response.data.data.roles);
       localStorage.setItem("username", response.data.data.username);
-      navigate("/nguoi-dung");
+      navigate("/");
       window.location.reload(false);
     } catch (error) {
       setError("Tài khoản hoặc mật khẩu sai, vui lòng đăng nhập lại");

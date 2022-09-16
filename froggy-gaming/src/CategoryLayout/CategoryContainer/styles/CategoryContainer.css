@@ -90,13 +90,7 @@
 
 }
 
-.cat-image {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    z-index: 9;
-    width: 120px;
-}
+
 
 .cat-items::after {
     content: "";

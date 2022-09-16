@@ -39,13 +39,13 @@ const UserForm = () => {
   };
 
   return (
-    <>
-      <div>{data.username}</div>
-      <div>{data.email}</div>
-      <div>{data.cusPhoneNumber}</div>
-      <div>{data.cusFirstname}</div>
-      <div>{data.cusLastname}</div>
-      <div>{data.cusAddress}</div>
+    <div className="user">
+      <div className="user-name">{data.username}</div>
+      <div className="user-email">{data.email}</div>
+      <div className="user-phonenumber">{data.cusPhoneNumber}</div>
+      <div className="user-firstname">{data.cusFirstname}</div>
+      <div className="user-lastname">{data.cusLastname}</div>
+      <div className="user-address">{data.cusAddress}</div>
       <div>
         {localStorage.getItem("roles") === "ROLE_ADMIN" ? (
           <div>ADMIN</div>
@@ -53,8 +53,13 @@ const UserForm = () => {
           <div>User</div>
         )}
       </div>
+      {localStorage.getItem("roles") === "ROLE_ADMIN" ? (
+        <button className=""></button>
+      ) : (
+        <div>User</div>
+      )}
       <button onClick={signOut}>Sign Out</button>
-    </>
+    </div>
   );
 };
 

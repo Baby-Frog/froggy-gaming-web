@@ -1,0 +1,205 @@
+@import "../../../variable";
+
+.cart-form {
+    width: 65%;
+
+    &-header {
+        font-size: 2.3rem;
+        color: $secondary2;
+    }
+
+    &-required {
+        font-size: 1.4rem;
+        font-family: "CharkaPetchLight";
+    }
+
+    &-star {
+        color: red;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 2rem;
+    }
+
+    &-group {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 2rem;
+        font-family: "CharkaPetchSemiBold";
+
+        label {
+            font-size: 1.7rem;
+            width: 15%;
+        }
+
+        input {
+            padding: 1.5rem 2rem;
+            background-color: #F0F3FC !important;
+            border: 1px solid transparent;
+            width: 85%;
+            font-size: 1.6rem;
+            letter-spacing: 1px;
+
+            &::placeholder {
+                font-size: 1.6rem;
+                letter-spacing: 0;
+            }
+        }
+    }
+}
+
+.cart-details {
+    width: 35%;
+    background: #F0F3FC;
+    padding: 2rem;
+
+    &-header {
+        font-size: 2rem;
+        font-family: "CharkaPetchBold";
+    }
+
+    &-amountdisplay {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &-amounttitle {
+        font-size: 1.6rem;
+        font-family: "CharkaPetchBold";
+    }
+
+    &-amount {
+        font-size: 1.8rem;
+        color: #005EC7;
+        font-family: "CharkaPetchSemiBold";
+
+        &.price {
+            color: red;
+        }
+    }
+
+    &-vat {
+        text-align: right;
+        font-size: 1.4rem;
+        font-family: "CharkaPetchRegular";
+    }
+
+    &-list {
+        width: 100%;
+        margin-top: 1rem;
+        border-top: 1px solid #ccc;
+    }
+
+    &-item {
+        margin-bottom: 1rem;
+
+        &-name {
+            color: #005EC7;
+            font-size: 1.8rem;
+            font-family: "CharkaPetchBold";
+        }
+
+        &-price {
+            color: red;
+            font-size: 1.6rem;
+            font-family: "CharkaPetchBold";
+
+        }
+    }
+
+    &-button {
+        background: #005EC7;
+        padding: 2rem;
+        color: white;
+        font-size: 1.7rem;
+        font-family: "CharkaPetchBold";
+        border: 1px solid transparent;
+        position: relative;
+        top: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+    }
+
+    &-error {
+        color: red;
+        font-size: 1.6rem;
+        text-align: center;
+        font-family: "CharkaPetchSemiBold";
+    }
+}
+
+// Modal
+.modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+
+    &-content {
+        width: 700px;
+        background: white;
+        padding: 4rem;
+        z-index: 4;
+        text-align: center;
+        position: relative;
+        border-radius: 12px;
+    }
+
+    &-close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: black;
+        padding: 1.5rem;
+        width: 30px;
+        height: 30px;
+        border-radius: 100rem;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.7rem;
+        transform: translate(1.5rem, -1.5rem);
+        cursor: pointer;
+    }
+
+    &-flex {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-desc {
+        color: rgba($color: #000000, $alpha: 0.6);
+        font-size: 1.5rem;
+    }
+
+    &-success {
+        width: 700px;
+        height: 200px;
+    }
+
+    &-logo {
+        width: 30px;
+        height: 30px;
+    }
+
+    &-text {
+        font-size: 2.5rem;
+    }
+}
+
+.overlay {
+    inset: 0;
+    background: rgba($color: #000000, $alpha: 0.5);
+    position: absolute;
+}

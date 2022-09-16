@@ -18,7 +18,7 @@ const Nav = () => {
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const { cartItems } = useCart();
+  const { cartItems, removeAllFromCart } = useCart();
   const { height, isScrolled, setIsScrolled } = useScrolled(100);
   useEffect(() => {
     window.addEventListener("scroll", () => {
@@ -65,6 +65,14 @@ const Nav = () => {
     handleFetchData.current(query);
   }, [query]);
 
+  const signOut = async () => {
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("roles");
+    localStorage.removeItem("lastname");
+    removeAllFromCart();
+    navigate("/dang-nhap");
+    window.location.reload(false);
+  };
   return (
     <>
       <div
@@ -239,10 +247,8 @@ const Nav = () => {
                 </div>
               )}
               {localStorage.getItem("roles") && (
-                <span
-                  className="header-navigation-signed"
-                  onClick={() => navigate("/nguoi-dung")}
-                >
+                <span className="header-navigation-signed" onClick={signOut}>
+                  <i className="fa-solid fa-door-open"></i>
                   {localStorage.getItem("username")}
                 </span>
               )}

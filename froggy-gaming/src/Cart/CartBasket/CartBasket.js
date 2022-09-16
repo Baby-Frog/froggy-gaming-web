@@ -7,6 +7,18 @@ import "./styles/CartBasket.css";
 import { useCart } from "../../contexts/cart-context";
 import { useNavigate } from "react-router-dom";
 
+const CartBasket = () => {
+  return (
+    <div className="cart">
+      <div className="cart-left">
+        <CartProcess />
+        <CartProduct />
+      </div>
+      <CartPrices />
+    </div>
+  );
+};
+
 function CartProcess() {
   return (
     <div className="cart-process">
@@ -46,7 +58,12 @@ function CartProduct() {
 
 function CartPrices() {
   const { cartItems, removeAllFromCart } = useCart();
-
+  const navigate = useNavigate();
+  const handleConfirmCart = () => {
+    if (cartItems.length > 0) {
+      navigate("/gio-hang/xac-nhan");
+    }
+  };
   return (
     <div className="cart-total__prices">
       <div className="cart-prices">
@@ -79,6 +96,7 @@ function CartPrices() {
         <button
           href="https://www.google.com/"
           className={`go-checkout ${cartItems.length > 0 && "active"}`}
+          onClick={handleConfirmCart}
         >
           Xác nhận đơn hàng
         </button>
@@ -205,31 +223,8 @@ function CartPrices() {
   );
 }
 
-const CartBasket = () => {
-  return (
-    <div className="cart">
-      <div className="cart-left">
-        <CartProcess />
-        <CartProduct />
-      </div>
-      <CartPrices />
-    </div>
-  );
-};
 function CartItems({ navigate, item, removeFromCart }) {
-  const {
-    increaseQuantity,
-    decreaseQuantity,
-    // storedItemQuantity,
-    // increaseQuantity,
-  } = useCart();
-  // const handleDecreaseQuantity = () => {
-  //   if (quantity <= 1) return;
-  //   setQuantity((quantity) => quantity - 1);
-  // };
-  // const handleIncreaseQuantity = () => {
-  //   setQuantity((quantity) => quantity + 1);
-  // };
+  const { increaseQuantity, decreaseQuantity } = useCart();
 
   return (
     <div className="cart-item" key={item.proId}>
