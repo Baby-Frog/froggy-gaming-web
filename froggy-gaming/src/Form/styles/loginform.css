@@ -4,6 +4,11 @@
   margin: 0 auto;
   font-family: "CharkaPetchRegular";
 }
+.form-failed {
+  color: red;
+  font-size: 1.7rem;
+  font-weight: 500;
+}
 .form .control {
   margin: 0 0 24px;
 }
@@ -15,20 +20,35 @@
   color: #fff;
   font-family: "CharkaPetchRegular";
   letter-spacing: 0.05em;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 500;
 }
 .form .control input:hover, .form .control input:focus {
   outline: none;
   border: 0;
 }
+.form .control input:hover::-moz-placeholder, .form .control input:focus::-moz-placeholder {
+  color: rgb(217, 217, 217);
+}
+.form .control input:hover:-ms-input-placeholder, .form .control input:focus:-ms-input-placeholder {
+  color: rgb(217, 217, 217);
+}
+.form .control input:hover::placeholder, .form .control input:focus::placeholder {
+  color: rgb(217, 217, 217);
+}
 .form .control input::-moz-placeholder {
-  color: white;
+  color: rgb(176, 176, 176);
+  -moz-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
 }
 .form .control input:-ms-input-placeholder {
-  color: white;
+  color: rgb(176, 176, 176);
+  -ms-transition: all 100ms ease-in-out;
+  transition: all 100ms ease-in-out;
 }
 .form .control input::placeholder {
-  color: white;
+  color: rgb(176, 176, 176);
+  transition: all 100ms ease-in-out;
 }
 .form .btn {
   width: 100%;
@@ -124,7 +144,7 @@
 .block-cube.block-input:hover .bg {
   background: black;
 }
-.block-cube.block-cube-hover:focus .bg .bg-inner, .block-cube.block-cube-hover:hover .bg .bg-inner {
+.block-cube.block-cube-hover:hover .bg .bg-inner {
   top: 100%;
 }
 

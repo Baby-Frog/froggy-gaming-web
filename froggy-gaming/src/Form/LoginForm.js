@@ -73,7 +73,7 @@ import "./styles/loginform.css";
 const LoginForm = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+  const [error, setError] = useState(false);
   const LOGIN_API = `http://localhost:8386/api/auth/signin`;
 
   const axiosConfig = {
@@ -100,6 +100,7 @@ const LoginForm = () => {
       navigate("/nguoi-dung");
       window.location.reload(false);
     } catch (error) {
+      setError("Tài khoản hoặc mật khẩu sai, vui lòng đăng nhập lại");
       console.log(error);
     }
   };
@@ -147,6 +148,9 @@ const LoginForm = () => {
           <div className="bg">
             <div className="bg-inner" />
           </div>
+        </div>
+        <div style={{ marginBlock: "2rem" }}>
+          {error && <span className="form-failed">{error}</span>}
         </div>
         <button className="btn block-cube block-cube-hover" type="submit">
           <div className="bg-top">

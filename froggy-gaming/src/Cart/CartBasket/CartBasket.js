@@ -6,7 +6,6 @@ import Visa from "../asset/images/visa.png";
 import "./styles/CartBasket.css";
 import { useCart } from "../../contexts/cart-context";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
 
 function CartProcess() {
   return (

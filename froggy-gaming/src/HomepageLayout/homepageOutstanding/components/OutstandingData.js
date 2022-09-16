@@ -41,7 +41,7 @@ export const MostBuyData = [
     weight: "	395 Gram",
   },
   {
-    id: 3,
+    id: 124,
     img_url: Product3,
     product_name: "Logitech POP Keys Blast Yellow",
     product_compatible: [Wireless, Bluetooth, BrownSw],

@@ -1,7 +1,5 @@
 import "./App.css";
-import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
-import Aos from "aos";
 import HomepageContainer from "./HomepageLayout/homepageContainer/components/HomepageContainer";
 import Nav from "./global/navigationBar/components/Nav";
 import CategoryContainer from "./CategoryLayout/CategoryContainer/CategoryContainer";
@@ -26,9 +24,6 @@ import AddBrand from "./Admin/AdminTable/AddBrand/AddBrand";
 // import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 
 function App() {
-  useEffect(() => {
-    Aos.init({ disable: window.innerWidth < 1366 });
-  }, []);
   return (
     <>
       <CartProvider>
@@ -56,7 +51,7 @@ function App() {
                 localStorage.getItem("roles") === "ROLE_ADMIN" ? (
                   <AdminContainer />
                 ) : (
-                  <LoginForm />
+                  <HomepageContainer />
                 )
               }
             ></Route>

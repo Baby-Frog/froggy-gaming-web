@@ -11,6 +11,11 @@ $bg_gradient: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(52, 9, 121, 1) 3
     margin: 0 auto;
     font-family: "CharkaPetchRegular";
 
+    &-failed {
+        color: red;
+        font-size: 1.7rem;
+        font-weight: 500;
+    }
 
     .control {
         margin: 0 0 24px;
@@ -23,16 +28,22 @@ $bg_gradient: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(52, 9, 121, 1) 3
             color: #fff;
             font-family: "CharkaPetchRegular";
             letter-spacing: 0.05em;
-            font-size: 16px;
+            font-size: 18px;
+            font-weight: 500;
 
             &:hover,
             &:focus {
                 outline: none;
                 border: 0;
+
+                &::placeholder {
+                    color: rgb(217, 217, 217);
+                }
             }
 
             &::placeholder {
-                color: white;
+                color: rgb(176, 176, 176);
+                transition: all 100ms ease-in-out;
             }
         }
     }
@@ -158,7 +169,7 @@ $bg_gradient: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(52, 9, 121, 1) 3
     }
 
     // State hover, focus
-    &.block-cube-hover:focus,
+
     &.block-cube-hover:hover {
         .bg {
             .bg-inner {

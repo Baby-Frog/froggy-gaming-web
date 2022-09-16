@@ -239,7 +239,12 @@ const Nav = () => {
                 </div>
               )}
               {localStorage.getItem("roles") && (
-                <span>Chào, {localStorage.getItem("username")}</span>
+                <span
+                  className="header-navigation-signed"
+                  onClick={() => navigate("/nguoi-dung")}
+                >
+                  Chào, {localStorage.getItem("username")}
+                </span>
               )}
             </li>
             <li

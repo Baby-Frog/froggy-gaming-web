@@ -474,7 +474,10 @@ function CartNotification({
         )}
         {addedFailed && (
           <span className="popup-text">
-            Thêm vào giỏ hàng thất bại ( đã tồn tại trong giỏ hàng )
+            Thêm vào giỏ hàng thất bại
+            {!localStorage.getItem("roles")
+              ? " (Vui lòng đăng nhập vào tài khoản của bạn)"
+              : " (Sản phẩm đã tồn tại trong giỏ hàng)"}
           </span>
         )}
       </div>

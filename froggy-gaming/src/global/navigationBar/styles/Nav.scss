@@ -130,6 +130,12 @@ body.nav-open {
             }
         }
 
+        &-signed {
+            font-size: 1.5rem;
+            align-self: center;
+            justify-self: center;
+        }
+
         &-list {
             list-style-type: none;
             flex-shrink: 1;

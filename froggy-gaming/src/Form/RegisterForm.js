@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./styles/loginform.css";
 
@@ -47,57 +47,9 @@ const RegisterForm = () => {
   };
   return (
     <>
-      {/* <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="first name"
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="last name"
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="number"
-          placeholder="phone number"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="address"
-          value={address}
-          onChange={(e) => setAddress(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          autoComplete="on"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Dang ki</button>
-        {error && <div>SUCCESSFULLY</div>}
-      </form>
-      {error && <div>BUG</div>} */}
       <form autoComplete="off" className="form" onSubmit={handleSubmit}>
         <div className="control">
-          <h1>Đăng nhập</h1>
+          <h1>Đăng ký</h1>
         </div>
         <div className="control block-cube block-input">
           <input
@@ -245,6 +197,10 @@ const RegisterForm = () => {
           <div className="text">Đăng ký</div>
         </button>
       </form>
+      <Link to={"/dang-nhap"} className="form-flex">
+        <span className="form-question">Bạn đã có tài khoản?</span>
+        <span className="form-signup">Đăng nhập</span>
+      </Link>
     </>
   );
 };

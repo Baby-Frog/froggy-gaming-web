@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useEffect } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCart } from "../contexts/cart-context";
 
 const UserForm = () => {
   const USER_API = `http://localhost:8386/api/v1/customer/get`;
   const navigate = useNavigate();
   const [data, setData] = useState({});
+  const { removeAllFromCart } = useCart();
   const token = localStorage.getItem("accessToken");
 
   const axiosConfig = {
@@ -31,6 +33,7 @@ const UserForm = () => {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("roles");
     localStorage.removeItem("lastname");
+    removeAllFromCart();
     navigate("/dang-nhap");
     window.location.reload(false);
   };

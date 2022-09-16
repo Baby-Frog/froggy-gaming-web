@@ -18,7 +18,7 @@ function CartProvider(props) {
     setCartItems((prevItems) => {
       const isExisted = prevItems.some((item) => item.proId === newItem.proId);
       console.log(isExisted);
-      if (isExisted) {
+      if (isExisted || !localStorage.getItem("roles")) {
         setAddedFailed(true);
         setAddedSuccess(false);
         setStoredCart([...prevItems]);

@@ -5,9 +5,11 @@ import { useState } from "react";
 import { useEffect } from "react";
 import "./styles/adminacc.css";
 const token = localStorage.getItem("accessToken");
+
 const axiosConfig = {
   headers: { Authorization: `Bearer ${token}` },
 };
+
 const getProducts = async (page) => {
   try {
     const response = await axios.get(
@@ -40,6 +42,24 @@ const AdminAcc = () => {
     handleLoadMoreProducts.current();
   }, []);
 
+  const handleDeleteInDatabase = async (removeItemId) => {
+    if (window.confirm("Bạn có muốn xóa sản phẩm không")) {
+      // try {
+      //   await axios.delete(
+      //     `http://localhost:8386/api/v1/product/delete/177`,
+      //     axiosConfig
+      //   );
+
+      setData((prevItems) => {
+        const result = prevItems.filter((item) => item.proId !== removeItemId);
+        return result;
+      });
+      // } catch (error) {
+      //   console.log(error);
+      // }
+    }
+  };
+
   return (
     <div className="admin-product">
       <h3 className="admin-product-header">Danh sách sản phẩm</h3>
@@ -50,6 +70,7 @@ const AdminAcc = () => {
             <td className="admin-product-table-data">Tên sản phẩm</td>
             <td className="admin-product-table-data">Giá tiền</td>
             <td className="admin-product-table-data">Trạng thái</td>
+            <td className="admin-product-table-data">Xóa sản phẩm</td>
           </tr>
         </thead>
         <tbody className="admin-product-table-body">
@@ -73,6 +94,12 @@ const AdminAcc = () => {
                     <span className="admin-product-table-false">Hết hàng</span>
                   </td>
                 )}
+                <td
+                  className="admin-product-table-data"
+                  onClick={() => handleDeleteInDatabase(item.proId)}
+                >
+                  <i class="fa-solid fa-trash-can"></i>
+                </td>
               </tr>
             ))}
         </tbody>

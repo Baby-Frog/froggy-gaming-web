@@ -97,6 +97,11 @@ body.nav-open {
 .header-navigation-user .header-navigation-sign--mobile {
   display: none;
 }
+.header-navigation-signed {
+  font-size: 1.5rem;
+  align-self: center;
+  justify-self: center;
+}
 .header-navigation-list {
   list-style-type: none;
   flex-shrink: 1;

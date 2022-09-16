@@ -51,15 +51,15 @@ const ProductList = () => {
     );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [nextPage, setUrl]);
-  useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.innerWidth > 1024 && window.scrollY > 300) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    });
-  }, [height, setIsScrolled]);
+  // useEffect(() => {
+  //   window.addEventListener("scroll", () => {
+  //     if (window.innerWidth > 1024 && window.scrollY > 300) {
+  //       setIsScrolled(true);
+  //     } else {
+  //       setIsScrolled(false);
+  //     }
+  //   });
+  // }, [height, setIsScrolled]);
   const isMounted = useRef(true);
   useEffect(() => {
     isMounted.current = true;
