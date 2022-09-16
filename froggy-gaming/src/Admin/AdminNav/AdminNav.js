@@ -16,6 +16,10 @@ const AdminNav = () => {
             <i className="fa-solid fa-solid fa-plus"></i>
             Add Category
           </Link>
+          <Link to="/admin/them-hang">
+            <i className="fa-solid fa-solid fa-plus"></i>
+            Add Brand
+          </Link>
         </div>
         <div className="ad-nav__info">
           <div className="ad-nav__title">Account</div>
