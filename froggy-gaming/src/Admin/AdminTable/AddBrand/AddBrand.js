@@ -1,7 +1,7 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import "./AddBrand.css"
+import "../AddCategory/AddCategory.css"
 
 const AddBrand = () => {
   const [brandName, setBrandName] = useState("");
@@ -37,17 +37,22 @@ const AddBrand = () => {
 
   return (
     <>
-      <form className="N"
+    <div className="wrapper">
+      <form className="cat__name"
+      
       onSubmit={handleSubmit}>
         <span>Ten hang san xuat</span>
-        <input
+          <input className="add-cat__name"
           type="text"
           placeholder="Ten danh muc"
           value={brandName}
           onChange={(e) => setBrandName(e.target.value)}
         />
-        <button type="submit">Them hang san xuat</button>
+        <button
+            className="add-cat"
+         type="submit">Them hang san xuat</button>
       </form>
+      </div>
     </>
   );
 };
