@@ -248,7 +248,7 @@ const Nav = () => {
                   </span>
                 </div>
               )}
-              {localStorage.getItem("roles") && <span>Xin chào, Khoi</span>}
+              {localStorage.getItem("roles") && <span>Chào, Khoi</span>}
             </li>
             <li
               className="header-navigation-item"

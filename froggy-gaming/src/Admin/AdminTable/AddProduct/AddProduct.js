@@ -43,7 +43,6 @@ const AddProduct = () => {
   const CREATE_NEW_CATEGORY_API = `http://localhost:8386/api/v1/category/save`;
   const CREATE_NEW_BRAND_API = `http://localhost:8386/api/v1/brand/save`;
   const CREATE_NEW_PRODUCT_DETAIL_API = `http://localhost:8386/api/v1/productdetails/save`;
-
   const ADD_IMAGE_TO_PRODUCT_API = `http://localhost:8386/api/v1/image/add-to-product`;
   const ADD_PRODUCT_TO_CATEGORY_API = `http://localhost:8386/api/v1/product/add-to-category`;
   const ADD_PRODUCT_TO_BRAND_API = `http://localhost:8386/api/v1/product/add-to-brand`;
