@@ -14,7 +14,7 @@ import { useCart } from "../../../contexts/cart-context";
 
 const Nav = () => {
   const [data, setData] = useState([]);
-  const { query, setQuery, setUrl, setSearchParam, handleSearch } = useSearch();
+  const { query, setQuery, handleSearch } = useSearch();
   const [mobileNav, setMobileNav] = useState(false);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -38,7 +38,6 @@ const Nav = () => {
     }
     try {
       const response = await axios.get(
-        // `https://api.themoviedb.org/3/search/movie?api_key=3ce49afbabd14f11e4b7097cf42c2ab9&query=${state.query}`
         `http://localhost:8386/api/v1/product/search/query=${query}&page=1`
       );
       setData(response.data.data.content || []);
@@ -98,10 +97,6 @@ const Nav = () => {
                     htmlFor="search"
                     className="header-navigation-form-input"
                     placeholder="Nhập vào sản phẩm muốn tìm"
-                    // onChange={lodash.debounce(
-                    //   (e) => setQuery(e.target.value),
-                    //   1000
-                    // )}
                   />
                 </div>
                 {loading && (
@@ -179,11 +174,6 @@ const Nav = () => {
                     htmlFor="search"
                     className="header-navigation-form-input"
                     placeholder="Nhập vào sản phẩm muốn tìm"
-                    // onChange={lodash.debounce(
-                    //   (e) => setQuery(e.target.value),
-                    //   1000
-                    // )}
-
                     onChange={debounceChange}
                   />
                   {!loading ? (

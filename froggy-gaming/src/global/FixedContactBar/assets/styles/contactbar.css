@@ -15,7 +15,7 @@
   visibility: visible;
 }
 .contact-bar:hover {
-  transform: translate(0rem, -50%);
+  transform: translate(0rem, 0%);
 }
 .contact-bar-item {
   margin-bottom: 1rem;
