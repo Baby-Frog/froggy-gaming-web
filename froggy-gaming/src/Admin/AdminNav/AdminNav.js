@@ -16,7 +16,7 @@ const AdminNav = () => {
             <i className="fa-solid fa-solid fa-plus"></i>
             Add Category
           </Link>
-          <Link to="/admin/them-hang">
+          <Link to="/admin/them-hang-san-xuat">
             <i className="fa-solid fa-solid fa-plus"></i>
             Add Brand
           </Link>

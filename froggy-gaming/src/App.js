@@ -22,6 +22,7 @@ import UserForm from "./Form/UserForm";
 import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 import AddProduct from "./Admin/AdminTable/AddProduct/AddProduct";
 import AddCategory from "./Admin/AdminTable/AddCategory/AddCategory";
+import AddBrand from "./Admin/AdminTable/AddBrand/AddBrand";
 // import AdminContainer from "./Admin/AdminContainer/AdminContainer";
 
 function App() {
@@ -84,6 +85,16 @@ function App() {
               element={
                 localStorage.getItem("roles") === "ROLE_ADMIN" ? (
                   <AddCategory />
+                ) : (
+                  <LoginForm />
+                )
+              }
+            ></Route>
+            <Route
+              path="/admin/them-hang-san-xuat"
+              element={
+                localStorage.getItem("roles") === "ROLE_ADMIN" ? (
+                  <AddBrand />
                 ) : (
                   <LoginForm />
                 )
