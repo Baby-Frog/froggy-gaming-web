@@ -13,7 +13,6 @@ function SearchProvider(props) {
   const [url, setUrl] = useState(
     `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.${type}&order=${order}`
   );
-  console.log(searchParam.get("query"));
 
   function handleNavigateCategory(cateName) {
     setQuery(cateName);

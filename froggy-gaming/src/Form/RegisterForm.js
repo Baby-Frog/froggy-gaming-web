@@ -2,8 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./styles/loginform.css";
-
+import { registerSchema } from "../SignUpFormValidation";
 const RegisterForm = () => {
+  const emailRegex =
+    /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  const passwordRegex =
+    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,8 +15,7 @@ const RegisterForm = () => {
   const [password, setPassword] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
-  const [error, setError] = useState(false);
-
+  const [error, setError] = useState("");
   const REGISTER_API = `http://localhost:8386/api/auth/signup`;
 
   const axiosConfig = {
@@ -36,13 +39,51 @@ const RegisterForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    // let formData = {
+    //   firstName: firstName,
+    //   lastName: lastName,
+    //   email: email,
+    //   phoneNumber: phoneNumber,
+    //   address: address,
+    //   username: username,
+    //   password: password,
+    // };
+    // const isValid = await registerSchema.isValid(formData);
+    // console.log(isValid);
+    // if (!isValid) return;
+    if (firstName.trim().length <= 0) {
+      setError("Vui lòng nhập vào họ của bạn");
+      console.log(error);
+      return;
+    } else if (lastName.trim().length <= 0) {
+      setError("Vui lòng nhập vào tên của bạn");
+      console.log(error);
+      return;
+    } else if (!emailRegex.test(email.trim())) {
+      setError("Email bạn nhập vào không hợp lệ");
+      console.log(error);
+      return;
+    } else if (phoneNumber.trim().length <= 0) {
+      setError("Vui lòng nhập vào số điện thoại");
+      return;
+    } else if (address.trim().length <= 0) {
+      setError("Vui lòng nhập vào địa chỉ của bạn");
+      return;
+    } else if (username.trim().length <= 8) {
+      setError("Vui lòng nhập vào tên đăng nhập của bạn");
+      return;
+    } else if (!passwordRegex.test(password.trim())) {
+      setError(
+        "Mật khẩu cần có ít nhất 8 kí tự, 1 kí tự in hoa, 1 kí tự số và 1 kí tự đặc biệt"
+      );
+      return;
+    }
     try {
       const response = await axios.post(REGISTER_API, newAccount, axiosConfig);
       console.log(response.data.data);
       navigate("/dang-nhap");
     } catch (error) {
       console.log(error);
-      setError(true);
     }
   };
   return (
@@ -91,7 +132,7 @@ const RegisterForm = () => {
         </div>
         <div className="control block-cube block-input">
           <input
-            type="email"
+            type="text"
             id="email"
             name="email"
             value={email}
@@ -184,6 +225,10 @@ const RegisterForm = () => {
             <div className="bg-inner" />
           </div>
         </div>
+        <span className="form-failed">{error}</span>
+        <br />
+        <br />
+
         <button className="btn block-cube block-cube-hover" type="submit">
           <div className="bg-top">
             <div className="bg-inner" />

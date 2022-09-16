@@ -243,7 +243,7 @@ const Nav = () => {
                   className="header-navigation-signed"
                   onClick={() => navigate("/nguoi-dung")}
                 >
-                  Chào, {localStorage.getItem("username")}
+                  {localStorage.getItem("username")}
                 </span>
               )}
             </li>

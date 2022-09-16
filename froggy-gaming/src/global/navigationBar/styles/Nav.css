@@ -98,9 +98,13 @@ body.nav-open {
   display: none;
 }
 .header-navigation-signed {
-  font-size: 1.5rem;
-  align-self: center;
-  justify-self: center;
+  font-size: 1.4rem;
+  padding: 0.5rem 2rem;
+  border: 2px solid black;
+  border-radius: 100rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .header-navigation-list {
   list-style-type: none;
