@@ -196,8 +196,9 @@ const CartDetails = ({ userFormData, setBuySuccess }) => {
         {cartItems.length > 0 &&
           cartItems.map((item) => (
             <div className="cart-details-item">
-              <div className="cart-details-item-name">{item.proName}</div>
+              <div className="cart-details-item-name">- {item.proName}</div>
               <div className="cart-details-item-price">
+                Giá tiền:
                 {item.totalPrice.toLocaleString("it-IT", {
                   style: "currency",
                   currency: "VND",
