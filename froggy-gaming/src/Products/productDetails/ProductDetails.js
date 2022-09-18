@@ -197,22 +197,18 @@ const ProductTabs = ({ item }) => {
           className={`${
             activeTab === 3 ? "tabs-content-inner active" : "tabs-content-inner"
           }`}
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            padding: "4rem",
-          }}
         >
-          <iframe
-            width="1280"
-            height="720"
-            src="https://www.youtube.com/embed/husm2YMk26s"
-            title="Trên tay Bàn phím không dây Akko 3068 Silent - Nhỏ mà có Võ"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          ></iframe>
+          <div className="center">
+            <iframe
+              width="1280"
+              height="720"
+              src="https://www.youtube.com/embed/husm2YMk26s"
+              title="Trên tay Bàn phím không dây Akko 3068 Silent - Nhỏ mà có Võ"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          </div>
         </div>
       </div>
     </div>
@@ -352,7 +348,82 @@ const ProductSpecification = ({ item }) => {
 };
 // description của sản phẩm
 const ProductDescription = ({ item }) => {
-  return <div className="description">{item.proDesc}</div>;
+  // return <div className="description">{item.proDesc}</div>;
+  return (
+    <div className="description">
+      <h2 className="description-header">
+        Đánh giá chi tiết bàn phím AKKO 3068 v2 RGB White
+      </h2>
+      <p>
+        AKKO 3068 v2 RGB White là dòng bàn phím AKKO thuộc series 3068 mới nhất.
+        Đây là dòng bàn phím cơ sở hữu thiết kế nhỏ gọn với tone màu sang trọng
+        và dễ dàng mang đi bất kỳ đâu thích hợp cho dân văn phòng và người dùng
+        thích những góc máy chơi game, học tập theo phong cách "Minimal".
+      </p>
+      <img
+        src="https://file.hstatic.net/1000026716/file/gearvn-ban-phim-akko-3068-v2-rgb-white-1_f94cd2a0e627464f8cb0fa8b24d138d2_grande.png"
+        alt=""
+        className="description-image"
+      />
+      <p>
+        Được thiết kế với tone màu trắng chủ đạo, AKKO 3068 v2 RGB White sẽ là
+        một trong những sự lựa chọn cho những góc máy sang trọng và vô cùng đẳng
+        cấp.
+      </p>
+      <h2 className="description-header">Hỗ trợ thay nóng Switch</h2>
+      <p>
+        Một trong những điểm ấn tượng trên AKKO 3068 v2 RGB White chính là tính
+        năng hỗ trợ thay nóng switch (hot swap, 5 pin), người dùng có thể thoải
+        mái tự custom bàn phím để đáp ứng tốt nhu cầu sử dụng.{" "}
+      </p>
+      <img
+        src="https://file.hstatic.net/1000026716/file/gearvn-ban-phim-akko-3068-v2-rgb-white-2_15f16ece63c54efbb5e265c33fd4d5ac_grande.png"
+        alt=""
+        className="description-image"
+      />
+      <h2 className="description-header">LED RGB nhiều chế độ tùy chỉnh</h2>
+      <p>
+        Để làm nổi bật không gian chơi game, học tập và làm việc. Akko đã trang
+        bị trên dòng bàn phím cơ của mình hệ thống LED RGB với nhiều chế độ tùy
+        chỉnh.
+      </p>
+      <img
+        src="https://file.hstatic.net/1000026716/file/gearvn-ban-phim-akko-3068-v2-rgb-white-3_fa667b277da5496496a8b8e9b10e1968_grande.png"
+        alt=""
+        className="description-image"
+      />
+      <p>
+        AKKO 3068 v2 RGB White dành được nhiều sự quan tâm vì là một trong những
+        dòng bàn phím cơ giá rẻ trên thị trường được trang bị công nghệ SMD LED
+        – Loại chip led có khả năng tản nhiệt tốt với hiệu suất phát quang cao
+        chỉ có trên những dòng bàn phím cơ cao cấp.
+      </p>
+      <h2 className="description-header">
+        Keycap PBT Double-Shot, công nghệ ASA profile
+      </h2>
+      <p>
+        AKKO 3068 v2 RGB White được trang bị bộ Keycap với chất liệu PBT
+        Double-Shot bạn hoàn toàn có thể yên tâm trong suốt quá trình sử dụng sẽ
+        không còn lo về tình trạng mờ các ký tự trên phím bấm. Đặc biệt, với
+        công nghệ ASA profile (Xuyên LED) sẽ làm chiếc bàn phím thêm phần ấn
+        tượng khi mang đến bất kỳ đâu.
+      </p>
+      <h2 className="description-header">
+        Sử dụng switch riêng biệt Akko CS switch
+      </h2>
+      <img
+        src="https://file.hstatic.net/1000026716/file/gearvn-ban-phim-akko-3068-v2-rgb-white-5_2f02d5ba41aa41a3b07a76fc214b9caf_grande.png"
+        alt=""
+        className="description-image"
+      />
+      <p>
+        Bàn phím Akko luôn mang đến cho người dùng nhiều sự lựa chọn phù hợp với
+        nhu cầu sử dụng, với AKKO 3068 v2 RGB White cũng không ngoại lệ khi
+        trang bị hai loại switch riêng biệt Akko CS switch (Jelly Pink / Jelly
+        Purple).{" "}
+      </p>
+    </div>
+  );
 };
 
 const ProductSummarySlider = ({ images }) => {
@@ -423,8 +494,6 @@ const ProductSummaryBottomImages = ({ item }) => {
     </div>
   );
 };
-
-const ProductPopup = () => {};
 
 const NextArrow = (props) => {
   const { onClick } = props;

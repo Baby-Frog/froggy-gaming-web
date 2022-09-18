@@ -4,6 +4,7 @@ import { SliderData } from "./SliderImage";
 import SlickItem from "./SlickItem";
 import "slick-carousel/slick/slick.css";
 import "../assets/scss/slider.css";
+import { useNavigate } from "react-router-dom";
 
 function SampleNextArrow(props) {
   const { onClick } = props;
@@ -23,44 +24,43 @@ function SamplePrevArrow(props) {
   );
 }
 
-class SlickSlider extends React.Component {
-  render() {
-    var settings = {
-      autoplay: true,
-      autoplaySpeed: 4000,
-      pauseOnHover: true,
-      dots: true,
-      infinite: true,
-      speed: 400,
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      cssEase: "cubic-bezier(0.7, 0.2, 0.6, 0.45)",
-      draggable: false,
-      fade: true,
-      pauseOnDotsHover: true,
-      nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />,
-      responsive: [
-        {
-          breakpoint: 987,
-          settings: {
-            draggable: true,
-            arrows: false,
-            fade: false,
-          },
+const SlickSlider = () => {
+  const navigate = useNavigate();
+  var settings = {
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    dots: true,
+    infinite: true,
+    speed: 400,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    cssEase: "cubic-bezier(0.7, 0.2, 0.6, 0.45)",
+    draggable: false,
+    fade: true,
+    pauseOnDotsHover: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
+    responsive: [
+      {
+        breakpoint: 987,
+        settings: {
+          draggable: true,
+          arrows: false,
+          fade: false,
         },
-      ],
-    };
-    return (
-      <div>
-        <Slider ref={(c) => (this.slider = c)} {...settings}>
-          {SliderData.map((item) => (
-            <SlickItem key={item.id} image={item.image}></SlickItem>
-          ))}
-        </Slider>
-      </div>
-    );
-  }
-}
+      },
+    ],
+  };
+  return (
+    <div>
+      <Slider {...settings}>
+        {SliderData.map((item) => (
+          <SlickItem key={item.id} image={item.image}></SlickItem>
+        ))}
+      </Slider>
+    </div>
+  );
+};
 
 export default SlickSlider;

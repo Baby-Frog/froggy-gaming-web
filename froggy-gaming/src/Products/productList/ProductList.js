@@ -6,10 +6,11 @@ import ReactPaginate from "react-paginate";
 import useSWR from "swr";
 import { fetcher } from "../../config";
 import { useSearch } from "../../contexts/search-context";
-import ProductCard from "../../global/products/ProductCard";
+import ProductCard, {
+  ProductCardSkeleton,
+} from "../../global/products/ProductCard";
 import useClickOutside from "../../hooks/useClickOutside";
 import useDropdown from "../../hooks/useDropdown";
-import useScrolled from "../../hooks/useScrolled";
 import "./styles/productlist.css";
 const itemsPerPage = 12;
 const ProductList = () => {
@@ -18,7 +19,7 @@ const ProductList = () => {
   const { url, setUrl, nextPage, setNextPage, query } = useSearch();
   const { nodeRef, setShow, show } = useClickOutside(false);
   const [selected, setSelected] = useState("Giá (Thấp -> Cao)");
-  const { height, setIsScrolled } = useScrolled(300);
+  const [loading, setLoading] = useState(true);
   const { data } = useSWR(url, fetcher);
   const handleSelect = (e) => {
     setSelected(e.target.textContent);
@@ -67,6 +68,11 @@ const ProductList = () => {
       isMounted.current = false;
     };
   }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
 
   const products = data?.data?.content || [];
   const queryInfo = data?.data || [];
@@ -101,7 +107,7 @@ const ProductList = () => {
             <div className="product-count">
               <h3 className="product-found">Tìm kiếm - {query}</h3>
               <span className="product-amount">
-                [{queryInfo.numberOfElements} sản phẩm]
+                [{queryInfo.totalElements} sản phẩm]
               </span>
             </div>
             <div className="product-sort" ref={nodeRef}>
@@ -139,10 +145,29 @@ const ProductList = () => {
             </div>
           </div>
           <div className="product-list">
-            {products.length > 0 &&
+            {!loading &&
+              products.length > 0 &&
               products.map((item) => (
-                <ProductCard key={item.proId} item={item}></ProductCard>
+                <ProductCard
+                  loading={loading}
+                  setLoading={setLoading}
+                  key={item.proId}
+                  item={item}
+                ></ProductCard>
               ))}
+            {loading && (
+              <>
+                <ProductCardSkeleton></ProductCardSkeleton>
+                <ProductCardSkeleton></ProductCardSkeleton>
+                <ProductCardSkeleton></ProductCardSkeleton>
+                <ProductCardSkeleton></ProductCardSkeleton>
+                <ProductCardSkeleton></ProductCardSkeleton>
+                <ProductCardSkeleton></ProductCardSkeleton>
+                <ProductCardSkeleton></ProductCardSkeleton>
+                <ProductCardSkeleton></ProductCardSkeleton>
+                <ProductCardSkeleton></ProductCardSkeleton>
+              </>
+            )}
           </div>
           <ReactPaginate
             breakLabel="..."
@@ -168,8 +193,6 @@ function ProductFilter() {
     </div>
   );
 }
-
-export default ProductList;
 
 function ProductFilterBrand({ title }) {
   const [brandQuery, setBrandQuery] = useState("");
@@ -270,3 +293,5 @@ function ProductFilterBrand({ title }) {
     </div>
   );
 }
+
+export default ProductList;

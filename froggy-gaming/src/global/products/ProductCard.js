@@ -1,5 +1,7 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useHover from "../../hooks/useHover";
+import LoadingSkeleton from "../SkeletonLoading/LoadingSkeleton";
 import "./styles/productcard.css";
 
 const ProductCard = ({ item }) => {
@@ -15,11 +17,9 @@ const ProductCard = ({ item }) => {
       <div className="product-percent">
         <div className="product-sale">20%</div>
       </div>
-      <img
-        src={`${images[0].imgPath.replaceAll("-", "")}`}
-        alt=""
-        className="product-image"
-      />
+      <div className="product-image">
+        <img src={`${images[0].imgPath.replaceAll("-", "")}`} alt="" />
+      </div>
       {/* content below */}
       <div className="product-content">
         <div className="product-name">{proName}</div>
@@ -51,6 +51,51 @@ const ProductCard = ({ item }) => {
             </div>
           </div>
         )}
+      </div>
+    </div>
+  );
+};
+
+export const ProductCardSkeleton = () => {
+  return (
+    <div className="product-item">
+      <LoadingSkeleton height="370px" radius="0px"></LoadingSkeleton>
+
+      <div className="product-content">
+        <LoadingSkeleton
+          width="300px"
+          height="17px"
+          radius="0px"
+        ></LoadingSkeleton>
+
+        <div className="product-detail">
+          <div className="product-rate">
+            <div className="product-star">
+              <LoadingSkeleton
+                width="100px"
+                height="12px"
+                marginTop="5px"
+              ></LoadingSkeleton>
+            </div>
+            <LoadingSkeleton
+              width="50px"
+              height="12px"
+              marginTop="5px"
+            ></LoadingSkeleton>
+          </div>
+          <div className="product-price">
+            <LoadingSkeleton
+              height="10px"
+              width="100px"
+              marginTop="5px"
+            ></LoadingSkeleton>
+            <LoadingSkeleton
+              height="10px"
+              width="100px"
+              marginTop="5px"
+            ></LoadingSkeleton>
+          </div>
+        </div>
       </div>
     </div>
   );

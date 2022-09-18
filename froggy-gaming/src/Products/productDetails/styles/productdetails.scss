@@ -159,11 +159,24 @@
 
 // Product Description
 .description {
-    font-size: 2rem;
+    font-size: 2.1rem;
+    font-weight: 400;
+
+    &-header {
+        margin-top: 1rem;
+        font-size: 2.5rem;
+    }
+
+    &-image {
+        width: 600px;
+        height: 500px;
+        margin: 2rem auto;
+    }
 }
 
 // Product Tabs
 .tabs {
+    // border: 1px solid red;
 
     &-list {
         display: flex;
@@ -193,14 +206,10 @@
     &-content {
 
         &-inner {
-            opacity: 0;
-            visibility: hidden;
-            height: 0px;
+            display: none;
 
             &.active {
-                height: auto;
-                opacity: 1;
-                visibility: visible;
+                display: block;
             }
         }
     }

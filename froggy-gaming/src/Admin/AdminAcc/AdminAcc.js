@@ -109,7 +109,7 @@ const AdminAcc = () => {
         </table>
         <button
           className="admin-product-loadmore"
-          // onClick={handleLoadMoreProducts.current}
+          onClick={handleLoadMoreProducts.current}
         >
           Load more
         </button>

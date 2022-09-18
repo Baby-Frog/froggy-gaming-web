@@ -49,10 +49,6 @@ const HomepageContainer = () => {
         ></SectionDivider>
         <BrandSlider></BrandSlider>
         {/* homepageFeedback */}
-        <SectionDivider
-          sectionContent={"Đánh giá từ khách hàng"}
-          marginBlock="1rem"
-        ></SectionDivider>
       </div>
     </Fragment>
   );

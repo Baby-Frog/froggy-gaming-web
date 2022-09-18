@@ -17,6 +17,13 @@
   visibility: hidden;
 }
 
+.center {
+  margin-block: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .flex {
   display: flex;
 }
