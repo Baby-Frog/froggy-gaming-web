@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Money from "../asset/images/tien-mat.png";
 import InternetMoney from "../asset/images/internet-bank.png";
 import Card from "../asset/images/mastercard.png";
@@ -6,6 +6,8 @@ import Visa from "../asset/images/visa.png";
 import "./styles/CartBasket.css";
 import { useCart } from "../../contexts/cart-context";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 
 const CartBasket = () => {
   return (
@@ -38,7 +40,6 @@ function CartProcess() {
 function CartProduct() {
   const { cartItems, removeFromCart } = useCart();
   const navigate = useNavigate();
-  console.log(cartItems);
   return (
     <div className="cart-product">
       <div className="cart-header">
@@ -57,13 +58,85 @@ function CartProduct() {
 }
 
 function CartPrices() {
-  const { cartItems, removeAllFromCart } = useCart();
   const navigate = useNavigate();
-  const handleConfirmCart = () => {
+  const { cartItems, removeAllFromCart } = useCart();
+
+  const [orderId, setOrderId] = useState("");
+  const [quantityOrder, setQuantityOrder] = useState("");
+  const [totalPriceOrder, setTotalPriceOrder] = useState("");
+
+  let totalPrice = 0;
+  let productQuantity = 0;
+  cartItems.forEach((element) => {
+    totalPrice += element.totalPrice;
+    productQuantity += element.quantity;
+  });
+
+  useEffect(() => {
+    setQuantityOrder(productQuantity);
+    setTotalPriceOrder(totalPrice);
+  }, [totalPrice, productQuantity]);
+
+  useEffect(() => {
+    if (orderId !== "") {
+      addOrderToCustomer();
+    }
+  }, [orderId]);
+
+  // api
+  const CREATE_NEW_ORDER_API = `http://localhost:8386/api/v1/order/save`;
+  const ADD_ORDER_TO_CUSTOMER_API = `http://localhost:8386/api/v1/order/add-to-customer`;
+
+  // form
+  const createNewOrderForm = JSON.stringify({
+    quantity: quantityOrder,
+    totalPrice: totalPriceOrder,
+  });
+
+  const cusUsername = localStorage.getItem("username");
+  const addOrderToCustomerForm = JSON.stringify({
+    username: cusUsername,
+    orderId: orderId,
+  });
+
+  // config
+  const token = localStorage.getItem("accessToken");
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  // function
+  const createNewOrder = async () => {
+    const response = await axios.post(
+      CREATE_NEW_ORDER_API,
+      createNewOrderForm,
+      axiosConfig
+    );
+    console.log(response);
+    setOrderId(response.data.data.id);
+  };
+
+  const addOrderToCustomer = async () => {
+    console.log(addOrderToCustomerForm);
+    const response = await axios.post(
+      ADD_ORDER_TO_CUSTOMER_API,
+      addOrderToCustomerForm,
+      axiosConfig
+    );
+    console.log(response);
+  };
+
+  const handleConfirmCart = async () => {
     if (cartItems.length > 0) {
+      await createNewOrder();
       navigate("/gio-hang/xac-nhan");
     }
   };
+
   return (
     <div className="cart-total__prices">
       <div className="cart-prices">

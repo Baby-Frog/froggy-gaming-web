@@ -4,30 +4,34 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
 import "./styles/adminacc.css";
-const token = localStorage.getItem("accessToken");
 
-const axiosConfig = {
-  headers: { Authorization: `Bearer ${token}` },
-};
-
-const getProducts = async (page) => {
-  try {
-    const response = await axios.get(
-      `http://localhost:8386/api/v1/product/page=${page}`,
-      axiosConfig
-    );
-    return response.data.data.content;
-  } catch (error) {
-    console.log(error);
-  }
-};
 const AdminAcc = () => {
-  // const [pageCount, setPageCount] = useState(0);
-  // const [itemOffset, setItemOffset] = useState(0);
-  const [data, setData] = useState([]);
-  // const [outsideData, setOutsideData] = useState([]);
-  const [nextPage, setNextPage] = useState(1);
   const handleLoadMoreProducts = useRef({});
+
+  const [data, setData] = useState([]);
+  const [nextPage, setNextPage] = useState(1);
+
+  const token = localStorage.getItem("accessToken");
+  const axiosConfig = {
+    headers: {
+      "Content-Type": "application/json",
+      accept: "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const getProducts = async (page) => {
+    try {
+      const response = await axios.get(
+        `http://localhost:8386/api/v1/product/page=${page}`,
+        axiosConfig
+      );
+      return response.data.data.content;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   handleLoadMoreProducts.current = async () => {
     try {
       const products = await getProducts(nextPage);
@@ -38,26 +42,65 @@ const AdminAcc = () => {
       console.log(error);
     }
   };
+
   useEffect(() => {
     handleLoadMoreProducts.current();
   }, []);
 
-  const handleDeleteInDatabase = async (removeItemId) => {
-    if (window.confirm("Bạn có muốn xóa sản phẩm không")) {
-      // try {
-      //   await axios.delete(
-      //     `http://localhost:8386/api/v1/product/delete/177`,
-      //     axiosConfig
-      //   );
+  const handleDeleteInDatabase = async (proId, brandId, cateId) => {
+    // if (window.confirm("Bạn có muốn xóa sản phẩm không")) {
+    // }
+    const REMOVE_PRODUCT_IN_CATEGORY_BY_PRO_ID_API = `http://localhost:8386/api/v1/category/${cateId}/remove/pro-id=${proId}`;
+    const REMOVE_PRODUCT_IN_BRAND_BY_PRO_ID_API = `http://localhost:8386/api/v1/brand/${brandId}/remove/pro-id=${proId}`;
+    const REMOVE_PRODUCT_DETAIL_IN_PRODUCT_API = `http://localhost:8386/api/v1/product/${proId}/remove/product-detail`;
+    const REMOVE_ALL_IMAGES_IN_PRODUCT_API = `http://localhost:8386/api/v1/product/${proId}/remove/images`;
+    const REMOVE_PRODUCT_BY_ID = `http://localhost:8386/api/v1/product/delete/${proId}`;
 
-      setData((prevItems) => {
-        const result = prevItems.filter((item) => item.proId !== removeItemId);
-        return result;
-      });
-      // } catch (error) {
-      //   console.log(error);
-      // }
-    }
+    // xoa tat ca anh trong san pham
+    const removeAllImagesInProduct = async () => {
+      const response = await axios.post(
+        REMOVE_ALL_IMAGES_IN_PRODUCT_API,
+        axiosConfig
+      );
+      console.log(response);
+    };
+
+    // xoa chi tiet san pham
+    const removeProductDetailInProduct = async () => {
+      const response = await axios.post(
+        REMOVE_PRODUCT_DETAIL_IN_PRODUCT_API,
+        axiosConfig
+      );
+      console.log(response);
+    };
+
+    // xoa san pham trong category
+    const removeProductInCategory = async () => {
+      const response = await axios.post(
+        REMOVE_PRODUCT_IN_CATEGORY_BY_PRO_ID_API,
+        axiosConfig
+      );
+      console.log(response);
+    };
+
+    // xoa san pham trong brand
+    const removeProductInBrand = async () => {
+      const response = await axios.post(
+        REMOVE_PRODUCT_IN_BRAND_BY_PRO_ID_API,
+        axiosConfig
+      );
+      console.log(response);
+    };
+    const removeProductById = async () => {
+      const response = await axios.post(REMOVE_PRODUCT_BY_ID, axiosConfig);
+      console.log(response);
+    };
+
+    await removeAllImagesInProduct();
+    await removeProductDetailInProduct();
+    await removeProductInBrand();
+    await removeProductInCategory();
+    await removeProductById();
   };
 
   return (
@@ -158,9 +201,15 @@ const AdminOrders = () => {
                 )}
                 <td
                   className="admin-product-table-data"
-                  onClick={() => handleDeleteInDatabase(item.proId)}
+                  onClick={() =>
+                    handleDeleteInDatabase(
+                      item.proId,
+                      item.brand.id,
+                      item.category.cateId
+                    )
+                  }
                 >
-                  <i class="fa-solid fa-trash-can"></i>
+                  <i className="fa-solid fa-trash-can"></i>
                 </td>
               </tr>
             ))}
