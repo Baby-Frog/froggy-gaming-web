@@ -66,9 +66,7 @@ const Nav = () => {
   }, [query]);
 
   const signOut = async () => {
-    localStorage.removeItem("accessToken");
-    localStorage.removeItem("roles");
-    localStorage.removeItem("lastname");
+    localStorage.clear();
     removeAllFromCart();
     navigate("/dang-nhap");
     window.location.reload(false);
