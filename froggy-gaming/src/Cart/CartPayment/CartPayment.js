@@ -1,8 +1,6 @@
 import React from "react";
 import "./styles/cartpayment.css";
-import { useRef } from "react";
 import axios from "axios";
-import { useEffect } from "react";
 import { useState } from "react";
 import { useCart } from "../../contexts/cart-context";
 import Logo from "../../assets/froggy-gaming-icon-2.png";
@@ -10,13 +8,20 @@ const emailRegex =
   /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 const CartPayment = () => {
   const [userFormData, setUserFormData] = useState({
-    fullName: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
+    fullName: `${localStorage.getItem("firstname")} ${localStorage.getItem(
+      "lastname"
+    )}`,
+    email: localStorage.getItem("email"),
+    phoneNumber: localStorage.getItem("phoneNumber"),
+    address: localStorage.getItem("address"),
   });
   const [buySuccess, setBuySuccess] = useState(false);
-
+  const handleInputChange = (e) => {
+    setUserFormData({
+      ...userFormData,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <>
       <CartNotification
@@ -30,6 +35,7 @@ const CartPayment = () => {
           <CartForm
             userFormData={userFormData}
             setUserFormData={setUserFormData}
+            handleInputChange={handleInputChange}
           />
         </div>
         <CartDetails
@@ -59,34 +65,16 @@ const CartProcess = () => {
   );
 };
 
-const CartForm = ({ setUserFormData, userFormData }) => {
-  const [userData, setUserData] = useState([]);
+const CartForm = ({ userFormData, setUserFormData, handleInputChange }) => {
+  // const [fullname, setFullname] = useState(
+  //   localStorage.getItem("firstname") + " " + localStorage.getItem("lastname")
+  // );
+  // const [email, setEmail] = useState(localStorage.getItem("email"));
+  // const [phoneNumber, setPhoneNumber] = useState(
+  //   "0" + localStorage.getItem("phoneNumber")
+  // );
+  // const [address, setAddress] = useState(localStorage.getItem("address"));
 
-  const USER_API = `http://localhost:8386/api/v1/customer/get`;
-  const token = localStorage.getItem("accessToken");
-  const axiosConfig = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
-  const handleFetchUserData = useRef({});
-  handleFetchUserData.current = async () => {
-    try {
-      const response = await axios.get(USER_API, axiosConfig);
-      setUserData(response?.data?.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  useEffect(() => {
-    handleFetchUserData.current();
-  }, []);
-
-  const handleInputChange = (e) => {
-    setUserFormData({
-      ...userFormData,
-      [e.target.name]: e.target.value,
-    });
-  };
-  console.log(userData);
   return (
     <div>
       <h3 className="cart-form-header">Thông tin cá nhân</h3>
@@ -99,8 +87,9 @@ const CartForm = ({ setUserFormData, userFormData }) => {
           <input
             type="text"
             name="fullName"
-            onChange={handleInputChange}
             placeholder="Nhập vào họ và tên của bạn"
+            defaultValue={userFormData.fullName}
+            onChange={handleInputChange}
           />
         </div>
         <div className="cart-form-group">
@@ -108,17 +97,19 @@ const CartForm = ({ setUserFormData, userFormData }) => {
           <input
             type="text"
             name="email"
-            onChange={handleInputChange}
             placeholder="Nhập vào email của bạn"
+            defaultValue={userFormData.email}
+            onChange={handleInputChange}
           />
         </div>
         <div className="cart-form-group">
           <label htmlFor="name">Số điện thoại:</label>
           <input
-            type="text"
+            type="number"
             name="phoneNumber"
-            onChange={handleInputChange}
             placeholder="Nhập vào số điện thoại của bạn"
+            defaultValue={userFormData.phoneNumber}
+            onChange={handleInputChange}
           />
         </div>
         <div className="cart-form-group">
@@ -126,8 +117,9 @@ const CartForm = ({ setUserFormData, userFormData }) => {
           <input
             type="text"
             name="address"
-            onChange={handleInputChange}
             placeholder="Nhập vào địa chỉ của bạn"
+            defaultValue={userFormData.address}
+            onChange={handleInputChange}
           />
         </div>
       </form>
@@ -139,6 +131,7 @@ const CartDetails = ({ userFormData, setBuySuccess }) => {
   const { cartItems } = useCart();
   const [error, setError] = useState(false);
   const handleValidate = () => {
+    console.log(userFormData);
     if (userFormData.fullName.trim().length <= 0) {
       setError("Vui lòng nhập đầy đủ thông tin trước khi xác nhận thanh toán");
       return;
@@ -194,8 +187,8 @@ const CartDetails = ({ userFormData, setBuySuccess }) => {
       <div className="cart-details-vat">Đã bao gồm VAT (nếu có)</div>
       <div className="cart-details-list">
         {cartItems.length > 0 &&
-          cartItems.map((item) => (
-            <div className="cart-details-item">
+          cartItems.map((item, key) => (
+            <div className="cart-details-item" key={key}>
               <div className="cart-details-item-name">- {item.proName}</div>
               <div className="cart-details-item-price">
                 Giá tiền:

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useHover from "../../hooks/useHover";
 import LoadingSkeleton from "../SkeletonLoading/LoadingSkeleton";

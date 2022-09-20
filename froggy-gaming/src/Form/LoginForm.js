@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./styles/loginform.css";
+import { useEffect } from "react";
 
 // const LoginForm = () => {
 //   const [username, setUsername] = useState("");
@@ -71,11 +72,20 @@ import "./styles/loginform.css";
 // };
 
 const LoginForm = () => {
+  const [userId, setUserId] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(false);
-  const LOGIN_API = `http://localhost:8386/api/auth/signin`;
 
+  useEffect(() => {
+    saveUserDataInLocalStorageFunc();
+  }, [userId]);
+
+  // api
+  const LOGIN_API = `http://localhost:8386/api/auth/signin`;
+  const GET_USER_DATA_API = `http://localhost:8386/api/v1/customer/get`;
+
+  // config
   const axiosConfig = {
     headers: {
       "Content-Type": "application/json",
@@ -83,6 +93,14 @@ const LoginForm = () => {
     },
   };
 
+  const token = localStorage.getItem("accessToken");
+  const axiosGetUserDataConfig = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  // form
   const account = JSON.stringify({
     username: username,
     password: password,
@@ -90,19 +108,42 @@ const LoginForm = () => {
 
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const loginHandleFunction = async () => {
     try {
       const response = await axios.post(LOGIN_API, account, axiosConfig);
       localStorage.setItem("accessToken", response.data.data.access_token);
       localStorage.setItem("roles", response.data.data.roles);
       localStorage.setItem("username", response.data.data.username);
-      navigate("/");
-      window.location.reload(false);
+      setUserId(response.data.data.cusid);
+      console.log(response);
     } catch (error) {
       setError("Tài khoản hoặc mật khẩu sai, vui lòng đăng nhập lại");
       console.log(error);
     }
+  };
+
+  const saveUserDataInLocalStorageFunc = async () => {
+    try {
+      const response = await axios.get(
+        GET_USER_DATA_API,
+        axiosGetUserDataConfig
+      );
+      console.log(response);
+      localStorage.setItem("firstname", response.data.data.cusFirstname);
+      localStorage.setItem("lastname", response.data.data.cusLastname);
+      localStorage.setItem("address", response.data.data.cusAddress);
+      localStorage.setItem("phoneNumber", response.data.data.cusPhoneNumber);
+      localStorage.setItem("email", response.data.data.cusEmail);
+      navigate("/");
+      window.location.reload(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await loginHandleFunction();
   };
   return (
     <div className="wrapper">
