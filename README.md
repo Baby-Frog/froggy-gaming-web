@@ -1,4 +1,4 @@
-# Hi! Welcome to our project, 
+# Hi! Welcome to our project
 
 This is the second repository of front-end codes after one of my member destroy the first one
 
