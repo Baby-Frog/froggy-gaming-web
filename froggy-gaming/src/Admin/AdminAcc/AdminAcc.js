@@ -3,6 +3,8 @@ import React from "react";
 import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import useSWR from "swr";
+import { fetcher } from "../../config";
 import "./styles/adminacc.css";
 
 const AdminAcc = () => {
@@ -166,6 +168,9 @@ const AdminAcc = () => {
 };
 
 const AdminOrders = () => {
+  const { data } = useSWR(`http://localhost:8386/api/v1/order`, fetcher);
+  if (!data) return;
+  console.log(data);
   return (
     <>
       <h3 className="admin-product-header">Danh sách đơn hàng</h3>
@@ -176,51 +181,28 @@ const AdminOrders = () => {
             <td className="admin-product-table-data">Tên người dùng</td>
             <td className="admin-product-table-data">Giá tiền</td>
             <td className="admin-product-table-data">Số lượng</td>
+            <td className="admin-product-table-data">Thời gian mua hàng</td>
           </tr>
         </thead>
-        {/* <tbody className="admin-product-table-body">
+        <tbody className="admin-product-table-body">
           {data.length > 0 &&
             data.map((item) => (
-              <tr className="admin-product-table-row" key={item.proId}>
-                <td className="admin-product-table-data">{item.proId}</td>
-                <td className="admin-product-table-data">{item.proName}</td>
+              <tr className="admin-product-table-row" key={item.id}>
+                <td className="admin-product-table-data">{item.id}</td>
+                <td className="admin-product-table-data">trankhoi</td>
                 <td className="admin-product-table-data">
-                  {item.proPrice.toLocaleString("it-IT", {
+                  {item.totalPrice.toLocaleString("it-IT", {
                     style: "currency",
                     currency: "VND",
                   })}
                 </td>
-                {item.proStatus ? (
-                  <td className="admin-product-table-data">
-                    <span className="admin-product-table-true">Còn hàng</span>
-                  </td>
-                ) : (
-                  <td className="admin-product-table-data">
-                    <span className="admin-product-table-false">Hết hàng</span>
-                  </td>
-                )}
-                <td
-                  className="admin-product-table-data"
-                  onClick={() =>
-                    handleDeleteInDatabase(
-                      item.proId,
-                      item.brand.id,
-                      item.category.cateId
-                    )
-                  }
-                >
-                  <i className="fa-solid fa-trash-can"></i>
-                </td>
+                <td className="admin-product-table-data">{item.quantity}</td>
+                <td className="admin-product-table-data">{item.createdAt}</td>
               </tr>
             ))}
-        </tbody> */}
+        </tbody>
       </table>
-      <button
-        className="admin-product-loadmore"
-        // onClick={handleLoadMoreProducts.current}
-      >
-        Load more
-      </button>
+      <button className="admin-product-loadmore">Load more</button>
     </>
   );
 };
