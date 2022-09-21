@@ -135,7 +135,7 @@ function CartPrices() {
   const handleConfirmCart = async () => {
     if (cartItems.length > 0) {
       await createNewOrder();
-      navigate("/gio-hang/xac-nhan");
+      // navigate("/gio-hang/xac-nhan");
     }
   };
 
@@ -169,18 +169,13 @@ function CartPrices() {
           </span>
         </div>
         <button
-          href="https://www.google.com/"
           className={`go-checkout ${cartItems.length > 0 && "active"}`}
           onClick={handleConfirmCart}
         >
           Xác nhận đơn hàng
         </button>
 
-        <button
-          href="https://www.google.com/"
-          className="delete-cart"
-          onClick={removeAllFromCart}
-        >
+        <button className="delete-cart" onClick={removeAllFromCart}>
           Xóa giỏ hàng
         </button>
       </div>
