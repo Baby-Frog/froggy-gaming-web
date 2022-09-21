@@ -88,7 +88,9 @@ function CartPrices() {
   const ADD_ORDER_TO_CUSTOMER_API = `http://localhost:8386/api/v1/order/add-to-customer`;
 
   // form
+  const username = localStorage.getItem("username");
   const createNewOrderForm = JSON.stringify({
+    username: username,
     quantity: quantityOrder,
     totalPrice: totalPriceOrder,
   });
