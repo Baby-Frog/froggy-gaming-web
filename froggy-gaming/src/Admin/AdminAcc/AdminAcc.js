@@ -180,7 +180,7 @@ const AdminOrders = () => {
             <td className="admin-product-table-data">Order ID</td>
             <td className="admin-product-table-data">Tên người dùng</td>
             <td className="admin-product-table-data">Giá tiền</td>
-            <td className="admin-product-table-data">Số lượng</td>
+            <td className="admin-product-table-data">Số lượng sản phẩm</td>
             <td className="admin-product-table-data">Thời gian mua hàng</td>
           </tr>
         </thead>
@@ -189,7 +189,7 @@ const AdminOrders = () => {
             data.map((item) => (
               <tr className="admin-product-table-row" key={item.id}>
                 <td className="admin-product-table-data">{item.id}</td>
-                <td className="admin-product-table-data">trankhoi</td>
+                <td className="admin-product-table-data">{item.username}</td>
                 <td className="admin-product-table-data">
                   {item.totalPrice.toLocaleString("it-IT", {
                     style: "currency",

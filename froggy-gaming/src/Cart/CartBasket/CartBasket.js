@@ -135,7 +135,7 @@ function CartPrices() {
   const handleConfirmCart = async () => {
     if (cartItems.length > 0) {
       await createNewOrder();
-      // navigate("/gio-hang/xac-nhan");
+      navigate("/gio-hang/xac-nhan");
     }
   };
 
