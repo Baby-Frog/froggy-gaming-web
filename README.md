@@ -23,6 +23,6 @@ Gaming Chair: Cosair, DXRacer, Warrior, Cougar
   ```js
   https://github.com/Baby-Frog/froggy-gaming-server
   ```
-  - After cloning 2 of them, open the froggy-gaming project (aka the front-end project), the project path should be like this: something.../froggy-gaming-web/froggy-     gaming
-  - Run the back-end code with Apache and MYSQL ports opened (we recommend you use XAMPP)
+  - After cloning 2 of them, open the froggy-gaming-web project, the project's path should look like this in the terminal: something.../froggy-gaming-web/froggy-gaming
+  - Run the back-end code with Apache and MYSQL ports opened (we recommend you to use XAMPP)
   - Run 'npm start' in the terminal
