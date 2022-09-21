@@ -1,6 +1,6 @@
 # Hi! Welcome to our project, 
 
-- This is the second repository of front-end codes after one of my member destroy the first one
+This is the second repository of front-end codes after one of my member destroy the first one
 
 See more detail in [Froggy Gaming](https://baby-frog.github.io/froggy-gaming-website/)
 
