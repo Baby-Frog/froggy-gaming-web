@@ -67,9 +67,8 @@ const Nav = () => {
 
   const signOut = async () => {
     localStorage.clear();
-    removeAllFromCart();
+    await removeAllFromCart();
     navigate("/dang-nhap");
-    window.location.reload(false);
   };
   return (
     <>

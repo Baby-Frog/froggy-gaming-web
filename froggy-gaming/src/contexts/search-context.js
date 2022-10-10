@@ -14,7 +14,7 @@ function SearchProvider(props) {
     `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.${type}&order=${order}`
   );
 
-  function handleNavigateCategory(cateName) {
+  async function handleNavigateCategory(cateName) {
     setQuery(cateName);
     setUrl(
       `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
@@ -26,7 +26,7 @@ function SearchProvider(props) {
     navigate(`/chi-tiet?query=${searchParam}`);
   }
 
-  function handleSearch(e) {
+  async function handleSearch(e) {
     e.preventDefault();
     setUrl(
       `http://localhost:8386/api/v1/product/search/query=${query}&page=1/sort=pro.price&order=asc`
@@ -35,7 +35,6 @@ function SearchProvider(props) {
       query: query,
     });
     navigate(`/chi-tiet?query=${query}`);
-    window.location.reload(false);
   }
 
   const value = {

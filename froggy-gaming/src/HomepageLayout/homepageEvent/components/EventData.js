@@ -7,7 +7,7 @@ export const EventData = [
   {
     id: 2,
     image_url:
-      "https://blog.overclockers.co.uk/wp-content/uploads/2019/03/GGR_O_Preview.png",
+      "https://gear-rating.com/wp-content/uploads/2021/01/Corsair-Harpoon-RGB-banner.jpg",
   },
   {
     id: 3,
